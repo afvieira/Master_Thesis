@@ -9,16 +9,16 @@ var canvasHeight,
   animalIndex = 0;
 
 var imgBackground = {
-  1: "../../images/background/1.jpg",
-  2: "../../images/background/2.jpg",
-  3: "../../images/background/3.jpg",
-  4: "../../images/background/4.png",
-  5: "../../images/background/5.jpg",
-  6: "../../images/background/6.gif",
-  7: "../../images/background/7.jpg",
-  8: "../../images/background/8.png",
-  9: "../../images/background/9.png",
-  10: "../../images/background/10.jpg"
+  1: "../images/background/1.jpg",
+  2: "../images/background/2.jpg",
+  3: "../images/background/3.jpg",
+  4: "../images/background/4.png",
+  5: "../images/background/5.jpg",
+  6: "../images/background/6.gif",
+  7: "../images/background/7.jpg",
+  8: "../images/background/8.png",
+  9: "../images/background/9.png",
+  10: "../images/background/10.jpg"
 }
 
 var images = {
