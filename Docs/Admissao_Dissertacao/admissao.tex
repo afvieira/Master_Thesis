@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage[affil-it]{authblk}  % para colocar affil no titulo
+\usepackage{indentfirst}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{pgfgantt}
+
+\title{\textbf{Plano de trabalhos para dissertação de mestrado}\\Plataforma educativa online de avaliação e intervenção nas dificuldades de aprendizagem da leitura - Consciência fonológica}
+\author{André Filipe Pinto Vieira}
+\affil{Departamento de Informática\\Universidade do Minho\\Mestrado em Engenharia Informática\\\sf{pg22777@alunos.uminho.pt}}
+\date{Novembro 2014}
+
+\begin{document}
+
+\maketitle
+\noindent{\textbf{Orientador:}}\\
+João Miguel Fernandes\\
+\\
+
+\noindent{\textbf{Co-orientador:}}\\
+Maria Iolanda Ferreira Silva Ribeiro\\
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Resumo}
+O presente plano de trabalhos pretende descrever todo o processo e resultados de investigação necessários ao desenvolvimento da dissertação de mestrado de engenharia informática.
+
+\section{Enquadramento}
+Com a chegada da \textit{World Wide Web}, surge um novo conceito de acesso à informação, e o uso de \textit{websites} passou a tornar-se bastante comum, mesmo quando falamos de crianças. Desde essa altura que a criação de aplicações \textit{web} tem vindo a disparar, e cada vez mais surgem dispositivos capazes de aceder a essas mesmas aplicações.
+
+Por este crescimento de aplicações \textit{web}, a constante procura de novas ferramentas e métodos pedagógicos, que acompanhem os desafios inerentes ao progresso para motivar os alunos nas diferentes áreas disciplinares, conduz ao desenvolvimento de novas experiências no processo ensino/aprendizagem. 
+
+\bigskip
+Dados nacionais apontam para taxas de incidência de alunos com dificuldades na aprendizagem da leitura (DAL) próximas dos 20\%, indicando que, em Portugal, aproximadamente 90 000 alunos do 1º ciclo do Ensino Básico poderão apresentar dificuldades de leitura. Além de se tratar de um número muito elevado de alunos, trata-se de um grupo muito heterogéneo no que diz respeito às dificuldades específicas que apresentam. A eficácia da intervenção depende de três condições: a precocidade, a individualização e o caráter sistemático das atividades de apoio. Na União Europeia apenas um pequeno grupo de países, nos quais Portugal não está incluído, tem professores especializados em DAL, facto que limita a eficácia da intervenção. As metodologias de ensino da leitura têm de ser necessariamente complementadas com procedimentos adequados à natureza das dificuldades dos alunos.
+
+É neste âmbito específico que se inscreve este projeto. Reconhecendo: a) a complexidade do problema decorrente do número e da heterogeneidade dos alunos com DAL; b) a formação reduzida dos professores no âmbito das DAL; e c) a necessidade de proporcionar uma intervenção precoce, sistemática e individualizada, é proposta a criação de uma plataforma educativa online na qual se disponibilizarão, e se justificarão teoricamente, um conjunto de atividades e materiais de avaliação e intervenção nas DAL.
+
+
+
+\section{Objetivos}
+Este projeto tem como objetivo desenvolver uma ferramenta pedagógica no formato de jogo que permitirá aos alunos colocar em prática o que aprendem no 1º ciclo do ensino básico no que respeita à leitura. Este projeto tenta produzir também uma ferramenta a ser utilizada pelo professor de forma a perceber se a dificuldade na leitura dos alunos está a diminuir ou não.
+
+\newpage
+\section{Calendarização}
+Para o tema proposto, o plano de trabalho irá consistir na execução das seguintes tarefas:
+\begin{enumerate}
+  \item \textbf{Pesquisa bibliográfica}
+    \begin{itemize} 
+      \item Reunir informação considerada relevante com base em livros, teses e artigos relacionados.
+      \item Levantamento de casos de estudo.
+    \end{itemize}
+  \item \textbf{Estado de arte}
+    \begin{itemize} 
+      \item Efetuar levantamento do estado da arte.
+    \end{itemize}
+  \item \textbf{Especific./Desenv. do software}
+    \begin{itemize} 
+      \item Efetuar uma análise, conceção/especificação do projeto.
+      \item Implementação de um protótipo.
+      \item Implementação da plataforma.
+    \end{itemize}
+  \item \textbf{Experimentação}
+    \begin{itemize} 
+      \item Fase de experimentação e/ou testes.
+    \end{itemize}
+  \item \textbf{Escrita da dissertação}
+    \begin{itemize} 
+      \item Escrita do documento teórico que expõe todo o trabalho desenvolvido.
+    \end{itemize}
+\end{enumerate} 
+
+\begin{ganttchart}{18}
+  \gantttitle{2014/2015}{18} \\
+  \gantttitle{Nov}{2} 
+  \gantttitle{Dez}{2} 
+  \gantttitle{Jan}{2} 
+  \gantttitle{Fev}{2} 
+  \gantttitle{Mar}{2} 
+  \gantttitle{Abr}{2} 
+  \gantttitle{Mai}{2} 
+  \gantttitle{Jun}{2} 
+  \gantttitle{Jul}{2} \\
+  \ganttbar{Pesquisa bibliográfica}{1.2}{3} \\
+  \ganttbar{Estado de arte}{2}{4} \\
+  \ganttbar{Especific./Desenv. do software}{4}{14} \\
+  \ganttbar{Experimentação}{14}{16} \\
+  \ganttbar{Escrita da dissertação}{1.2}{17.8}
+\end{ganttchart}
+
+
+\newpage
+\section{Bibliografia}
+
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

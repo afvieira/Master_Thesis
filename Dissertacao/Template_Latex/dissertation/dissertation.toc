@@ -1,0 +1,20 @@
+\vspace {-\cftbeforepartskip }
+\select@language {portuguese}
+\contentsline {chapter}{Conte\IeC {\'u}do}{iii}{section*.3}
+\contentsline {chapter}{\numberline {1}\spacedlowsmallcaps {Introdu\IeC {\c c}\IeC {\~a}o}}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Contextualiza\IeC {\c c}\IeC {\~a}o}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}Problemas, desafios e orienta\IeC {\c c}\IeC {\~o}es no apoio aos alunos com dificuldades de aprendizagem da leitura}{5}{section.1.2}
+\contentsline {chapter}{\numberline {2}\spacedlowsmallcaps {Estado da arte}}{7}{chapter.2}
+\contentsline {section}{\numberline {2.1}Interven\IeC {\c c}\IeC {\~a}o na descodifica\IeC {\c c}\IeC {\~a}o (consci\IeC {\^e}ncia fonol\IeC {\'o}gica, RCGF/FG (regras de correspond\IeC {\^e}ncias grafema-fonema e fonema-grafema), leitura de palavras e flu\IeC {\^e}ncia de leitura)}{7}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Atividades propostas pelo Programa Nacional de Ensino de Portugu\IeC {\^e}s \citep {Freitas}.}{8}{subsection.2.1.1}
+\contentsline {subsubsection}{Consci\IeC {\^e}ncia da palavra}{8}{subsection.2.1.1}
+\contentsline {subsubsection}{Consci\IeC {\^e}ncia sil\IeC {\'a}bica}{8}{subsection.2.1.1}
+\contentsline {paragraph}{Sensibilidade \IeC {\`a} rima}{8}{subsection.2.1.1}
+\contentsline {paragraph}{Segmenta\IeC {\c c}\IeC {\~a}o sil\IeC {\'a}bica}{8}{subsection.2.1.1}
+\contentsline {paragraph}{Jun\IeC {\c c}\IeC {\~a}o de s\IeC {\'\i }labas}{9}{subsection.2.1.1}
+\contentsline {paragraph}{Manipula\IeC {\c c}\IeC {\~a}o de unidades sil\IeC {\'a}bicas}{9}{subsection.2.1.1}
+\contentsline {subsubsection}{Consci\IeC {\^e}ncia fon\IeC {\'e}mica}{9}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}Interven\IeC {\c c}\IeC {\~a}o na compreens\IeC {\~a}o}{11}{section.2.2}
+\contentsline {chapter}{\numberline {3}\spacedlowsmallcaps {Popula\IeC {\c c}\IeC {\~a}o alvo}}{14}{chapter.3}
+\contentsline {chapter}{\numberline {4}\spacedlowsmallcaps {Destinat\IeC {\'a}rios}}{15}{chapter.4}
+\vspace \bigskipamount 

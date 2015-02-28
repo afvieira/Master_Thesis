@@ -1,0 +1,5 @@
+- imagens, sons.
+- guidelines por parte da miew.
+- pormenores como tipos de letra, cores.
+- modelo de dados para guardar dados de historico.
+- qual o estado do projeto na miew. Disseram-me que me contactavam e nada até agora.

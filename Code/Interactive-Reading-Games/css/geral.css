@@ -1,0 +1,44 @@
+#canvas {
+  border:2px solid black;
+  background-color: #EEE;
+}
+
+input{
+  text-align:center; 
+}
+
+#container 
+{
+  top: 10px;
+  position:relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 650px;
+  height: 450px;
+  background-color: #000;
+}
+
+#top {
+  top: 0;
+  padding: 10px;
+  background: #ccc;
+}
+
+#esquerda {
+  width: 35%; 
+  float: left;
+}
+
+#direita {
+  width: 65%; 
+  float: right; 
+}
+
+footer {
+  left: 0px;
+  text-align: center;
+  padding: 5px;
+  position:absolute;
+  bottom:0;
+  background:#ccc;
+}

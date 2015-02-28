@@ -1,0 +1,239 @@
+
+% book example for classicthesis.sty
+\documentclass[
+  % Replace twoside with oneside if you are printing your thesis on a single side
+  % of the paper, or for viewing on screen.
+  oneside,
+  %twoside,
+  11pt, a4paper,
+  footinclude=true,
+  headinclude=true,
+  cleardoublepage=empty
+]{scrbook}
+
+\usepackage{dissertation}
+\usepackage[portuguese]{babel}
+\usepackage{indentfirst}
+
+% Title
+
+\titleA{Plataforma educativa online de avaliação e}
+\titleB{intervenção nas dificuldades de aprendizagem}
+\titleC{da leitura - Consciência fonológica}
+
+% Author
+
+\author{André Filipe Pinto Vieira}
+
+% Supervisor(es)
+
+\supervisor{João Miguel Fernandes}
+
+\cosupervisor{Maria Iolanda Ferreira Silva Ribeiro}
+
+% Date
+
+\date{\myear} % change to text if date is not today
+
+%%Defines
+%\def \... {..}
+
+\makeglossaries  %  either use this ...
+
+\makeindex	% ... or this
+
+\begin{document}
+	
+% Add acronym definitions
+    
+% Cover page ---------------------------------------------
+%	\thispagestyle{empty}
+	\input{def/title}
+\rm
+	\cleardoublepage
+%---------------------------------------------------------
+	\pagenumbering{alph}
+	\setcounter{page}{1}
+%---------------------------------------------------------
+	
+% Add abstracts (en,pt) -----------------------------------------------------------
+\chapter*{Abstract}
+National data show incidence rates of students with difficulties in learning to read (DLR) approaching 20\%, indicating that, in Portugal, around 90 000 students of the 1st cycle of basic education may have reading difficulties. Besides being a very large number of students, this is a very heterogeneous group with regard to the specific difficulties they present. The effectiveness of the intervention depends on three conditions: early, individualization and the systematic nature of support activities. In the European Union only a small group of countries in which Portugal is not included, has specialized teachers in DLR, which limits the effectiveness of the intervention. The reading teaching methodologies necessarily have to be supplemented with procedures appropriate to the nature of the difficulties of students.
+
+It is in this specific area which falls this project. Recognizing: a) the complexity of the problem due to the number and heterogeneity of students with DLR; b) the reduced training of teachers within the DLR; and c) the need to provide an early, systematic and individualized intervention, is proposed to create an online educational platform on which to make available, and justify theoretically a set of activities and assessment materials and intervention in DLR.
+\cleardoublepage
+
+\chapter*{Resumo}
+
+Dados nacionais apontam para taxas de incidência de alunos com dificuldades na aprendizagem da leitura (DAL) próximas dos 20\%, indicando que, em Portugal, aproximadamente 90 000 alunos do  1.º ciclo  do Ensino  Básico  poderão apresentar dificuldades de leitura. Além de se tratar de um número muito elevado de alunos, trata-se de um grupo muito heterogéneo no que diz respeito às dificuldades específicas que apresentam. A eficácia da intervenção depende de três condições: a precocidade, a individualização e o caráter sistemático das atividades de apoio. Na União Europeia apenas um pequeno grupo de países, nos quais Portugal não está incluído, tem professores especializados em DAL, facto que limita a eficácia da intervenção. As metodologias de ensino  da  leitura  têm  de  ser  necessariamente  complementadas  com procedimentos adequados à natureza das dificuldades dos alunos.
+
+É  neste âmbito  específico  que se inscreve este projeto. Reconhecendo: a) a complexidade do problema decorrente do número e da heterogeneidade dos alunos com DAL; b) a formação reduzida dos professores no âmbito das DAL; e c) a necessidade de proporcionar uma intervenção precoce, sistemática e individualizada, é proposta a criação de uma plataforma educativa online na qual se disponibilizarão, e se justificarão teoricamente, um conjunto de atividades e materiais de avaliação e intervenção nas DAL.
+
+\cleardoublepage
+	
+	\pagenumbering{roman}
+	\setcounter{page}{3}
+	%pagestyle{fancy}   % -------- removed
+	\rm
+	
+	% Document
+	\cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{Conteúdo}
+	\tableofcontents
+	
+	% Add list of acronyms
+	\cleardoublepage
+	\pagenumbering{arabic}
+	\setcounter{page}{3}
+
+\chapter{Introdução}
+
+\section{Contextualização}
+O sucesso na aprendizagem da leitura é determinante para as trajetórias posteriores de aprendizagem. Nos primeiros anos de escolaridade é esperado que os alunos adquiram competências que lhes permitam ser fluentes na leitura, de forma a utilizar esta ferramenta para aceder aos diversos saberes \citep{Outon}.
+
+De acordo com Androulla Vassiliou (Comissária Europeia para a Educação, Cultura, Multilinguismo, Juventude e Desporto), quando os resultados do PISA (Programme for International Student Assessment) 2009 foram publicados “it was a shock to realise that one in five of our 15-year-olds in the EU still has insufficient reading skills” \citep{European}.
+
+Estes resultados conduziram à criação de um grupo independente de especialistas em literacia, cuja missão foi aprofundar o conhecimento acerca da literacia, bem como identificar formas mais efetivas e eficientes de promover competências de leitura na Europa. O grupo, coordenado pela H.R.H. Princess Laurentien of the Netherlands (Chair) – Founder and Chair of the Reading \& Writing Foundation (Stichting Lezen \& Schrijven) in the Netherlands, UNESCO Special Envoy on Literacy for Development and patron of various language-related organizations, incluiu: 
+
+\begin{enumerate}
+  \item o Prof. Greg Brooks – Emeritus Professor of  Education,  University  of  Sheffield,  UK  (2001-07);
+  \item o  Prof.  Roberto Carneiro  –  Former  Minister  of  Education  of  Portugal  (1987-91), professor  at  the Portuguese Catholic University and Chair of the Editorial Board of the European Journal of Education; 
+  \item a Prof. Marie Thérèse Geffroy – President of the French National Agency to Fight Illiteracy (ANLCI), former Director, General Inspector of National Education; 
+  \item o Dr. Attila Nagy – PhD in psychology and sociology (1997) at the Lorand Eotvos University in Budapest, founder of the Hungarian Reading Association; 
+  \item o Dr. Sari Sulkunen – Senior researcher at the Finnish Institute for Educational Research and at the Department of Languages at the University of Jyväskylä, Finland; 
+  \item o Prof. Karin Taube – Professor of Education (emerita) Umeå University, 2007-11, previously Professor of Education at Mid-Sweden University (2002-07) and University of Kalmar, Sweden (2000-02); 
+  \item o Prof. Georgios Tsiakalos – Professor of Pedagogy at the Aristotle University of Thessaloniki, Greece; 
+  \item o Prof. Renate Valtin – Professor of primary education (emerita), Humboldt University Berlin, Germany (1992-2008), previously Professor of  Education  at  Freie  Universität  Berlin  (1981-1992) and Pädagogische Hochschule Berlin (1975-1981); e 
+  \item Jerzy Wiśniewski – Education policy expert from Poland, member of the Governing Board of the Centre for Educational Research and Innovation CERI (OECD) \citep{European}.
+\end{enumerate}
+
+Este grupo publicou em 2012 um relatório (Final Report. EU high level group of experts on literacy), do qual destacamos, em primeiro lugar, a taxa de incidência de dificuldades de leitura. De acordo com os dados apresentados “Almost all children participate in formal education for at least 10 years; yet, nearly one in five reaches the age of 15 without having developed good reading skills” (p. 47)”. Os problemas sociais, de participação cívica e no mercado de trabalho que decorrem dos baixos níveis de literacia são vários. 
+
+Os problemas de leitura observados aos 15 anos refletem um processo cumulativo de não aprendizagens da leitura cuja origem se encontra, maioritariamente, na fase inicial da sua aprendizagem. Este efeito é sistematicamente referenciado na literatura e explica o elevado número de programas que têm sido desenvolvidos para os problemas de  aprendizagem  da  leitura  nos  primeiros  dois  anos  de  escolaridade  \citep{European}.
+
+Os dados anteriores reportam-se a jovens de 15 anos da União Europeia. Em Portugal as estatísticas sobre a incidência de alunos com dificuldades de leitura são escassos. Refira-se neste âmbito o trabalho sobre a prevalência de alunos com dislexia realizado por Vale, Sucena e Viana (2011). Este, embora muito relevante, centrou-se num grupo muito específico de alunos com dificuldades de aprendizagem da leitura. Numa comunicação  apresentada na VI Conferência Internacional do PNL (Plano Nacional de Leitura), Ribeiro (2012) apresentou um conjunto de dados que sugerem que a prevalência de crianças com dificuldades de leitura no 1.º ciclo em Portugal se aproxima dos valores observados aos 15 anos na União Europeia. Com base num estudo em que foram analisados os desempenhos de 1878 alunos a frequentar o 1.º ano de escolaridade verificou-se que 16,8\% dos alunos eram identificados pelos respetivos professores titulares como tendo dificuldades de leitura no final do 3.º período letivo. Esta percentagem pode estar subestimada, uma vez que, ao analisar os alunos que os professores sinalizaram como não apresentando dificuldades de leitura, verificou-se que, neste grupo, 9,8\% dos alunos não lia, com a velocidade e precisão esperadas, frases e textos do manual escolar adotado para o 1.º ano de escolaridade. Analisando as competências em que os alunos revelavam dificuldades verificou-se que o padrão era muito heterógeno, incluindo alunos que revelavam dificuldades na identificação de vogais (11.4\%), na identificação de consoantes (29.4\%) e ainda os que manifestavam dificuldades na leitura fluente de frases e textos do manual escolar (78.9\%). Num segundo estudo, com alunos do 2.º (n = 545), 3.º (n = 566) e 4.º (n = 603) anos de escolaridade e para os quais se pediu igualmente aos professores que indicassem os que apresentavam dificuldades de leitura, constatou-se que cerca de 27\% dos alunos em cada um dos anos são referenciados como apresentando dificuldades no domínio da compreensão da leitura. Por último, a análise dos resultados das provas de aferição de 2012 indica que 20\% dos alunos apresentava um nível não satisfatório \citep{Ribeiro2012}.
+
+Tomando estes indicadores pode-se estimar que, em Portugal, cerca de 20\% dos alunos que frequentam o 1.º ciclo apresentam dificuldades de aprendizagem da leitura. Considerando que no ano letivo 2010/2011 estavam matriculados 464 620 alunos no 1.º ciclo do Ensino Básico estima-se, com base nos dados atrás referidos, que, deste total, 92 924 poderão apresentar dificuldades de leitura.
+
+\section{Problemas, desafios e orientações no apoio aos alunos com dificuldades de aprendizagem da leitura}
+
+No relatório já citado é, por um lado, apontada a necessidade imperiosa de desenvolver mecanismos que permitam apoiar os alunos com dificuldades de aprendizagem da leitura e, por outro, elencado um conjunto de recomendações, especificamente:
+\begin{itemize}
+  \item a intervenção nas dificuldades de leitura deve ocorrer o mais precocemente possível;
+  \item o apoio prestado deve ser individual ou em pequeno grupo, de forma sistemática e regular, com vista a que rapidamente os alunos atinjam as competências dos seus pares;
+  \item as estratégias pedagógicas a implementar devem ser diversas e adaptadas às dificuldades de cada aluno. A avaliação das dificuldades de aprendizagem dos alunos constitui um passo central na definição da quantidade e da qualidade dos apoios a prestar;
+  \item é fundamental munir os docentes com ferramentas de avaliação e de intervenção adequadas e eficazes na resolução das dificuldades de aprendizagem de leitura. Neste contexto, podem ser usados diversos materiais, destacando-se o recurso a ferramentas digitais.
+\end{itemize}
+
+A investigação realizada nas últimas décadas conduziu à identificação de um conjunto de orientações e procedimentos que se mostram eficazes na aprendizagem das regras de correspondência fonema-grafema e grafema-fonema, na leitura de palavras e na fluência (\citealp{Citoler}; \citealp{Snowling}). Na comunidade científica internacional têm sido construídos vários programas estruturados de intervenção (\citealp{Karemaker}; \citealp{Olson}). Em Portugal têm sido desenvolvidos vários programas de intervenção dirigidos a alunos com dificuldades de aprendizagem na leitura, embora na maioria dos casos, associados a teses de mestrado ou de doutoramento (\citealp{Azevedo}; \citealp{Fernandes}; \citealp{Ferreira}; \citealp{Ribeiro2005}) e de difusão limitada. A esta difusão limitada acresce o facto de todos eles implicarem o treino  sistemático fora da sala de aula, de forma individualizada, em pares ou em pequenos  grupos,  exigindo,  por  isso,  recursos  humanos adicionais para a sua implementação.
+
+É de algum modo paradoxal que, apesar do vasto {\it corpus} de conhecimento científico acumulado em torno da avaliação e da intervenção nas dificuldades de aprendizagem da leitura, se registe uma baixa transferência deste conhecimento para o apoio aos alunos com dificuldades de aprendizagem da leitura. Uma razão explicativa é apresentada no relatório já aludido \citep{European}. A instrução individualizada é mais eficaz quando realizada por professores com treino especializado na identificação, avaliação e intervenção nos problemas de leitura. Na União Europeia, apenas em Malta, Irlanda, Reino Unido e em cinco países nórdicos é que os alunos com dificuldades de aprendizagem da leitura recebem apoio facultado por professores especializados na área da leitura. Muitos países “still face the challenge of developing a profession of specialist reading teacher, both as a part of teacher education and as part of learning support available in schools” (p. 163). Portugal enquadra-se neste grupo de países. Embora existam professores que apoiam alunos com dificuldades na leitura, a maioria dos mesmos não é especialista neste domínio.
+
+Existe assim um hiato importante entre o conhecimento científico no domínio da avaliação e intervenção nas dificuldades de aprendizagem da leitura e a sua utilização em contextos de apoio educativo. Esta é uma conclusão que não se aplica unicamente a Portugal, mas na qual o nosso país se inclui. A resposta em termos práticos às perguntas “O que avaliar? Como avaliar? O que fazer?” é entretanto limitada pelos conhecimentos dos professores a quem cabe a tarefa de organizar o apoio.
+
+A necessidade de apoio precoce, individualizado e sistemático gera um outro problema que constitui um desafio à conceptualização de um modelo de apoio. Se considerarmos que existirão em Portugal aproximadamente 100.000 alunos do 1.º ao 4.º ano com dificuldades na aprendizagem da leitura (número que, por si só, constitui um problema), com padrões diferentes de dificuldades, a requerer uma resposta individualizada, e considerando ainda que estes alunos estão dispersos por salas, por escolas e por agrupamentos, concluímos que a exigência em termos de recursos humanos é enorme.
+
+\chapter{Estado da arte}
+\section{Intervenção na descodificação (consciência fonológica, RCGF/FG (regras de correspondências grafema-fonema e fonema-grafema), leitura de palavras e fluência de leitura)}
+Na intervenção nas competências de leitura é necessário ter em consideração, por um lado, a heterogeneidade das características dos alunos que apresentam dificuldades nestas competências e, por outro, a natureza desenvolvimental da leitura, que se traduzem em exigências e competências diferenciadas em função da fase de aprendizagem em que o aluno se encontra \citep{Alexander}. Desta forma, é possível inferir que as competências alvo das intervenções devem ter em consideração o desempenho e as características específicas de cada aluno, bem como suas as competências de leitura, pelo que a planificação de uma intervenção deve basear-se num diagnóstico prévio \citep{Bermejo}. Se atendermos às fases de desenvolvimento da leitura podemos definir como áreas de intervenção a consciência fonológica, as RCGF/FG, a leitura de palavras e a fluência de leitura.
+Relativamente à intervenção na consciência fonológica, esta implica um treino sistemático, consistente e precoce \citep{Freitas}. A consciência das palavras, sílabas e fonemas deve ser contemplada neste treino. Para tal, podem ser realizadas atividades de escuta dirigida e manipulação de palavras, sílabas e fonemas. Os estímulos para as tarefas devem ser escolhidos de forma intencional, utilizando inicialmente palavras reais, rimas simples, sons contínuos e sons em posição inicial e final. Posteriormente, são introduzidas pseudopalavras, rimas complexas, sons em posição medial e fonemas oclusivos \citep{Goldsworthy}. As tarefas de segmentação de fonemas, dada a sua complexidade, podem ser realizadas recorrendo a jogos ou cartões. As tarefas de união de fonemas devem ser trabalhadas após os alunos estarem familiarizados com as tarefas de rima, aliteração e segmentação fonémica \citep{Castle}.
+No Programa Nacional de Ensino de Português (PNEP) é sugerido um conjunto de atividades destinadas ao treino da consciência da palavra, da sílaba e do fonema. No que diz respeito à consciência fonémica, recomendam que o treino se inicie na identificação de sons mais salientes em termos percetivos (fricativos, líquidos, nasais) e posteriormente de sons menos proeminentes (oclusivos). As atividades propostas podem ser realizadas em contexto de sala de aula ou com um grupo restrito de alunos. O que se segue sistematiza as atividades propostas para o treino de cada um dos tipos de consciência fonológica, organizadas com um nível de complexidade crescente \citep{Freitas}.
+
+\subsection{Atividades propostas pelo Programa Nacional de Ensino de Português \citep{Freitas}.}
+
+\subsubsection{Consciência da palavra}
+\begin{itemize}
+  \item Divisão de frases em palavras, junção e omissão de palavras numa frase, com recurso a estratégias que permitam identificar e isolar as palavras na frase (bater com o pé por cada palavra pronunciada e utilizar desenhos de quadrados por cada palavra).
+  \item A   atividade   anterior   pode   ser   complexificada,   utilizando   frases   com pseudopalavras. Neste tipo de atividade, o aluno não consegue associar a 'frase' ouvida a qualquer tipo de significado, obrigando-o a concentrar-se na identificação das pausas que separam cada unidade.
+\end{itemize}
+
+\subsubsection{Consciência silábica}
+
+\paragraph{Sensibilidade à rima}
+\begin{itemize}
+  \item Cantar quadras com rimas, identificando as palavras que rimam.
+  \item Construção de livros com rimas, em que cada página é dedicada a um determinado som final e os alunos têm de desenhar ou colar imagens que representam  palavras que terminam  com  o som selecionado.
+\end{itemize}
+
+\paragraph{Segmentação silábica}
+\begin{itemize}
+  \item Divisão silábica de palavras a partir de uma história. Esta divisão pode ser efetuada com o auxílio de palmas ou desenhos de círculos por cada sílaba que constitui a palavra. O aluno pode ainda pintar o número de círculos em função do número de sílabas da palavra.
+  \item “Jogo do pé-coxinho”: é desenhado um percurso de várias casas no chão. O professor dispõe de um saco com cartões de imagens, num fundo preto ou branco. Após retirar o cartão, o aluno identifica o número de sílabas da palavra representada e avança ou recua o número de casas correspondente, consoante o cartão é branco ou preto, respetivamente.
+  \item “Jogo da roda das sílabas”: os alunos formam um círculo e um dos alunos ocupa o centro deste círculo, com uma bola. Este aluno produz uma sílaba, atirando a bola para um dos alunos do círculo. O aluno que a recebe deve completar a sílaba, de modo a formar uma palavra.
+  \item Atividades de divisão silábica com pares de palavras para levar o aluno a constatar a diferença existente entre o tamanho da palavra e o tamanho do seu referente.
+\end{itemize}
+
+\paragraph{Junção de sílabas}
+\begin{itemize}
+  \item Criação de personagens que falam de forma segmentada, para obrigar os alunos a descobrirem a mensagem e a assumirem o papel da personagem, realizando desta forma a divisão silábica das palavras.
+  \item “Dominó  de  sons”:  os  alunos  têm  de  identificar  a  sílaba representada em cada lado das peças do dominó e uni-las para construir palavras.
+\end{itemize}
+
+\paragraph{Manipulação de unidades silábicas}
+\begin{itemize}
+  \item “Sílabas coloridas”: o professor fixa três círculos de cartão de cores diferentes no quadro e explica aos alunos que cada um deles representa uma sílaba. Os alunos memorizam a associação cor do cartão/sílaba,  mediante  exercícios  de  repetição.  O  professor realiza exercícios de supressão, junção e troca de sílabas utilizando os cartões. Este exercício pode ser realizado com recurso a cartões silábicos, quando os alunos já são capazes de identificar as letras e sílabas.
+  \item “Esconder as sílabas”: exercícios de supressão de sílabas, por exemplo, “como fica a palavra /me-sa/ se tirarmos a última sílaba”. Estes exercícios podem ser realizados a pares, em que cada aluno assume alternadamente  a posição de questionar  e responder. Pode-se recorrer a círculos que representam cada uma das sílabas e/ou a canetas de diferentes cores.
+  \item Atividade no exterior (variante da atividade anterior): os alunos ficam de pé, formando um círculo; um deles diz uma palavra (com mais de uma sílaba) e atira a bola para um colega; este repete a palavra, omitindo a sílaba final e depois de o grupo confirmar que essa operação foi bem-feita, o jogador pode passar a bola para outro colega. Este, por sua vez, produz uma nova palavra, atirando a bola. Pode também ser realizado para treinar a omissão da sílaba inicial.
+  \item “Jogo do eco”: para identificar a sílaba tónica. O professor diz uma palavra e os alunos têm de repetir a sílaba mais forte (sílaba tónica).
+\end{itemize}
+
+\subsubsection{Consciência fonémica}
+\begin{itemize}
+  \item “Em busca do som…”: após a apresentação de várias imagens e identificação do número de sílabas, o professor pede aos alunos que identifiquem a sílaba onde está um determinado som em cada palavra, pintando o círculo correspondente.
+  \item “Papagaios”: os alunos são levados a prestar atenção aos sons que ocupam as posições de fronteira (inicial e final) das palavras, identificando-os e isolando-os do resto da sequência.
+  \item “A cobra e a vaca vão às compras...”: os alunos são levados a (i) identificar mentalmente o som inicial de cada palavra; (ii) agrupar palavras em função do som inicial.
+  \item “apo/sapo...”: com este exercício pretende-se desenvolver a capacidade dos alunos formarem palavras, mediante a adição de sons nas posições inicial e final da palavra.
+  \item “faca, vaca, saca...”: neste exercício os alunos são incentivados a substituir o som inicial da palavra, de forma a criar novas palavras.
+  \item “Palavras preguiçosas”:  os alunos são levados a segmentar  e juntar  sons das palavras.
+  \item “Bingo dos sons”: através do jogo tradicional do bingo, os alunos têm a tarefa de identificar os sons que constituem as palavras. Cada aluno tem um cartão com várias imagens. A tarefa do aluno é identificar, no seu cartão de imagens, uma palavra  com  o som, proposto pelo professor. Pode ser  jogado para sons nas posições inicial, intermédia ou final.
+  \item “A roda dos sons”: o objetivo é desenvolver a capacidade de identificar os sons das palavras. Os alunos formam uma roda, com três alunos no centro. Cada aluno da roda representa um som e os três alunos do centro representam uma palavra. Os alunos do centro têm a tarefa de construir uma palavra, tendo que dar as mãos aos alunos da roda que representam os sons necessários para constituir a palavra.
+  \item “Dominós dos sons”: jogo do dominó tradicional (um lado com uma imagem e o outro com um número variável de triângulos que correspondem ao número de fonemas). A tarefa dos alunos é juntarem as peças do dominó, de forma a unir a imagem com o número de fonemas que constitui a palavra.
+\end{itemize}
+
+No que concerne ao treino das RCGF/FG, os métodos multissensoriais são dos mais referenciados na literatura. Implicam o recurso a duas ou mais modalidades sensoriais na aprendizagem das RCGF/FG, o que implica a integração das modalidades visual, auditiva, tátil e cinestésica (\citealp{Bryant}; \citealp{Defior}; \citealp{Outon}; \citealp{Thomson}). Assim, proporciona canais adicionais de aprendizagem da linguagem escrita \citep{Thomson} e estabelece conexões entre as diferentes atividades envolvidas na leitura e ortografia \citep{Bryant}. Os alunos aprendem a observar a letra (visual), a ouvir o seu som (auditivo), a dizer o som (auditivo), a traçar a letra (tátil) e a escrever a letra (cinestésica) \citep{Fletcher}.
+
+Para o treino da leitura de palavras e da fluência da leitura são apontados duas metodologias que cumprem este propósito: a leitura em sombra e as leituras repetidas. A leitura em sombra \citep{Eldredge} consiste na leitura conjunta e simultânea de um texto em voz alta, pelo professor e pelo aluno. O professor pode ser substituído pelos pais ou por um colega com uma leitura mais fluente, que funciona como tutor. Podem ser utilizados textos gravados, que são escutados pelo  aluno  enquanto lê o texto. Esta metodologia proporciona ao aluno uma prática diária com um modelo de leitura fluente e expressivo, o que facilita os seus próprios processos de descodificação \citep{Vidal}. O método de leituras repetidas do mesmo texto é outra atividade que requer  uma  prática  extensiva  da  leitura  do  mesmo  texto, como  forma  de  tornar  a descodificação automática e, consequentemente melhorar a compreensão da leitura (\citealp{Bermejo}; \citealp{Defior}). Este método é facilmente implementado numa turma, uma vez que implica apenas que o aluno leia repetidamente uma pequena passagem do texto até que alcance um nível pré-determinado de fluência leitora. Quando alcança este nível, repete-se o procedimento com um texto com características distintas, uma vez que o uso de textos variados é mais eficaz do que a utilização de um único texto. As  passagens escolhidas devem ser  inicialmente  curtas,  para irem  aumentando  em resposta aos progressos do aluno. Uma ajuda adicional consiste em manter um gráfico com os resultados da leitura individual de cada um dos alunos, para observar os seus progressos, o que poderá interferir positivamente na sua motivação (\citealp{Defior}; \citealp{Vidal}).
+
+O método das leituras repetidas é passível de ser implementado com listas de palavras e frases selecionadas de um texto que vai ser lido posteriormente. A tarefa dos alunos é ler repetidamente a lista de palavras e frases, numa ordem aleatória, até serem capazes de ler a lista a uma velocidade adequada ao seu nível etário e de escolaridade. De seguida, apresenta-se o texto que contém as palavras e frases que são familiares ao aluno, o que torna o reconhecimento de palavras mais fluente e, por sua vez, permite dedicar mais recursos cognitivos à compreensão \citep{Defior}.
+
+Walker e Morrow (1998) sistematizaram um conjunto de estratégias de promoção da fluência de leitura, nomeadamente incentivar a leitura de textos relativamente fáceis; proporcionar oportunidades para as crianças verem e ouvirem leituras fluentes; efetuar leituras repetidas do mesmo material; falar diretamente sobre os aspetos da fluência a melhorar, quer lembrando aos alunos para prestarem atenção à expressividade e às pausas à medida que ouvem a leitura, quer discutindo estes fatores com os mesmos para aumentar a sua sensibilidade sobre o que significa ser fluente; dar feedback aos alunos sobre o seu desempenho e elogiar qualquer aspeto de leitura fluente que se identifique; colocar os alunos a ouvir uma passagem de leitura fluente ao mesmo tempo que a leem; ler num ritmo  ligeiramente à frente da criança e,  gradualmente, deixar  a criança assumir a liderança; apresentar excertos de textos gravados dado que este formato permite às crianças treinar a fluência de forma independente e várias vezes, quer ouvindo, quer lendo ao mesmo tempo que ouvem o texto; ler excertos ou frases do texto; lembrar os alunos que o texto é escrito com frases com sentido; ler excertos em que os limites das frases estão marcados com um traço a lápis. Ocasionalmente ler poemas, discursos famosos ou canções populares que tenham as frases marcadas. Estes métodos podem ser usados de forma isolada ou combinada.
+
+\section{Intervenção na compreensão}
+
+Ler é, por definição, extrair sentido do que é lido, pelo que não se pode falar em leitura se não houver compreensão. A leitura é o produto da interação de vários fatores e implica a ativação de um conjunto de subprocessos. Alguns destes processos são básicos, como reconhecer as letras e as palavras, mas outros são complexos, como a compreensão. De uma forma simplificada, podemos falar em dois grandes grupos de competências: i) competências básicas, ao nível do reconhecimento de letras e de palavras e ii) competências de ordem superior, ao nível da construção de significado (dentro da frase, entre sequências de frases, e no texto como um todo).
+
+É atualmente consensual que ler é compreender e que a leitura eficiente é o produto de, pelo menos, 3 tipos de fatores: derivados do texto; derivados do contexto; derivados do  leitor. A  investigação  tem  mostrado que os textos são  um  fator que influencia substancialmente a compreensão da leitura (\citealp{Curto}; \citealp{Giasson}). Para que um texto seja compreendido é necessário que o seu conteúdo seja adequadamente processado e integrado nos conhecimentos possuídos pelo leitor. O vocabulário utilizado pode ser um dos primeiros obstáculos à compreensão do que é lido. Assim sendo, quando se pretende ensinar a compreender, há que prestar uma atenção especial à análise do vocabulário, antecipando os vocábulos que podem não ser conhecidos. Variáveis  como  a  legibilidade  (tipo  e  corpo  de  letra,  entrelinhamento, parágrafos, interrupções de linha…), os indicadores tipográficos (como títulos, subtítulos, sublinhados, negros, itálicos…) ou as ajudas (como assinalamentos, comentários, notas de rodapé, ilustrações, sumários, quadros, tabelas, perguntas auxiliares ou organizadores prévios) devem ser considerados \citep{RibeiroViana2010}.
+
+As condições psicológicas, sociais e físicas do leitor afetam a compreensão do que é lido \citep{Giasson}. O interesse do leitor pelo tema, a motivação para a leitura e os objetivos de leitura são variáveis a ter em conta no processo de ensino. Além disso, fatores situacionais tais como o organizador de situações (ex: o professor), a tarefa (conjunto de instruções, perguntas ou atividades)  e o  cenário  (individual, pequeno  grupo…) são importantes.
+
+Considerar fatores derivados do leitor não significa admitir qualquer programação de tipo biológico ou genético de cariz relativamente imutável. Nos fatores derivados do leitor são incluídas variáveis como as estruturas cognitivas e afetivas do sujeito e os processos de leitura que este ativa. Quando lê, o leitor transporta e ativa um conjunto de conhecimentos,  interesses  e  expectativas,  que  ativam  os  processos  e  estratégias disponíveis.  Estes  processos  e  estratégias,  que  vão  sendo  aprendidos  ao  longo  da experiência como leitores, nem sempre se mostram os mais adequados. Esta inadequação deriva, principalmente, da inexistência de um ensino explícito dos mesmos. Os conhecimentos que o leitor possui acerca do mundo e da língua estão em constante evolução \citep{RibeiroViana2010}.
+
+Na compreensão da leitura têm sido, ainda, identificados vários níveis, encontrando-se, na literatura da especialidade, diferentes propostas (\citealp{Catala}; \citealp{Giasson}). Català e colaboradores (2001) distinguem a compreensão literal, a compreensão inferencial, a reorganização e a compreensão crítica. A compreensão literal implica o reconhecimento de toda a informação explicitamente incluída num texto. A compreensão inferencial corresponde à ativação do conhecimento prévio do leitor e formulação de antecipações ou suposições sobre o conteúdo do texto a partir dos indícios que proporciona a leitura. A reorganização implica a sistematização, esquematização ou resumo da informação, consolidando ou reordenando as ideias a partir da informação que se vai obtendo de forma a conseguir uma síntese compreensiva da mesma. Finalmente, a compreensão crítica corresponde à formação de juízos próprios, com respostas de caráter subjetivo (identificação com as personagens da narrativa e com os sujeitos poéticos, com a linguagem do autor, interpretação pessoal a partir das reações criadas baseando-se em imagens literárias).
+
+Em termos de avaliação e de intervenção, é necessário considerar os diferentes aspetos referidos. O desenvolvimento da compreensão da leitura pressupõe um ensino metódico, sistemático, reflexivo, desafiante, explícito e alargado no tempo. Com efeito, defende-se a utilização de uma heterogeneidade de estratégias combinadas com os três momentos da leitura (antes, durante e após - \citep{Giasson}). Justifica-se contemplar igualmente áreas como o vocabulário, o conhecimento do mundo, os vários níveis de compreensão e a motivação para a leitura \citep{RibeiroViana2010}.
+
+A avaliação e intervenção nas dificuldades ao nível da descodificação constituem o principal objetivo do desenvolvimento da plataforma educativa online. Decidiu-se incluir, igualmente, o ensino da compreensão de textos apresentados de modo oral, pelas razões que se apresentam:
+
+\begin{enumerate}
+  \item Ajudar os alunos a resolver os problemas ao nível da descodificação não é suficiente para assegurar que os mesmos irão conseguir compreender sem dificuldades. É consensual entre os autores considerar que a descodificação é uma condição necessária para a compreensão da leitura mas que a mesma não é suficiente \citep{Nation}. A investigação tem mostrado que não só é possível ensinar a compreender o que é lido, mas que é desejável (e urgente) fazê-lo \citep*{RibeiroViana2010}.
+  \item O ensino visando exclusivamente a descodificação pode criar nos alunos a perceção de que o objetivo final é a descodificação e não a compreensão, pelo que na intervenção  com os  alunos  com DAL,  os  dois  aspetos  devem estar  associados. É reconhecido que a compreensão oral e a compreensão da leitura partilham os mesmos processos, residindo a principal diferença entre as duas no facto de na primeira não serem requeridas competências de descodificação (\citealp{RibeiroViana}; \citealp{Spinillo}). O trabalho sistemático na compreensão de textos que o aluno ouve ler em articulação com a intervenção na descodificação é uma forma de atender àquele aspeto. O ensino explícito da compreensão de textos que o aluno ouvirá ler, dada a partilha de processos com a compreensão da leitura, seguirá nas atividades a disponibilizar na plataforma, as orientações presentes na literatura para o ensino explícito da compreensão da leitura \citep{SimSim}.
+\end{enumerate}
+
+\chapter{População alvo}
+O projeto apresentado é destinado a alunos do 1.º ciclo do Ensino Básico. Não se estabelece uma relação entre os objetivos de aprendizagem, uma vez que o aspeto determinante para a programação educativa é o nível de aquisição. Problemas similares de leitura podem ser observados em alunos inscritos em anos diferentes de escolaridade.
+
+\chapter{Destinatários}
+O acesso à plataforma é livre. Os potenciais utilizadores são: professores titulares de turma, professores de apoio, professores da educação especial, psicólogos, terapeutas da fala, pais e/ou encarregados de educação, investigadores, alunos dos cursos de formação de professores e alunos de psicologia.
+
+
+\bookmarksetup{startatroot} % Ends last part.
+\addtocontents{toc}{\bigskip} % Making the table of contents look good.
+\cleardoublepage
+
+%----------------- Bibliography (needs bibtex) --------------------------------%
+\bibliography{dissertation}
+
+
+\end{document}
+

@@ -1,0 +1,115 @@
+
+% book example for classicthesis.sty
+\documentclass[
+  % Replace twoside with oneside if you are printing your thesis on a single side
+  % of the paper, or for viewing on screen.
+  oneside,
+  %twoside,
+  11pt, a4paper,
+  footinclude=true,
+  headinclude=true,
+  cleardoublepage=empty
+]{scrbook}
+
+\usepackage{lipsum}
+\usepackage[linedheaders,parts,pdfspacing]{classicthesis}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{acronym}
+\usepackage{dissertation}
+\usepackage[portuguese]{babel}
+
+% Title
+\title{Plataforma educativa online de avaliação e intervenção nas dificuldades de aprendizagem da leitura - Consciência fonológica}
+
+% Author
+\author{André Filipe Pinto Vieira}
+
+% Supervisor
+\def\supervisor{%
+  João Miguel Fernandes
+\\
+  Maria Iolanda Ferreira Silva Ribeiro
+}
+
+% Date
+\date{\today}
+
+%%Defines
+%\def \... {..}
+
+\makeglossaries  %  either use this ...
+
+\makeindex  % ... or this
+
+\begin{document}
+  
+% Add acronym definitions
+    
+% Cover page ---------------------------------------------
+\sf
+  \pagenumbering{alph}
+  \thispagestyle{empty}
+  \input{def/title}
+\rm
+  \cleardoublepage
+%---------------------------------------------------------
+% Add acknowledgements
+
+% \chapter*{Acknowledgements}
+% Write acknowledgements here
+
+  \cleardoublepage
+  
+% Add abstracts (en,pt) -----------------------------------------------------------
+\chapter*{Abstract}
+  This project falls within the context of creating an educational platform which will provide a set of activities in order to assess and intervene in difficulties of reading learning. The target of this platform is for children of the 1st cycle of basic education, and should adopt a game format with successive levels of difficulty. The children should receive immediate feedback when they fail an activity. To go to the upper level is required successfully perform all of the lower level games.
+
+  \cleardoublepage
+
+\chapter*{Resumo}
+  Este projeto enquadra-se no âmbito da criação de uma plataforma educativa na qual se disponibilizarão um conjunto de atividades de forma a avaliar e intervir nas dificuldades de aprendizagem da leitura. A plataforma a criar será destinada a crianças do 1º ciclo do ensino básico, e deverá adotar um formato de jogo com níveis sucessivos de dificuldade, devendo as crianças receber um feedback imediato quando falham uma atividade. Para poder passar ao nível superior é necessário efetuar com sucesso todos os jogos do nível inferior.
+
+  \cleardoublepage
+  
+  \pagenumbering{roman}
+  \setcounter{page}{3}
+  %pagestyle{fancy}   % -------- removed
+  \rm
+  
+  % Document
+  \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{Conteúdo}
+  \tableofcontents
+  
+  \cleardoublepage
+  \listoffigures
+  
+  % Add list of acronyms
+  \cleardoublepage
+  \pagenumbering{arabic}
+  \setcounter{page}{3}
+
+\chapter{Introdução}
+\section{Contextualização}
+\section{Objetivos}
+
+\chapter{Análise contextual}
+\section{Estado da arte}
+\section{O problema}
+
+\chapter{O projeto}
+\section{A escolha do projeto}
+\section{Desafios}
+
+\chapter{Plano de trabalhos}
+
+%----------------- Bibliography (needs bibtex) --------------------------------%
+\bibliography{dissertation}
+%----------------- Index of terms (needs  makeindex) --------------------------%
+\printindex
+%------------------------------------------------------------------------------%
+  
+\end{document}
+
