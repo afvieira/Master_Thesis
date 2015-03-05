@@ -18,7 +18,8 @@ var imgBackground = {
   7: "../images/background/7.jpg",
   8: "../images/background/8.png",
   9: "../images/background/9.png",
-  10: "../images/background/10.jpg"
+  10: "../images/background/10.jpg",
+  11: "../images/background/11.png"
 }
 
 var images = {
@@ -60,7 +61,8 @@ function initialize() {
 
   var center = canvas.getCenter();
   // canvas.setBackgroundImage(imgBackground[Math.floor(Math.random() * 60) % 10 + 1],
-  canvas.setBackgroundImage(imgBackground[1],
+  canvas.setBackgroundColor('rgba(100, 140, 64, 0.6)', canvas.renderAll.bind(canvas));
+  canvas.setBackgroundImage(imgBackground[11],
     canvas.renderAll.bind(canvas), {
       top: center.top,
       left: center.left
