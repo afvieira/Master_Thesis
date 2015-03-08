@@ -81,7 +81,7 @@ function initialize() {
 
   var center = canvas.getCenter();
   // canvas.setBackgroundImage(imgBackground[Math.floor(Math.random() * 60) % 10 + 1],
-  canvas.setBackgroundColor('rgba(100, 104, 190, 0.6)', canvas.renderAll.bind(canvas));
+  canvas.setBackgroundColor('rgba(130, 104, 20, 0.6)', canvas.renderAll.bind(canvas));
   canvas.setBackgroundImage(imgBackground[11],
     canvas.renderAll.bind(canvas), {
       top: center.top,
@@ -114,7 +114,7 @@ function loadHelpBtn() {
 
 function loadAnswerButton(figureName, left, top) {
   var span, num;
-  var colors = ['red'];
+  var colors = ['yellow'];
   // var colors = ['blue', 'red', 'green', 'yellow'];
 
   span = $(document.createElement('span'));
@@ -166,6 +166,22 @@ function loadImage(animal, _left, _top) {
   });
 };
 
+function loadButton(figureName, left, top) {
+  var btn;
+
+  btn = $(document.createElement('button'));
+  $(btn).attr({
+    id: 'button-' + figureName,
+    value: figureName
+  });
+
+  $(btn).appendTo($('#container'));
+  //posiciona o botao
+  $(btn)[0].style.position = "absolute";
+  $(btn)[0].style.left = left;
+  $(btn)[0].style.top = top;
+};
+
 function loadImagesAndSounds() {
   loadAudio(Object.keys(images)[0]);
   loadAudio(Object.keys(images)[1]);
@@ -174,12 +190,12 @@ function loadImagesAndSounds() {
   loadAudio(Object.keys(images)[4]);
   loadAudio(Object.keys(images)[5]);
 
-  loadImage(Object.keys(images)[0], (217 / 2) + 50, 100);
-  loadImage(Object.keys(images)[1], (217 * 2) - (217 / 2) + 25, 100);
-  loadImage(Object.keys(images)[2], (217 * 3) - (217 / 2), 100);
-  loadImage(Object.keys(images)[3], (217 / 2) + 50, 300);
-  loadImage(Object.keys(images)[4], (217 * 2) - (217 / 2) + 25, 300);
-  loadImage(Object.keys(images)[5], (217 * 3) - (217 / 2), 300);
+  loadButton(Object.keys(images)[0], (217 / 2) + 50 - 70, 100 - 30);
+  loadButton(Object.keys(images)[1], (217 * 2) - (217 / 2) + 25 - 70, 100 - 30);
+  loadButton(Object.keys(images)[2], (217 * 3) - (217 / 2) - 70, 100 - 30);
+  loadButton(Object.keys(images)[3], (217 / 2) + 50 - 70, 300 - 30);
+  loadButton(Object.keys(images)[4], (217 * 2) - (217 / 2) + 25 - 70, 300 - 30);
+  loadButton(Object.keys(images)[5], (217 * 3) - (217 / 2) - 70, 300 - 30);
 
   loadAnswerButton(Object.keys(images)[0], 123, 170);
   loadAnswerButton(Object.keys(images)[1], 315, 170);
@@ -267,7 +283,15 @@ function loadEvents() {
   btnAnswer();
 
   $('.btn-help').click(function() {
-    playHelp("2_1A");
+    playHelp("2_2A");
+  });
+
+  $('button').click(function() {
+    var valor = $(this).attr("value");
+    var audioElement = document.createElement('audio');
+
+    audioElement.setAttribute('src', audioSource[valor]);
+    audioElement.play();
   });
 
   /* Events on canvas

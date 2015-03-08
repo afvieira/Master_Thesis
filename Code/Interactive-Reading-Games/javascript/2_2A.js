@@ -24,22 +24,22 @@ var imgBackground = {
 }
 
 var images = {
-  "ovelha": "../images/ovelha.png",
-  "pato": "../images/pato.png",
+  "cao": "../images/cao.png",
+  "saia": "../images/saia.png",
+  "agulha": "../images/agulha.png",
   "abelha": "../images/abelha.png",
-  "grua": "../images/grua.png",
-  "vaca": "../images/vaca.png",
-  "agulha": "../images/agulha.png"
+  "papaia": "../images/papaia.png",
+  "anel": "../images/anel.png"
 };
 
 var audioSource = {
-  "ovelha": "../audio/ovelha.mp3",
-  "pato": "../audio/pato.mp3",
-  "abelha": "../audio/abelha.mp3",
-  "grua": "../audio/grua.mp3",
-  "vaca": "../audio/vaca.mp3",
+  "cao": "../audio/cao.mp3",
+  "saia": "../audio/saia.mp3",
   "agulha": "../audio/agulha.mp3",
-  "lha": "../audio/lha.mp3"
+  "abelha": "../audio/abelha.mp3",
+  "papaia": "../audio/papaia.mp3",
+  "anel": "../audio/anel.mp3",
+  "a": "../audio/a.mp3"
 }
 
 var audioHelp = {
@@ -59,12 +59,12 @@ var audioHelp = {
 }
 
 var solutions = {
-  "ovelha": true,
-  "pato": false,
-  "grua": false,
+  "cao": false,
+  "saia": false,
+  "agulha": true,
   "abelha": true,
-  "vaca": false,
-  "agulha": true
+  "papaia": false,
+  "anel": true
 };
 
 function initialize() {
@@ -81,7 +81,7 @@ function initialize() {
 
   var center = canvas.getCenter();
   // canvas.setBackgroundImage(imgBackground[Math.floor(Math.random() * 60) % 10 + 1],
-  canvas.setBackgroundColor('rgba(100, 104, 190, 0.6)', canvas.renderAll.bind(canvas));
+  canvas.setBackgroundColor('rgba(150, 184, 220, 0.6)', canvas.renderAll.bind(canvas));
   canvas.setBackgroundImage(imgBackground[11],
     canvas.renderAll.bind(canvas), {
       top: center.top,
@@ -114,7 +114,7 @@ function loadHelpBtn() {
 
 function loadAnswerButton(figureName, left, top) {
   var span, num;
-  var colors = ['red'];
+  var colors = ['green'];
   // var colors = ['blue', 'red', 'green', 'yellow'];
 
   span = $(document.createElement('span'));
@@ -166,6 +166,22 @@ function loadImage(animal, _left, _top) {
   });
 };
 
+function loadButton(figureName, left, top) {
+  var btn;
+
+  btn = $(document.createElement('button'));
+  $(btn).attr({
+    id: 'button-' + figureName,
+    value: figureName
+  });
+
+  $(btn).appendTo($('#container'));
+  //posiciona o botao
+  $(btn)[0].style.position = "absolute";
+  $(btn)[0].style.left = left;
+  $(btn)[0].style.top = top;
+};
+
 function loadImagesAndSounds() {
   loadAudio(Object.keys(images)[0]);
   loadAudio(Object.keys(images)[1]);
@@ -174,12 +190,12 @@ function loadImagesAndSounds() {
   loadAudio(Object.keys(images)[4]);
   loadAudio(Object.keys(images)[5]);
 
-  loadImage(Object.keys(images)[0], (217 / 2) + 50, 100);
-  loadImage(Object.keys(images)[1], (217 * 2) - (217 / 2) + 25, 100);
-  loadImage(Object.keys(images)[2], (217 * 3) - (217 / 2), 100);
-  loadImage(Object.keys(images)[3], (217 / 2) + 50, 300);
-  loadImage(Object.keys(images)[4], (217 * 2) - (217 / 2) + 25, 300);
-  loadImage(Object.keys(images)[5], (217 * 3) - (217 / 2), 300);
+  loadButton(Object.keys(images)[0], (217 / 2) + 50 - 70, 100 - 30);
+  loadButton(Object.keys(images)[1], (217 * 2) - (217 / 2) + 25 - 70, 100 - 30);
+  loadButton(Object.keys(images)[2], (217 * 3) - (217 / 2) - 70, 100 - 30);
+  loadButton(Object.keys(images)[3], (217 / 2) + 50 - 70, 300 - 30);
+  loadButton(Object.keys(images)[4], (217 * 2) - (217 / 2) + 25 - 70, 300 - 30);
+  loadButton(Object.keys(images)[5], (217 * 3) - (217 / 2) - 70, 300 - 30);
 
   loadAnswerButton(Object.keys(images)[0], 123, 170);
   loadAnswerButton(Object.keys(images)[1], 315, 170);
@@ -203,7 +219,7 @@ function loadSilaba() {
 
     img.on('mousedown', function() {
       var audioElement = document.createElement('audio');
-      audioElement.setAttribute('src', audioSource['lha']);
+      audioElement.setAttribute('src', audioSource['a']);
       audioElement.play();
     });
   });
@@ -267,7 +283,15 @@ function loadEvents() {
   btnAnswer();
 
   $('.btn-help').click(function() {
-    playHelp("2_1A");
+    playHelp("2_2A");
+  });
+
+  $('button').click(function() {
+    var valor = $(this).attr("value");
+    var audioElement = document.createElement('audio');
+
+    audioElement.setAttribute('src', audioSource[valor]);
+    audioElement.play();
   });
 
   /* Events on canvas
