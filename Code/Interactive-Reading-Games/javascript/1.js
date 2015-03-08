@@ -26,7 +26,7 @@ function initialize() {
 };
 
 function loadImagesAndSounds() {
-  fabric.Image.fromURL('../images/1/cao.png', function(img) {
+  fabric.Image.fromURL('../images/cao.png', function(img) {
     canvas.add(img.set({
       left: 150,
       top: 100,
@@ -35,7 +35,7 @@ function loadImagesAndSounds() {
       lockMovementX: true,
       lockMovementY: true,
       opacity: 0.9
-    }).scale(0.4));
+    }).scale(0.35));
 
     img.on('mousedown', function() {
       var audio = $("#audio_cao")[0];
@@ -50,7 +50,7 @@ function loadImagesAndSounds() {
       img);
   });
 
-  fabric.Image.fromURL('../images/1/camelo.png', function(img) {
+  fabric.Image.fromURL('../images/camelo.png', function(img) {
     canvas.add(img.set({
       left: 450,
       top: 100,
@@ -59,7 +59,7 @@ function loadImagesAndSounds() {
       lockMovementX: true,
       lockMovementY: true,
       opacity: 0.9
-    }).scale(0.15));
+    }).scale(0.35));
 
     img.on('mousedown', function() {
       var audio = $("#audio_camelo")[0];
@@ -74,7 +74,7 @@ function loadImagesAndSounds() {
       img);
   });
 
-  fabric.Image.fromURL('../images/1/gato.png', function(img) {
+  fabric.Image.fromURL('../images/gato.png', function(img) {
     canvas.add(img.set({
       left: 150,
       top: 300,
@@ -83,7 +83,7 @@ function loadImagesAndSounds() {
       lockMovementX: true,
       lockMovementY: true,
       opacity: 0.9
-    }).scale(0.3));
+    }).scale(0.35));
 
     img.on('mousedown', function() {
       var audio = $("#audio_gato")[0];
@@ -98,7 +98,7 @@ function loadImagesAndSounds() {
       img);
   });
 
-  fabric.Image.fromURL('../images/1/urso.png', function(img) {
+  fabric.Image.fromURL('../images/urso.png', function(img) {
     canvas.add(img.set({
       left: 450,
       top: 300,
@@ -107,7 +107,7 @@ function loadImagesAndSounds() {
       lockMovementX: true,
       lockMovementY: true,
       opacity: 0.9
-    }).scale(0.3));
+    }).scale(0.35));
 
     img.on('mousedown', function() {
       var audio = $("#audio_urso")[0];

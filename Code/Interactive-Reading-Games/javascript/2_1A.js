@@ -26,7 +26,7 @@ function initialize() {
 };
 
 function loadImagesAndSounds() {
-  fabric.Image.fromURL('../images/2_1A/speaker.png', function(img) {
+  fabric.Image.fromURL('../images/speaker.png', function(img) {
     canvas.add(img.set({
       left: 50,
       top: 50,
@@ -35,7 +35,7 @@ function loadImagesAndSounds() {
       lockMovementX: true,
       lockMovementY: true,
       opacity: 0.9
-    }).scale(0.07));
+    }).scale(0.3));
 
     img.on('mousedown', function() {
       var audio = $("#audio_silaba")[0];
@@ -43,7 +43,7 @@ function loadImagesAndSounds() {
     });
   });
 
-  fabric.Image.fromURL('../images/2_1A/cao.png', function(img) {
+  fabric.Image.fromURL('../images/cao.png', function(img) {
     canvas.add(img.set({
       left: 200,
       top: 100,
@@ -52,7 +52,7 @@ function loadImagesAndSounds() {
       lockMovementX: true,
       lockMovementY: true,
       opacity: 0.9
-    }).scale(0.4));
+    }).scale(0.35));
 
     img.on('mousedown', function() {
       var audio = $("#audio_cao")[0];
@@ -65,7 +65,7 @@ function loadImagesAndSounds() {
       img);
   });
 
-  fabric.Image.fromURL('../images/2_1A/camelo.png', function(img) {
+  fabric.Image.fromURL('../images/camelo.png', function(img) {
     canvas.add(img.set({
       left: 500,
       top: 100,
@@ -74,7 +74,7 @@ function loadImagesAndSounds() {
       lockMovementX: true,
       lockMovementY: true,
       opacity: 0.9
-    }).scale(0.15));
+    }).scale(0.35));
 
     img.on('mousedown', function() {
       var audio = $("#audio_camelo")[0];
@@ -87,7 +87,7 @@ function loadImagesAndSounds() {
       img);
   });
 
-  fabric.Image.fromURL('../images/2_1A/gato.png', function(img) {
+  fabric.Image.fromURL('../images/gato.png', function(img) {
     canvas.add(img.set({
       left: 200,
       top: 300,
@@ -96,7 +96,7 @@ function loadImagesAndSounds() {
       lockMovementX: true,
       lockMovementY: true,
       opacity: 0.9
-    }).scale(0.3));
+    }).scale(0.35));
 
     img.on('mousedown', function() {
       var audio = $("#audio_gato")[0];
@@ -109,7 +109,7 @@ function loadImagesAndSounds() {
       img);
   });
 
-  fabric.Image.fromURL('../images/2_1A/galinha.png', function(img) {
+  fabric.Image.fromURL('../images/galinha.png', function(img) {
     canvas.add(img.set({
       left: 500,
       top: 300,
@@ -118,7 +118,7 @@ function loadImagesAndSounds() {
       lockMovementX: true,
       lockMovementY: true,
       opacity: 0.9
-    }).scale(0.3));
+    }).scale(0.35));
 
     img.on('mousedown', function() {
       var audio = $("#audio_galinha")[0];

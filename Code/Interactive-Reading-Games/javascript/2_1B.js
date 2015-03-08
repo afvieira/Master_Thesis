@@ -6,7 +6,8 @@ var canvasHeight,
   canvasWidth,
   canvas,
   nextBtn,
-  animalIndex = 0;
+  MaxCorrectAnswers = 3,
+  nCorrectAnswers = 0;
 
 var imgBackground = {
   1: "../images/background/1.jpg",
@@ -23,18 +24,23 @@ var imgBackground = {
 }
 
 var images = {
-  "cao": "../images/cao.png",
-  "camelo": "../images/camelo.png",
-  "gato": "../images/gato.png",
-  "urso": "../images/urso.png",
+  "ovelha": "../images/ovelha.png",
+  "pato": "../images/pato.png",
+  "grua": "../images/grua.png",
+  "abelha": "../images/abelha.png",
+  "vaca": "../images/vaca.png",
+  "agulha": "../images/agulha.png"
 };
 
 var audioSource = {
-  "cao": "../audio/cao.mp3",
-  "camelo": "../audio/camelo.mp3",
-  "gato": "../audio/gato.mp3",
-  "urso": "../audio/urso.mp3"
-};
+  "ovelha": "../audio/ovelha.mp3",
+  "pato": "../audio/pato.mp3",
+  "grua": "../audio/grua.mp3",
+  "abelha": "../audio/abelha.mp3",
+  "vaca": "../audio/vaca.mp3",
+  "agulha": "../audio/agulha.mp3",
+  "lha": "../audio/lha.mp3"
+}
 
 var audioHelp = {
   "1": "../audio/instrucoes.mp3",
@@ -50,13 +56,15 @@ var audioHelp = {
   "4_1": "../audio/instrucoes.mp3",
   "4_2": "../audio/instrucoes.mp3",
   "4_3": "../audio/instrucoes.mp3"
-};
+}
 
 var solutions = {
-  "cao": 1,
-  "camelo": 3,
-  "gato": 2,
-  "urso": 2
+  "ovelha": true,
+  "pato": false,
+  "grua": false,
+  "abelha": true,
+  "vaca": false,
+  "agulha": true
 };
 
 function initialize() {
@@ -73,7 +81,7 @@ function initialize() {
 
   var center = canvas.getCenter();
   // canvas.setBackgroundImage(imgBackground[Math.floor(Math.random() * 60) % 10 + 1],
-  canvas.setBackgroundColor('rgba(100, 140, 64, 0.6)', canvas.renderAll.bind(canvas));
+  canvas.setBackgroundColor('rgba(100, 104, 190, 0.6)', canvas.renderAll.bind(canvas));
   canvas.setBackgroundImage(imgBackground[11],
     canvas.renderAll.bind(canvas), {
       top: center.top,
@@ -104,54 +112,25 @@ function loadHelpBtn() {
   $(btnHelp)[0].style.top = 5;
 };
 
-function loadButtons() {
-  var span, num, divBtns;
-  var colors = ['yellow'];
+function loadAnswerButton(figureName, left, top) {
+  var span, num;
+  var colors = ['red'];
   // var colors = ['blue', 'red', 'green', 'yellow'];
 
-  //cria uma div para os 5 botoes
-  divBtns = $(document.createElement('div'));
-  $(divBtns).attr({
-    id: 'buttons'
+  span = $(document.createElement('span'));
+  num = $(document.createElement('i'));
+  $(span).attr({
+    id: 'btn-' + figureName,
+    class: 'btn-' + colors[0] + ' btn',
+    value: figureName
   });
 
-  //cria os 5 botoes e anexa ao div criado anteriormente
-  for (var i = 0; i < 5; i++) {
-    span = $(document.createElement('span'));
-    num = $(document.createElement('i'));
-    $(span).attr({
-      id: 'btn-' + (i + 1),
-      class: 'btn-' + colors[i % colors.length] + ' btn',
-      value: (i + 1)
-    });
-
-    $(num).append(i + 1);
-    $(num).appendTo(span);
-    $(span).appendTo(divBtns)
-  };
-
-  //anexa o div com os botoes ao container
-  $(divBtns).appendTo($('#container'));
-
-  //posiciona o div com os botoes
-  $(divBtns)[0].style.position = "absolute";
-  $(divBtns)[0].style.left = (canvasWidth / 2) - ($(divBtns)[0].offsetWidth / 2);
-  $(divBtns)[0].style.top = canvasHeight / 1.6;
-
-  //cria o botão para passar à imagem seguinte
-  nextBtn = $(document.createElement('button'));
-  $(nextBtn).attr({
-    id: 'btn-next',
-    class: 'button-next'
-  });
-  $(nextBtn).prop('disabled', true);
-  $(nextBtn).append('Próximo');
-
-  //anexa o botao ao container e posiciona-o
-  $(nextBtn).appendTo($('#container'));
-  $(nextBtn)[0].style.position = "absolute";
-  $(nextBtn)[0].style.left = canvasWidth - ($(nextBtn)[0].offsetWidth) - 20;
-  $(nextBtn)[0].style.top = canvasHeight - ($(nextBtn)[0].offsetHeight) - 20;
+  $(num).appendTo(span);
+  $(span).appendTo($('#container'));
+  //posiciona o botao
+  $(span)[0].style.position = "absolute";
+  $(span)[0].style.left = left;
+  $(span)[0].style.top = top;
 };
 
 function loadAudio(animal) {
@@ -167,24 +146,18 @@ function loadAudio(animal) {
   $(audio).appendTo($('#container'));
 };
 
-function loadImage(animal) {
-  //clear canvas
-  canvas.clear();
-
-  //add audio to image
-  loadAudio(animal);
-
+function loadImage(animal, _left, _top) {
   //add image to canvas
   fabric.Image.fromURL(images[animal], function(img) {
     canvas.add(img.set({
-      left: canvasWidth / 2,
-      top: canvasHeight / 2.7,
+      left: _left,
+      top: _top,
       hasControls: false,
       hasBorders: false,
       lockMovementX: true,
       lockMovementY: true,
       opacity: 0.9
-    }).scale(0.5));
+    }).scale(0.35));
 
     img.on('mousedown', function() {
       var audio = $("#audio_" + animal)[0];
@@ -193,9 +166,47 @@ function loadImage(animal) {
   });
 };
 
-function loadNextImage() {
-  animalIndex += 1;
-  loadImage(Object.keys(images)[animalIndex]);
+function loadImagesAndSounds() {
+  loadAudio(Object.keys(images)[0]);
+  loadAudio(Object.keys(images)[1]);
+  loadAudio(Object.keys(images)[2]);
+  loadAudio(Object.keys(images)[3]);
+  loadAudio(Object.keys(images)[4]);
+  loadAudio(Object.keys(images)[5]);
+
+  loadImage(Object.keys(images)[0], (217 / 2) + 50, 100);
+  loadImage(Object.keys(images)[1], (217 * 2) - (217 / 2) + 25, 100);
+  loadImage(Object.keys(images)[2], (217 * 3) - (217 / 2), 100);
+  loadImage(Object.keys(images)[3], (217 / 2) + 50, 300);
+  loadImage(Object.keys(images)[4], (217 * 2) - (217 / 2) + 25, 300);
+  loadImage(Object.keys(images)[5], (217 * 3) - (217 / 2), 300);
+
+  loadAnswerButton(Object.keys(images)[0], 123, 170);
+  loadAnswerButton(Object.keys(images)[1], 315, 170);
+  loadAnswerButton(Object.keys(images)[2], 507, 170);
+  loadAnswerButton(Object.keys(images)[3], 123, 375);
+  loadAnswerButton(Object.keys(images)[4], 315, 375);
+  loadAnswerButton(Object.keys(images)[5], 507, 375);
+};
+
+function loadSilaba() {
+  fabric.Image.fromURL('../images/speaker.png', function(img) {
+    canvas.add(img.set({
+      left: 50,
+      top: 50,
+      hasControls: false,
+      hasBorders: false,
+      lockMovementX: true,
+      lockMovementY: true,
+      opacity: 0.9
+    }).scale(0.25));
+
+    img.on('mousedown', function() {
+      var audioElement = document.createElement('audio');
+      audioElement.setAttribute('src', audioSource['lha']);
+      audioElement.play();
+    });
+  });
 };
 
 function resetButtons() {
@@ -209,12 +220,15 @@ function resetButtons() {
   $(nextBtn).prop('disabled', true);
 };
 
-function correctAnswer() {        
-  $('.btn').addClass('btn-disabled');
-  //remove handler
-  $('.btn').unbind('click');
-  $('.btn').css("cursor", 'default');
-  $(nextBtn).prop('disabled', false);
+function correctAnswer() {
+  nCorrectAnswers++;
+
+  if (nCorrectAnswers == MaxCorrectAnswers) {
+    $('.btn').addClass('btn-disabled');
+    //remove handler
+    $('.btn').unbind('click');
+    $('.btn').css("cursor", 'default');
+  };
 };
 
 function playSoundAnswer(answer) {
@@ -235,9 +249,9 @@ function playHelp(gameNumber) {
 
 function btnAnswer() {
   $('.btn').click(function() {
-    var num = parseInt($(this).find('i').html());
+    var valor = $(this).attr("value");
 
-    if (solutions[Object.keys(images)[animalIndex]] === num) {
+    if (solutions[valor] == true) {
       $(this).addClass('btn-valid');
       playSoundAnswer('correct');
       correctAnswer();
@@ -252,13 +266,8 @@ function loadEvents() {
   //add handler
   btnAnswer();
 
-  $('#btn-next').click(function(btn) {
-    resetButtons();
-    loadNextImage();
-  });
-
   $('.btn-help').click(function() {
-    playHelp("1");
+    playHelp("2_1A");
   });
 
   /* Events on canvas
@@ -288,9 +297,9 @@ var App = function() {
     init: function() {
       initialize();
       loadHelpBtn();
-      loadButtons();
+      loadSilaba();
+      loadImagesAndSounds();
       loadEvents();
-      loadImage(Object.keys(images)[animalIndex]);
     }
   };
 }();
