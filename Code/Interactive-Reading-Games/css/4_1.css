@@ -1,5 +1,5 @@
 i {
-  line-height: 80px;
+  line-height: 73px;
   font-size: 35px;
   font-weight: bold;
   font-style: normal;
@@ -37,8 +37,8 @@ span {
   border-radius: 100%;
   cursor: pointer;
   display: inline-block;
-  height: 50px;
-  width: 50px;
+  height: 65px;
+  width: 65px;
 }
 
 .btn-disabled{
@@ -57,8 +57,8 @@ span {
   display: inline-block;
   height: 30px;
   width: 30px;
-  background: #ffc334;
-  box-shadow: 0 -2px 0 3px #ffb401 inset, 0 5px 5px rgba(103, 73, 0, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
+  background: #e53030;
+  box-shadow: 0 -2px 0 3px #c91919 inset, 0 5px 5px rgba(65, 8, 8, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
 }
 
 .help-text {
@@ -72,14 +72,14 @@ span {
 
 .btn-valid{
   background-image: url("../images/valid.png");
-  background-size: 34px;
+  background-size: 47px;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .btn-error{
   background-image: url("../images/error.png");
-  background-size: 34px;
+  background-size: 47px;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -146,4 +146,57 @@ span {
   width: 5px;
   height: 6px;
   margin-top: -3px;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+button {
+  position: absolute;
+  top: 250px;
+  left: 100px;
+  width: 140px;
+  height: 65px;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  background: #b3b3b3;
+  box-shadow: 
+    0 10px 0 #888888,
+    0 20px 0 #888888,
+    0 30px 0  #888888,
+    -10px 40px 0 hsla(0, 0%, 0%, .2);
+}
+
+button:before {
+  position: absolute;
+  top: -20px;
+  left: 21px;
+  width: 100px;
+  height: 35px;
+  border-radius: inherit;
+  color: #FF6573;
+  background-color: currentColor;
+  box-shadow: 
+    0 5px #c54c57,
+    0 10px #c54c57,
+    0 15px #c54c57,
+    0 20px #c54c57,
+    0 25px #c54c57,
+    0 30px #c54c57,
+    0 35px #c54c57,
+    -9px 48px 5px 0px hsla(0, 0%, 0%, .1);
+  content: '';
+  transition: all 50ms;
+}
+
+
+button:active:before{
+  top: 0px;
+  box-shadow: 
+    0 5px #c54c57,
+    0 10px #c54c57,
+    0 15px #c54c57,
+    -5px 20px 0 hsla(0, 0%, 0%, .1);
 }
