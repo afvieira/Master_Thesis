@@ -73,12 +73,12 @@ function initialize() {
 
   var center = canvas.getCenter();
   // canvas.setBackgroundImage(imgBackground[Math.floor(Math.random() * 60) % 10 + 1],
-  canvas.setBackgroundColor('rgba(100, 140, 64, 0.6)', canvas.renderAll.bind(canvas));
-  canvas.setBackgroundImage(imgBackground[11],
-    canvas.renderAll.bind(canvas), {
-      top: center.top,
-      left: center.left
-    });
+  canvas.setBackgroundColor('rgba(142, 163, 122, 1)', canvas.renderAll.bind(canvas));
+  // canvas.setBackgroundImage(imgBackground[11],
+  //   canvas.renderAll.bind(canvas), {
+  //     top: center.top,
+  //     left: center.left
+  //   });
 };
 
 function loadHelpBtn() {
@@ -248,6 +248,18 @@ function btnAnswer() {
   });
 };
 
+function loadTop() {
+  rect = new fabric.Rect({
+    width: canvasWidth,
+    height: 300,
+    fill: '#FFF',
+    opacity: 1,
+    left: canvasWidth / 2
+  });
+
+  canvas.add(rect);
+};
+
 function loadEvents() {
   //add handler
   btnAnswer();
@@ -291,6 +303,7 @@ var App = function() {
       loadButtons();
       loadEvents();
       loadImage(Object.keys(images)[animalIndex]);
+      loadTop();
     }
   };
 }();

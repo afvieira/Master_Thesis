@@ -79,7 +79,14 @@ span {
 
 .btn-error{
   background-image: url("../images/error.png");
-  background-size: 34px;
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.btn-circle{
+  background-image: url("../images/circle.png");
+  background-size: 22px;
   background-position: center;
   background-repeat: no-repeat;
 }

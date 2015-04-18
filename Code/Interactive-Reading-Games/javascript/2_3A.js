@@ -26,22 +26,20 @@ var imgBackground = {
 }
 
 var images = {
-  "ovelha": "../images/ovelha.png",
-  "pato": "../images/pato.png",
+  "galinha": "../images/galinha.png",
   "abelha": "../images/abelha.png",
+  "agulha": "../images/agulha.png",
   "grua": "../images/grua.png",
   "vaca": "../images/vaca.png",
-  "agulha": "../images/agulha.png",
   "btn": "../images/btn.png"
 };
 
 var audioSource = {
-  "ovelha": "../audio/ovelha.mp3",
-  "pato": "../audio/pato.mp3",
+  "galinha": "../audio/galinha.mp3",
   "abelha": "../audio/abelha.mp3",
   "grua": "../audio/grua.mp3",
-  "vaca": "../audio/vaca.mp3",
   "agulha": "../audio/agulha.mp3",
+  "vaca": "../audio/vaca.mp3",
   "lha": "../audio/lha.mp3"
 }
 
@@ -117,7 +115,7 @@ function loadHelpBtn() {
 
 function loadAnswerButton(figureName, left, top) {
   var span, num;
-  var colors = ['blue'];
+  var colors = ['green'];
   // var colors = ['blue', 'red', 'green', 'yellow'];
 
   span = $(document.createElement('span'));
@@ -179,8 +177,8 @@ function loadImagesAndSounds() {
   loadImage(0.35, Object.keys(images)[1], (217 * 2) - (217 / 2) + 25 + 100, 100);
   loadImage(0.35, Object.keys(images)[2], (217 / 2), 350);
   loadImage(0.35, Object.keys(images)[3], (217 * 2) - (217 / 2) + 25 + 100, 350);
-  loadImage(1, 'btn', 200, 200);
-  loadImage(1, 'btn', 550, 200);
+  // loadImage(1, 'btn', 200, 200);
+  // loadImage(1, 'btn', 550, 200);
 
   loadAnswerButton(Object.keys(images)[0], 123 + 50, 130);
   loadAnswerButton(Object.keys(images)[1], 315 + 30, 130);
@@ -212,6 +210,7 @@ function resetButtons() {
   $('.btn').removeClass('btn-disabled');
   $('.btn').removeClass('btn-valid');
   $('.btn').removeClass('btn-error');
+  $('.btn').removeClass('btn-circle');
   //add handler
   btnAnswer();
   $('.btn').css("cursor", 'pointer');
@@ -250,14 +249,16 @@ function btnAnswer() {
   $('.btn').mousedown(function(o) {
     var valor = $(this).attr("value");
 
-    if (solutions[valor] == true) {
-      $(this).addClass('btn-valid');
-      playSoundAnswer('correct');
-      correctAnswer();
-    } else {
-      $(this).addClass('btn-error');
-      playSoundAnswer('wrong');
-    };
+    $(this).addClass('btn-circle');
+
+    // if (solutions[valor] == true) {
+    //   $(this).addClass('btn-valid');
+    //   playSoundAnswer('correct');
+    //   correctAnswer();
+    // } else {
+    //   $(this).addClass('btn-error');
+    //   playSoundAnswer('wrong');
+    // };
   });
 };
 
@@ -289,7 +290,7 @@ function loadEvents() {
         strokeWidth: 15,
         fill: 'red',
         strokeLineCap: 'round',
-        stroke: 'blue',
+        stroke: 'green',
         originX: 'center',
         originY: 'center'
       });

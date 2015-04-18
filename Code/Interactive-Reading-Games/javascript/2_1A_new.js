@@ -81,12 +81,7 @@ function initialize() {
 
   var center = canvas.getCenter();
   // canvas.setBackgroundImage(imgBackground[Math.floor(Math.random() * 60) % 10 + 1],
-  canvas.setBackgroundColor('rgba(190, 104, 100, 0.6)', canvas.renderAll.bind(canvas));
-  canvas.setBackgroundImage(imgBackground[11],
-    canvas.renderAll.bind(canvas), {
-      top: center.top,
-      left: center.left
-    });
+  canvas.setBackgroundColor('rgba(142, 163, 122, 1)', canvas.renderAll.bind(canvas));
 };
 
 function loadHelpBtn() {
@@ -157,7 +152,7 @@ function loadImage(animal, _left, _top) {
       lockMovementX: true,
       lockMovementY: true,
       opacity: 0.9
-    }).scale(0.35));
+    }).scale(0.25));
 
     img.on('mousedown', function() {
       var audio = $("#audio_" + animal)[0];
@@ -174,32 +169,32 @@ function loadImagesAndSounds() {
   loadAudio(Object.keys(images)[4]);
   loadAudio(Object.keys(images)[5]);
 
-  loadImage(Object.keys(images)[0], (217 / 2) + 50, 100);
-  loadImage(Object.keys(images)[1], (217 * 2) - (217 / 2) + 25, 100);
-  loadImage(Object.keys(images)[2], (217 * 3) - (217 / 2), 100);
-  loadImage(Object.keys(images)[3], (217 / 2) + 50, 300);
-  loadImage(Object.keys(images)[4], (217 * 2) - (217 / 2) + 25, 300);
-  loadImage(Object.keys(images)[5], (217 * 3) - (217 / 2), 300);
+  loadImage(Object.keys(images)[0], (217 / 2) + 50, 170);
+  loadImage(Object.keys(images)[1], (217 * 2) - (217 / 2) + 25, 170);
+  loadImage(Object.keys(images)[2], (217 * 3) - (217 / 2), 170);
+  loadImage(Object.keys(images)[3], (217 / 2) + 50, 340);
+  loadImage(Object.keys(images)[4], (217 * 2) - (217 / 2) + 25, 340);
+  loadImage(Object.keys(images)[5], (217 * 3) - (217 / 2), 340);
 
-  loadAnswerButton(Object.keys(images)[0], 123, 170);
-  loadAnswerButton(Object.keys(images)[1], 315, 170);
-  loadAnswerButton(Object.keys(images)[2], 507, 170);
-  loadAnswerButton(Object.keys(images)[3], 123, 375);
-  loadAnswerButton(Object.keys(images)[4], 315, 375);
-  loadAnswerButton(Object.keys(images)[5], 507, 375);
+  loadAnswerButton(Object.keys(images)[0], 123, 230);
+  loadAnswerButton(Object.keys(images)[1], 315, 230);
+  loadAnswerButton(Object.keys(images)[2], 507, 230);
+  loadAnswerButton(Object.keys(images)[3], 123, 385);
+  loadAnswerButton(Object.keys(images)[4], 315, 385);
+  loadAnswerButton(Object.keys(images)[5], 507, 385);
 };
 
 function loadSilaba() {
   fabric.Image.fromURL('../images/speaker.png', function(img) {
     canvas.add(img.set({
-      left: 50,
+      left: canvasWidth / 2,
       top: 50,
       hasControls: false,
       hasBorders: false,
       lockMovementX: true,
       lockMovementY: true,
       opacity: 0.9
-    }).scale(0.25));
+    }).scale(0.45));
 
     img.on('mousedown', function() {
       var audioElement = document.createElement('audio');
@@ -245,6 +240,18 @@ function playHelp(gameNumber) {
   var audioElement = document.createElement('audio');
   audioElement.setAttribute('src', audioHelp[gameNumber]);
   audioElement.play();
+};
+
+function loadTop() {
+  rect = new fabric.Rect({
+    width: canvasWidth,
+    height: 200,
+    fill: 'rgba(170, 190, 151, 1)',
+    opacity: 1,
+    left: canvasWidth / 2
+  });
+
+  canvas.add(rect);
 };
 
 function btnAnswer() {
@@ -300,6 +307,7 @@ var App = function() {
       loadSilaba();
       loadImagesAndSounds();
       loadEvents();
+      loadTop();
     }
   };
 }();
