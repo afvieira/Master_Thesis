@@ -1,0 +1,24 @@
+#canvas {
+  border:2px solid black;
+  background-color: #EEE;
+}
+
+#container 
+{
+  top: 10px;
+  position:relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  height: 90%;
+  background-color: #000;
+}
+
+footer {
+  left: 0px;
+  text-align: center;
+  padding: 5px;
+  position:absolute;
+  bottom:0;
+  background:#ccc;
+}

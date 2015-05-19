@@ -80,7 +80,6 @@ function initialize() {
   canvas.setWidth(canvasWidth);
 
   var center = canvas.getCenter();
-  // canvas.setBackgroundImage(imgBackground[Math.floor(Math.random() * 60) % 10 + 1],
   canvas.setBackgroundColor('rgba(142, 163, 122, 1)', canvas.renderAll.bind(canvas));
 };
 
@@ -169,19 +168,19 @@ function loadImagesAndSounds() {
   loadAudio(Object.keys(images)[4]);
   loadAudio(Object.keys(images)[5]);
 
-  loadImage(Object.keys(images)[0], (217 / 2) + 50, 170);
-  loadImage(Object.keys(images)[1], (217 * 2) - (217 / 2) + 25, 170);
-  loadImage(Object.keys(images)[2], (217 * 3) - (217 / 2), 170);
-  loadImage(Object.keys(images)[3], (217 / 2) + 50, 340);
-  loadImage(Object.keys(images)[4], (217 * 2) - (217 / 2) + 25, 340);
-  loadImage(Object.keys(images)[5], (217 * 3) - (217 / 2), 340);
+  loadImage(Object.keys(images)[0], canvasWidth * 0.15, 170);
+  loadImage(Object.keys(images)[1], canvasWidth * 0.41, 170);
+  loadImage(Object.keys(images)[2], canvasWidth * 0.67, 170);
+  loadImage(Object.keys(images)[3], canvasWidth * 0.15, 320);
+  loadImage(Object.keys(images)[4], canvasWidth * 0.41, 320);
+  loadImage(Object.keys(images)[5], canvasWidth * 0.67, 320);
 
-  loadAnswerButton(Object.keys(images)[0], 123, 230);
-  loadAnswerButton(Object.keys(images)[1], 315, 230);
-  loadAnswerButton(Object.keys(images)[2], 507, 230);
-  loadAnswerButton(Object.keys(images)[3], 123, 385);
-  loadAnswerButton(Object.keys(images)[4], 315, 385);
-  loadAnswerButton(Object.keys(images)[5], 507, 385);
+  loadAnswerButton(Object.keys(images)[0], canvasWidth * 0.20, 200);
+  loadAnswerButton(Object.keys(images)[1], canvasWidth * 0.47, 200);
+  loadAnswerButton(Object.keys(images)[2], canvasWidth * 0.75, 200);
+  loadAnswerButton(Object.keys(images)[3], canvasWidth * 0.20, 370);
+  loadAnswerButton(Object.keys(images)[4], canvasWidth * 0.47, 370);
+  loadAnswerButton(Object.keys(images)[5], canvasWidth * 0.75, 370);
 };
 
 function loadSilaba() {
@@ -248,7 +247,11 @@ function loadTop() {
     height: 200,
     fill: 'rgba(170, 190, 151, 1)',
     opacity: 1,
-    left: canvasWidth / 2
+    left: canvasWidth / 2,
+    hasControls: false,
+    hasBorders: false,
+    lockMovementX: true,
+    lockMovementY: true,
   });
 
   canvas.add(rect);

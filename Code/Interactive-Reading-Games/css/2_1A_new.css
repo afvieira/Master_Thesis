@@ -42,7 +42,7 @@ span {
 }
 
 .btn-disabled{
-  border: 3px solid #ccc;
+  border: 3px solid #999;
   transition: border .2s;
 }
 
