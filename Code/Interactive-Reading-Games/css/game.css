@@ -71,8 +71,16 @@ span {
   border-radius: 100%;
   cursor: pointer;
   display: inline-block;
+}
+
+.btn-75{
   height: 75px;
   width: 75px;
+}
+
+.btn-40{
+  height: 40px;
+  width: 40px;
 }
 
 .btn:hover{
@@ -95,18 +103,31 @@ span {
 
 .btn-valid{
   background-image: url("../images/valid.png");
-  background-size: 55px;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.btn-valid-55{
+  background-size: 55px;
+}
+
+.btn-valid-25{
+  background-size: 25px;
 }
 
 .btn-error{
   background-image: url("../images/error.png");
-  background-size: 55px;
   background-position: center;
   background-repeat: no-repeat;
 }
 
+.btn-error-55{
+  background-size: 55px;
+}
+
+.btn-error-25{
+  background-size: 25px;
+}
 .button-next {
   background: linear-gradient(#ccc, #3f3);
   border: 1px solid #999;

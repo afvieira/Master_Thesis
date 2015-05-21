@@ -10,16 +10,6 @@ var canvasHeight,
     alturaTop = 200,
     topBar;
 
-//Variaveis globais level1
-var level1_nextBtn,
-    level1_animalIndex = 0;
-
-//Variaveis globais level2
-//Variaveis globais level3
-//Variaveis globais level4
-//Variaveis globais level5
-//Variaveis globais level6
-
 var audio = {
     "a": "../audio/a.mp3",
     "abelha": "../audio/abelha.mp3",
@@ -610,7 +600,11 @@ function playSoundAnswer(correct) {
     audioElement.play();
 };
 
-// LEVEL 1
+//====== LEVEL 1 =====================================
+
+//Variaveis globais level1
+var level1_nextBtn,
+    level1_objetoIndex = 0;
 
 var images_level1 = {
   "bacalhau": images["bacalhau"],
@@ -622,15 +616,16 @@ var images_level1 = {
 };
 
 function level1_load() {
-    clearCanvas();
+    clearCanvas(false);
     loadHelpBtn('blue', 1);
     level1_loadButtons();
     level1_loadEvents();
-    level1_loadImage(Object.keys(images_level1)[level1_animalIndex]);
+    level1_loadImage(Object.keys(images_level1)[level1_objetoIndex]);
 };
 
 function level1_dispose() {
-
+    $("#level1_buttons").remove();
+    $("#btn-next").remove();
 };
 
 function level1_loadButtons() {
@@ -640,7 +635,7 @@ function level1_loadButtons() {
     //cria uma div para os 5 botoes
     divBtns = $(document.createElement('div'));
     $(divBtns).attr({
-        id: 'buttons'
+        id: 'level1_buttons'
     });
 
     //cria os 5 botoes e anexa ao div criado anteriormente
@@ -649,7 +644,7 @@ function level1_loadButtons() {
         num = $(document.createElement('i'));
         $(span).attr({
             id: 'btn-' + (i + 1),
-            class: 'btn-' + colors[i % colors.length] + ' btn',
+            class: 'btn-' + colors[i % colors.length] + ' btn btn-75',
             value: (i + 1)
         });
 
@@ -685,14 +680,14 @@ function level1_loadButtons() {
 function level1_btnAnswer() {
     $('.btn').click(function() {
         var num = parseInt($(this).find('i').html());
-        var solution = solutions[1][Object.keys(images_level1)[level1_animalIndex]];
+        var solution = solutions[1][Object.keys(images_level1)[level1_objetoIndex]];
 
         if ( solution === num) {
-            $(this).addClass('btn-valid');
+            $(this).addClass('btn-valid btn-valid-55');
             playSoundAnswer(true);
             level1_correctAnswer();
         } else {
-            $(this).addClass('btn-error');
+            $(this).addClass('btn-error btn-error-55');
             playSoundAnswer(false);
         };
     });
@@ -709,8 +704,8 @@ function level1_loadEvents() {
 
 function level1_resetButtons() {
     $('.btn').removeClass('btn-disabled');
-    $('.btn').removeClass('btn-valid');
-    $('.btn').removeClass('btn-error');
+    $('.btn').removeClass('btn-valid btn-valid-55');
+    $('.btn').removeClass('btn-error btn-error-55');
     //add handler
     level1_btnAnswer();
     $('.btn').css("cursor", 'pointer');
@@ -727,32 +722,16 @@ function level1_correctAnswer() {        
 };
 
 function level1_loadNextImage() {
-    level1_animalIndex += 1;
-    level1_loadImage(Object.keys(images_level1)[level1_animalIndex]);
+    level1_objetoIndex += 1;
+    level1_loadImage(Object.keys(images_level1)[level1_objetoIndex]);
 };
 
-function level1_loadAudio(animal) {
-    var audioElement = $(document.createElement('audio')).attr({
-        id: 'audio_' + animal,
-        preload: 'auto'
-    });
-    var source = $(document.createElement('source')).attr({
-        src: audio[animal]
-    });
-
-    $(source).appendTo($(audioElement));
-    $(audioElement).appendTo($('#container'));
-};
-
-function level1_loadImage(animal) {
+function level1_loadImage(objeto) {
     //clear canvas
-    canvas.clear();
-
-    //add audio to image
-    level1_loadAudio(animal);
+    clearCanvas(false);
 
     //add image to canvas
-    fabric.Image.fromURL(images_level1[animal], function(img) {
+    fabric.Image.fromURL(images_level1[objeto], function(img) {
         canvas.add(img.set({
             left: canvasWidth / 2,
             top: canvasHeight / 3,
@@ -763,16 +742,435 @@ function level1_loadImage(animal) {
         }).scale(0.7));
 
         img.on('mousedown', function() {
-            var audio = $("#audio_" + animal)[0];
-            audio.play();
+            var audioElement = document.createElement('audio');
+            audioElement.setAttribute('src', audio[objeto]);
+            audioElement.play();
         });
     });
 };
 
-// LEVEL 2
+//====== LEVEL 2 =====================================
 
+//Variaveis globais level2
+var level2_nextBtn,
+    level2_roundNumber = 1,
+    level2_numCorrectAnswers = 0,
+    level2_maxCorrectAnswers = 3;
 
-// LEVEL 3
+var level2_silabas = {
+  "a": audio["a"],
+  "o": images["o"],
+  "ar": images["ar"]
+};
+
+var level2_imagesByRound = {
+    1 : {
+        "abelha": images["abelha"],
+        "agulha": images["agulha"],
+        "alce": images["alce"],
+        "anel": images["anel"],
+        "anjo": images["anjo"],
+        "harpa": images["harpa"]
+    },
+    2 : {
+        "bola": images["bola"],
+        "oculos": images["oculos"],
+        "olho": images["olho"],
+        "ombro": images["ombro"],
+        "osso": images["osso"],
+        "ovo": images["ovo"]
+    },
+    3 : {
+        "afia": images["afia"],
+        "algema": images["algema"],
+        "arco_iris": images["arco_iris"],
+        "arco": images["arco"],
+        "arvore": images["arvore"],
+        "aspirador": images["aspirador"]
+    }
+};
+
+function level2_load() {
+    level1_dispose();
+
+    clearCanvas(true);
+    loadHelpBtn('green', 2);
+    level2_loadSilaba(Object.keys(level2_silabas)[level2_roundNumber - 1]);
+    level2_loadImagesAndSounds(level2_roundNumber);
+    level2_loadNextButton();
+    level2_loadEvents();
+};
+
+function level2_loadSilaba(silaba) {
+  fabric.Image.fromURL('../images/speaker.png', function(img) {
+    canvas.add(img.set({
+      left: canvasWidth / 2,
+      top: 50,
+      hasControls: false,
+      hasBorders: false,
+      lockMovementX: true,
+      lockMovementY: true
+    }).scale(0.45));
+
+    img.on('mousedown', function() {
+      var audioElement = document.createElement('audio');
+      audioElement.setAttribute('src', audio[silaba]);
+      audioElement.play();
+    });
+  });
+};
+
+function level2_loadImagesAndSounds(round) {
+    clearCanvas(true);
+
+    var img = level2_imagesByRound[round];
+
+    // level2_loadImage(Object.keys(img)[0], canvasWidth * 0.15, 170);
+    // level2_loadImage(Object.keys(img)[1], canvasWidth * 0.41, 170);
+    // level2_loadImage(Object.keys(img)[2], canvasWidth * 0.67, 170);
+    // level2_loadImage(Object.keys(img)[3], canvasWidth * 0.15, 320);
+    // level2_loadImage(Object.keys(img)[4], canvasWidth * 0.41, 320);
+    // level2_loadImage(Object.keys(img)[5], canvasWidth * 0.67, 320);
+
+    level2_loadImage(Object.keys(img)[0], canvasWidth * 0.20, canvasHeight * 0.30);
+    level2_loadImage(Object.keys(img)[1], canvasWidth * 0.45, canvasHeight * 0.30);
+    level2_loadImage(Object.keys(img)[2], canvasWidth * 0.70, canvasHeight * 0.30);
+    level2_loadImage(Object.keys(img)[3], canvasWidth * 0.20, canvasHeight * 0.70);
+    level2_loadImage(Object.keys(img)[4], canvasWidth * 0.45, canvasHeight * 0.70);
+    level2_loadImage(Object.keys(img)[5], canvasWidth * 0.70, canvasHeight * 0.70);
+
+    $(".btn").remove();
+
+    // level2_loadAnswerButton(Object.keys(img)[0], canvasWidth * 0.20, 200);
+    // level2_loadAnswerButton(Object.keys(img)[1], canvasWidth * 0.47, 200);
+    // level2_loadAnswerButton(Object.keys(img)[2], canvasWidth * 0.75, 200);
+    // level2_loadAnswerButton(Object.keys(img)[3], canvasWidth * 0.20, 370);
+    // level2_loadAnswerButton(Object.keys(img)[4], canvasWidth * 0.47, 370);
+    // level2_loadAnswerButton(Object.keys(img)[5], canvasWidth * 0.75, 370);
+
+    level2_loadAnswerButton(Object.keys(img)[0], canvasWidth * 0.20, canvasHeight * 0.42);
+    level2_loadAnswerButton(Object.keys(img)[1], canvasWidth * 0.45, canvasHeight * 0.42);
+    level2_loadAnswerButton(Object.keys(img)[2], canvasWidth * 0.70, canvasHeight * 0.42);
+    level2_loadAnswerButton(Object.keys(img)[3], canvasWidth * 0.20, canvasHeight * 0.82);
+    level2_loadAnswerButton(Object.keys(img)[4], canvasWidth * 0.45, canvasHeight * 0.82);
+    level2_loadAnswerButton(Object.keys(img)[5], canvasWidth * 0.70, canvasHeight * 0.82);
+};
+
+function level2_loadImage(objeto, _left, _top) {
+  fabric.Image.fromURL(images[objeto], function(img) {
+    canvas.add(img.set({
+      left: _left + 30,
+      top: _top,
+      hasControls: false,
+      hasBorders: false,
+      lockMovementX: true,
+      lockMovementY: true
+    }).scale(0.32));
+
+    img.on('mousedown', function() {
+        var audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', audio[objeto]);
+        audioElement.play();
+    });
+  });
+};
+
+function level2_loadAnswerButton(figureName, left, top) {
+  var span, num;
+  var colors = ['blue'];
+
+  span = $(document.createElement('span'));
+  num = $(document.createElement('i'));
+  $(span).attr({
+    id: 'btn-' + figureName,
+    class: 'btn-' + colors[0] + ' btn btn-40',
+    value: figureName
+  });
+
+  $(num).appendTo(span);
+  $(span).appendTo($('#container'));
+  //posiciona o botao
+  $(span)[0].style.position = "absolute";
+  $(span)[0].style.left = left;
+  $(span)[0].style.top = top;
+};
+
+function level2_loadEvents() {
+    level2_btnAnswer();
+
+    $('#btn-next').click(function(btn) {
+        level2_loadNextRound();
+        level2_resetButtons();
+    });
+};
+
+function level2_loadNextRound() {
+    level2_roundNumber += 1;
+    level2_loadSilaba(Object.keys(level2_silabas)[level2_roundNumber - 1]);
+    level2_loadImagesAndSounds(level2_roundNumber);
+};
+
+function level2_btnAnswer() {
+  $('.btn').click(function() {
+    var valor = $(this).attr("value");
+    var solution = solutions[2][level2_roundNumber - 1][valor];
+
+    if (solution == true) {
+      $(this).addClass('btn-valid btn-valid-25');
+      playSoundAnswer(true);
+      level2_correctAnswer();
+    } else {
+      $(this).addClass('btn-error btn-error-25');
+      playSoundAnswer(false);
+    };
+  });
+};
+
+function level2_resetButtons() {
+  $('.btn').removeClass('btn-disabled');
+  $('.btn').removeClass('btn-valid btn-valid-25');
+  $('.btn').removeClass('btn-error btn-error-25');
+  //add handler
+  level2_btnAnswer();
+  $('.btn').css("cursor", 'pointer');
+  $('.btn').prop('disabled', false);
+  $(level2_nextBtn).prop('disabled', true);
+};
+
+function level2_correctAnswer() {
+  level2_numCorrectAnswers++;
+
+  if (level2_numCorrectAnswers == level2_maxCorrectAnswers) {
+    $('.btn').addClass('btn-disabled');
+    //remove handler
+    $('.btn').unbind('click');
+    $('.btn').css("cursor", 'default');
+    $(level2_nextBtn).prop('disabled', false);
+    level2_numCorrectAnswers = 0;
+  };
+};
+
+function level2_loadNextButton(){
+    //cria o botão para passar à imagem seguinte
+    level2_nextBtn = $(document.createElement('button'));
+    $(level2_nextBtn).attr({
+        id: 'btn-next',
+        class: 'button-next'
+    });
+    $(level2_nextBtn).prop('disabled', true);
+    $(level2_nextBtn).append('Próximo');
+
+    //anexa o botao ao container e posiciona-o
+    $(level2_nextBtn).appendTo($('#container'));
+    $(level2_nextBtn)[0].style.position = "absolute";
+    $(level2_nextBtn)[0].style.left = canvasWidth - ($(level2_nextBtn)[0].offsetWidth) - 20;
+    $(level2_nextBtn)[0].style.top = canvasHeight - ($(level2_nextBtn)[0].offsetHeight) - 20;
+};
+
+//====== LEVEL 3 =====================================
+
+//Variaveis globais level3
+var level3_nextBtn,
+    level3_roundNumber = 1,
+    level3_numCorrectAnswers = 0,
+    level3_maxCorrectAnswers = 3;
+
+var level3_silabas = {
+  "mel": audio["mel"],
+  "pas": images["pas"],
+  "cir": images["cir"]
+};
+
+var level3_imagesByRound = {
+    1 : {
+        "marmelo": images["marmelo"],
+        "mel": images["mel"],
+        "melado": images["melado"],
+        "melga": images["melga"],
+        "melro": images["melro"],
+        "mesmo": images["mesmo"]
+    },
+    2 : {
+        "pao": images["pao"],
+        "partir": images["partir"],
+        "passaro": images["passaro"],
+        "pastelaria": images["pastelaria"],
+        "pastilha": images["pastilha"],
+        "pastor": images["pastor"]
+    },
+    3 : {
+        "cesto": images["cesto"],
+        "cinto": images["cinto"],
+        "circo": images["circo"],
+        "circular": images["circular"],
+        "circulo": images["circulo"],
+        "suspiro": images["suspiro"]
+    }
+};
+
+function level3_load() {
+    level1_dispose();
+
+    clearCanvas(true);
+    loadHelpBtn('yellow', 3);
+    level3_loadSilaba(Object.keys(level3_silabas)[level3_roundNumber - 1]);
+    level3_loadImagesAndSounds(level3_roundNumber);
+    level3_loadNextButton();
+    level3_loadEvents();
+};
+
+function level3_loadSilaba(silaba) {
+  fabric.Image.fromURL('../images/speaker.png', function(img) {
+    canvas.add(img.set({
+      left: canvasWidth / 2,
+      top: 50,
+      hasControls: false,
+      hasBorders: false,
+      lockMovementX: true,
+      lockMovementY: true
+    }).scale(0.45));
+
+    img.on('mousedown', function() {
+      var audioElement = document.createElement('audio');
+      audioElement.setAttribute('src', audio[silaba]);
+      audioElement.play();
+    });
+  });
+};
+
+function level3_loadImagesAndSounds(round) {
+    clearCanvas(true);
+
+    var img = level3_imagesByRound[round];
+
+    level3_loadImage(Object.keys(img)[0], canvasWidth * 0.15, 170);
+    level3_loadImage(Object.keys(img)[1], canvasWidth * 0.41, 170);
+    level3_loadImage(Object.keys(img)[2], canvasWidth * 0.67, 170);
+    level3_loadImage(Object.keys(img)[3], canvasWidth * 0.15, 320);
+    level3_loadImage(Object.keys(img)[4], canvasWidth * 0.41, 320);
+    level3_loadImage(Object.keys(img)[5], canvasWidth * 0.67, 320);
+
+    $(".btn").remove();
+
+    level3_loadAnswerButton(Object.keys(img)[0], canvasWidth * 0.20, 200);
+    level3_loadAnswerButton(Object.keys(img)[1], canvasWidth * 0.47, 200);
+    level3_loadAnswerButton(Object.keys(img)[2], canvasWidth * 0.75, 200);
+    level3_loadAnswerButton(Object.keys(img)[3], canvasWidth * 0.20, 370);
+    level3_loadAnswerButton(Object.keys(img)[4], canvasWidth * 0.47, 370);
+    level3_loadAnswerButton(Object.keys(img)[5], canvasWidth * 0.75, 370);
+};
+
+function level3_loadImage(objeto, _left, _top) {
+  fabric.Image.fromURL(images[objeto], function(img) {
+    canvas.add(img.set({
+      left: _left + 30,
+      top: _top,
+      hasControls: false,
+      hasBorders: false,
+      lockMovementX: true,
+      lockMovementY: true
+    }).scale(0.25));
+
+    img.on('mousedown', function() {
+        var audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', audio[objeto]);
+        audioElement.play();
+    });
+  });
+};
+
+function level3_loadAnswerButton(figureName, left, top) {
+  var span, num;
+  var colors = ['red'];
+
+  span = $(document.createElement('span'));
+  num = $(document.createElement('i'));
+  $(span).attr({
+    id: 'btn-' + figureName,
+    class: 'btn-' + colors[0] + ' btn btn-40',
+    value: figureName
+  });
+
+  $(num).appendTo(span);
+  $(span).appendTo($('#container'));
+  //posiciona o botao
+  $(span)[0].style.position = "absolute";
+  $(span)[0].style.left = left;
+  $(span)[0].style.top = top;
+};
+
+function level3_loadEvents() {
+    level3_btnAnswer();
+
+    $('#btn-next').click(function(btn) {
+        level3_loadNextRound();
+        level3_resetButtons();
+    });
+};
+
+function level3_loadNextRound() {
+    level3_roundNumber += 1;
+    level3_loadSilaba(Object.keys(level3_silabas)[level3_roundNumber - 1]);
+    level3_loadImagesAndSounds(level3_roundNumber);
+};
+
+function level3_btnAnswer() {
+  $('.btn').click(function() {
+    var valor = $(this).attr("value");
+    var solution = solutions[3][level3_roundNumber - 1][valor];
+
+    if (solution == true) {
+      $(this).addClass('btn-valid btn-valid-25');
+      playSoundAnswer(true);
+      level3_correctAnswer();
+    } else {
+      $(this).addClass('btn-error btn-error-25');
+      playSoundAnswer(false);
+    };
+  });
+};
+
+function level3_resetButtons() {
+  $('.btn').removeClass('btn-disabled');
+  $('.btn').removeClass('btn-valid btn-valid-25');
+  $('.btn').removeClass('btn-error btn-error-25');
+  //add handler
+  level3_btnAnswer();
+  $('.btn').css("cursor", 'pointer');
+  $('.btn').prop('disabled', false);
+  $(level3_nextBtn).prop('disabled', true);
+};
+
+function level3_correctAnswer() {
+  level3_numCorrectAnswers++;
+
+  if (level3_numCorrectAnswers == level3_maxCorrectAnswers) {
+    $('.btn').addClass('btn-disabled');
+    //remove handler
+    $('.btn').unbind('click');
+    $('.btn').css("cursor", 'default');
+    $(level3_nextBtn).prop('disabled', false);
+    level3_numCorrectAnswers = 0;
+  };
+};
+
+function level3_loadNextButton(){
+    //cria o botão para passar à imagem seguinte
+    level3_nextBtn = $(document.createElement('button'));
+    $(level3_nextBtn).attr({
+        id: 'btn-next',
+        class: 'button-next'
+    });
+    $(level3_nextBtn).prop('disabled', true);
+    $(level3_nextBtn).append('Próximo');
+
+    //anexa o botao ao container e posiciona-o
+    $(level3_nextBtn).appendTo($('#container'));
+    $(level3_nextBtn)[0].style.position = "absolute";
+    $(level3_nextBtn)[0].style.left = canvasWidth - ($(level3_nextBtn)[0].offsetWidth) - 20;
+    $(level3_nextBtn)[0].style.top = canvasHeight - ($(level3_nextBtn)[0].offsetHeight) - 20;
+};
+
 // LEVEL 4
 // LEVEL 5
 // LEVEL 6
@@ -788,19 +1186,58 @@ function level1_loadImage(animal) {
 function loadEvents() {
     $("#btn-start").click(function() {
         $("#btn-start").remove();
-        // level1_load();
-        level2_load();
-        // level3_load();
-        // level4_load();
-        // level5_load();
-        // level6_load();
-        // level7_load();
-        // level8_load();
-        // level9_load();
-        // level10_load();
-        // level11_load();
-        // level12_load();
-        // level13_load();
+        level1_load();
+    });
+    linkToLevels();
+};
+
+function linkToLevels(){
+    $('.lv').click(function() {
+        $("#btn-start").remove();
+        var num = parseInt($(this).html());
+        switch(num) {
+            case 1:
+                level1_load();
+                break;
+            case 2:
+                level2_load();
+                break;
+            case 3:
+                level3_load();
+                break;
+            case 4:
+                level4_load();
+                break;
+            case 5:
+                level5_load();
+                break;
+            case 6:
+                level6_load();
+                break;
+            case 7:
+                level7_load();
+                break;
+            case 8:
+                level8_load();
+                break;
+            case 9:
+                level9_load();
+                break;
+            case 10:
+                level10_load();
+                break;
+            case 11:
+                level11_load();
+                break;
+            case 12:
+                level12_load();
+                break;
+            case 13:
+                level13_load();
+                break;
+            default:
+                alert('Erro level->' + num);
+        };
     });
 };
 
