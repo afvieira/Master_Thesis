@@ -501,26 +501,29 @@ var solutions = {
 };
 
 //====== RESULTS =====================================
-function ResultGameNSilabas(aluno, imagem, tentativas) {
+function ResultGameNSilabas(aluno, imagem, tentativas, data) {
     this.aluno = aluno;
     this.imagem = imagem;
     this.tentativas = tentativas;
+    this.data = data;
 };
 
-function ResultGameCorrectSilaba(aluno, game, silaba, wrongAnswers) {
+function ResultGameCorrectSilaba(aluno, game, silaba, wrongAnswers, data) {
     this.aluno = aluno;
     this.game = game;
     this.silaba = silaba;
     this.wrongAnswers = wrongAnswers;
+    this.data = data;
 };
 
-function ResultGameCorrectPar(aluno, game, tentativas) {
+function ResultGameCorrectPar(aluno, game, tentativas, data) {
     this.aluno = aluno;
     this.game = game;
     this.tentativas = tentativas;
+    this.data = data;
 };
 
-ResultsGame1ByStudent = {};
+ResultsGame1ByStudent = [];
 ResultsGame2ByStudent = [];
 ResultsGame3ByStudent = [];
 ResultsGame4ByStudent = [];
@@ -529,14 +532,14 @@ ResultsGame6ByStudent = [];
 ResultsGame7ByStudent = [];
 
 function sendResultsGame1() {
-    $.ajax({
-        type: 'POST',
-        url: 'http://rest.learncode.academy/api/johnbob/friends',
-        data: ResultsGame1ByStudent,
-        success: function(data) {
-            console.log("SUCESSO", data);
-        }
-    });
+    // $.ajax({
+    //     type: 'POST',
+    //     url: 'http://rest.learncode.academy/api/johnbob/friends',
+    //     data: ResultsGame1ByStudent,
+    //     success: function(data) {
+    //         console.log("SUCESSO", data);
+    //     }
+    // });
 };
 
 //====== RESULTS =====================================
@@ -654,8 +657,7 @@ function clearCanvas(renderTop) {
 
 function clearCanvasAndBtns() {
     clearCanvas(false);
-    var indice = Math.floor(Math.random() * 3);
-    changeBackgroundColor(sequenciaCores[indice])
+    changeBackgroundColor(sequenciaCores[0])
     $('.canvas-container').siblings().remove();
 };
 
@@ -778,7 +780,7 @@ function level1_btnAnswer() {
             level1_correctAnswer();
 
             var image = Object.keys(level1_images)[level1_objetoIndex];
-            var result = new ResultGameNSilabas('aluno', image, tentativasPorImagem);
+            var result = new ResultGameNSilabas('aluno', image, tentativasPorImagem, new Date());
             ResultsGame1ByStudent.push(result);
         } else {
             $(this).addClass('btn-error btn-error-55');
@@ -868,8 +870,8 @@ var level2_nextBtn,
 
 var level2_silabas = {
     "a": audio["a"],
-    "o": images["o"],
-    "ar": images["ar"]
+    "o": audio["o"],
+    "ar": audio["ar"]
 };
 
 var level2_imagesByRound = {
@@ -1056,7 +1058,7 @@ function level2_correctAnswer() {
         level2_numCorrectAnswers = 0;
 
         var silaba = Object.keys(level2_silabas)[level2_roundNumber - 1];
-        var result = new ResultGameCorrectSilaba('aluno', 2, silaba, level2_wrongAnswers);
+        var result = new ResultGameCorrectSilaba('aluno', 2, silaba, level2_wrongAnswers, new Date());
         ResultsGame2ByStudent.push(result);
 
         var numberOfRounds = Object.keys(level2_silabas).length;
@@ -1094,34 +1096,34 @@ var level3_nextBtn,
 
 var level3_silabas = {
     "mel": audio["mel"],
-    "pas": images["pas"],
-    "cir": images["cir"]
+    "pas": audio["pas"],
+    "cir": audio["cir"]
 };
 
 var level3_imagesByRound = {
     1: {
-        "melga": images["melga"],
-        "mesmo": images["mesmo"],
-        "melgaco": images["melgaco"],
-        "melro": images["melro"],
-        "melado": images["melado"],
-        "marmelo": images["marmelo"]
+        0: "melga",
+        1: "mesmo",
+        2: "melgaco",
+        3: "melro",
+        4: "melado",
+        5: "marmelo"
     },
     2: {
-        "pastilha": images["pastilha"],
-        "passaro": images["passaro"],
-        "pao": images["pao"],
-        "partir": images["partir"],
-        "pastelaria": images["pastelaria"],
-        "pastor": images["pastor"]
+        0: "pastilha",
+        1: "passaro",
+        2: "pao",
+        3: "partir",
+        4: "pastelaria",
+        5: "pastor"
     },
     3: {
-        "circo": images["circo"],
-        "cinto": images["cinto"],
-        "circular": images["circular"],
-        "suspiro": images["suspiro"],
-        "cesto": images["cesto"],
-        "circulo": images["circulo"]
+        0: "circo",
+        1: "cinto",
+        2: "circular",
+        3: "suspiro",
+        4: "cesto",
+        5: "circulo"
     }
 };
 
@@ -1161,21 +1163,21 @@ function level3_loadBuzzerBtnAndSounds(round) {
 
     var img = level3_imagesByRound[round];
 
-    level3_loadBuzzerBtn(Object.keys(img)[0], canvasWidth * 0.20 - 35, canvasHeight * 0.24);
-    level3_loadBuzzerBtn(Object.keys(img)[1], canvasWidth * 0.45 - 35, canvasHeight * 0.24);
-    level3_loadBuzzerBtn(Object.keys(img)[2], canvasWidth * 0.70 - 35, canvasHeight * 0.24);
-    level3_loadBuzzerBtn(Object.keys(img)[3], canvasWidth * 0.20 - 35, canvasHeight * 0.64);
-    level3_loadBuzzerBtn(Object.keys(img)[4], canvasWidth * 0.45 - 35, canvasHeight * 0.64);
-    level3_loadBuzzerBtn(Object.keys(img)[5], canvasWidth * 0.70 - 35, canvasHeight * 0.64);
+    level3_loadBuzzerBtn(img[0], canvasWidth * 0.20 - 35, canvasHeight * 0.24);
+    level3_loadBuzzerBtn(img[1], canvasWidth * 0.45 - 35, canvasHeight * 0.24);
+    level3_loadBuzzerBtn(img[2], canvasWidth * 0.70 - 35, canvasHeight * 0.24);
+    level3_loadBuzzerBtn(img[3], canvasWidth * 0.20 - 35, canvasHeight * 0.64);
+    level3_loadBuzzerBtn(img[4], canvasWidth * 0.45 - 35, canvasHeight * 0.64);
+    level3_loadBuzzerBtn(img[5], canvasWidth * 0.70 - 35, canvasHeight * 0.64);
 
     $(".btn").remove();
 
-    level3_loadAnswerButton(Object.keys(img)[0], canvasWidth * 0.20, canvasHeight * 0.44);
-    level3_loadAnswerButton(Object.keys(img)[1], canvasWidth * 0.45, canvasHeight * 0.44);
-    level3_loadAnswerButton(Object.keys(img)[2], canvasWidth * 0.70, canvasHeight * 0.44);
-    level3_loadAnswerButton(Object.keys(img)[3], canvasWidth * 0.20, canvasHeight * 0.84);
-    level3_loadAnswerButton(Object.keys(img)[4], canvasWidth * 0.45, canvasHeight * 0.84);
-    level3_loadAnswerButton(Object.keys(img)[5], canvasWidth * 0.70, canvasHeight * 0.84);
+    level3_loadAnswerButton(img[0], canvasWidth * 0.20, canvasHeight * 0.44);
+    level3_loadAnswerButton(img[1], canvasWidth * 0.45, canvasHeight * 0.44);
+    level3_loadAnswerButton(img[2], canvasWidth * 0.70, canvasHeight * 0.44);
+    level3_loadAnswerButton(img[3], canvasWidth * 0.20, canvasHeight * 0.84);
+    level3_loadAnswerButton(img[4], canvasWidth * 0.45, canvasHeight * 0.84);
+    level3_loadAnswerButton(img[5], canvasWidth * 0.70, canvasHeight * 0.84);
 };
 
 function level3_loadBuzzerBtn(objeto, _left, _top) {
@@ -1293,7 +1295,7 @@ function level3_correctAnswer() {
         level3_numCorrectAnswers = 0;
 
         var silaba = Object.keys(level3_silabas)[level3_roundNumber - 1];
-        var result = new ResultGameCorrectSilaba('aluno', 3, silaba, level3_wrongAnswers);
+        var result = new ResultGameCorrectSilaba('aluno', 3, silaba, level3_wrongAnswers, new Date());
         ResultsGame3ByStudent.push(result);
 
         var numberOfRounds = Object.keys(level3_silabas).length;
@@ -1332,8 +1334,8 @@ var level4_nextBtn,
 
 var level4_silabas = {
     "o_u_jogo4": audio["o_u_jogo4"],
-    "a": images["a"],
-    "ar": images["ar"]
+    "a": audio["a"],
+    "ar": audio["ar"]
 };
 
 var level4_imagesByRound = {
@@ -1520,7 +1522,7 @@ function level4_correctAnswer() {
         level4_numCorrectAnswers = 0;
 
         var silaba = Object.keys(level4_silabas)[level4_roundNumber - 1];
-        var result = new ResultGameCorrectSilaba('aluno', 4, silaba, level4_wrongAnswers);
+        var result = new ResultGameCorrectSilaba('aluno', 4, silaba, level4_wrongAnswers, new Date());
         ResultsGame4ByStudent.push(result);
 
         var numberOfRounds = Object.keys(level4_silabas).length;
@@ -1558,34 +1560,34 @@ var level5_nextBtn,
 
 var level5_silabas = {
     "gir": audio["gir"],
-    "tor": images["tor"],
-    "car": images["car"]
+    "tor": audio["tor"],
+    "car": audio["car"]
 };
 
 var level5_imagesByRound = {
     1: {
-        "fugir": images["fugir"],
-        "chegar": images["chegar"],
-        "fingir": images["fingir"],
-        "partir": images["partir"],
-        "corrigir": images["corrigir"],
-        "sair": images["sair"]
+        0: "fugir",
+        1: "chegar",
+        2: "fingir",
+        3: "partir",
+        4: "corrigir",
+        5: "sair"
     },
     2: {
-        "sobrepor": images["sobrepor"],
-        "trator": images["trator"],
-        "adamastor": images["adamastor"],
-        "apito": images["apito"],
-        "castor": images["castor"],
-        "computador": images["computador"]
+        0: "sobrepor",
+        1: "trator",
+        2: "adamastor",
+        3: "apito",
+        4: "castor",
+        5: "computador"
     },
     3: {
-        "convidar": images["convidar"],
-        "fechar": images["fechar"],
-        "secar": images["secar"],
-        "acucar": images["acucar"],
-        "trocar": images["trocar"],
-        "cacar": images["cacar"]
+        0: "convidar",
+        1: "fechar",
+        2: "secar",
+        3: "acucar",
+        4: "trocar",
+        5: "cacar"
     }
 };
 
@@ -1625,21 +1627,21 @@ function level5_loadBuzzerBtnAndSounds(round) {
 
     var img = level5_imagesByRound[round];
 
-    level5_loadBuzzerBtn(Object.keys(img)[0], canvasWidth * 0.20 - 35, canvasHeight * 0.24);
-    level5_loadBuzzerBtn(Object.keys(img)[1], canvasWidth * 0.45 - 35, canvasHeight * 0.24);
-    level5_loadBuzzerBtn(Object.keys(img)[2], canvasWidth * 0.70 - 35, canvasHeight * 0.24);
-    level5_loadBuzzerBtn(Object.keys(img)[3], canvasWidth * 0.20 - 35, canvasHeight * 0.64);
-    level5_loadBuzzerBtn(Object.keys(img)[4], canvasWidth * 0.45 - 35, canvasHeight * 0.64);
-    level5_loadBuzzerBtn(Object.keys(img)[5], canvasWidth * 0.70 - 35, canvasHeight * 0.64);
+    level5_loadBuzzerBtn(img[0], canvasWidth * 0.20 - 35, canvasHeight * 0.24);
+    level5_loadBuzzerBtn(img[1], canvasWidth * 0.45 - 35, canvasHeight * 0.24);
+    level5_loadBuzzerBtn(img[2], canvasWidth * 0.70 - 35, canvasHeight * 0.24);
+    level5_loadBuzzerBtn(img[3], canvasWidth * 0.20 - 35, canvasHeight * 0.64);
+    level5_loadBuzzerBtn(img[4], canvasWidth * 0.45 - 35, canvasHeight * 0.64);
+    level5_loadBuzzerBtn(img[5], canvasWidth * 0.70 - 35, canvasHeight * 0.64);
 
     $(".btn").remove();
 
-    level5_loadAnswerButton(Object.keys(img)[0], canvasWidth * 0.20, canvasHeight * 0.44);
-    level5_loadAnswerButton(Object.keys(img)[1], canvasWidth * 0.45, canvasHeight * 0.44);
-    level5_loadAnswerButton(Object.keys(img)[2], canvasWidth * 0.70, canvasHeight * 0.44);
-    level5_loadAnswerButton(Object.keys(img)[3], canvasWidth * 0.20, canvasHeight * 0.84);
-    level5_loadAnswerButton(Object.keys(img)[4], canvasWidth * 0.45, canvasHeight * 0.84);
-    level5_loadAnswerButton(Object.keys(img)[5], canvasWidth * 0.70, canvasHeight * 0.84);
+    level5_loadAnswerButton(img[0], canvasWidth * 0.20, canvasHeight * 0.44);
+    level5_loadAnswerButton(img[1], canvasWidth * 0.45, canvasHeight * 0.44);
+    level5_loadAnswerButton(img[2], canvasWidth * 0.70, canvasHeight * 0.44);
+    level5_loadAnswerButton(img[3], canvasWidth * 0.20, canvasHeight * 0.84);
+    level5_loadAnswerButton(img[4], canvasWidth * 0.45, canvasHeight * 0.84);
+    level5_loadAnswerButton(img[5], canvasWidth * 0.70, canvasHeight * 0.84);
 };
 
 function level5_loadBuzzerBtn(objeto, _left, _top) {
@@ -1757,7 +1759,7 @@ function level5_correctAnswer() {
         level5_numCorrectAnswers = 0;
 
         var silaba = Object.keys(level5_silabas)[level5_roundNumber - 1];
-        var result = new ResultGameCorrectSilaba('aluno', 5, silaba, level5_wrongAnswers);
+        var result = new ResultGameCorrectSilaba('aluno', 5, silaba, level5_wrongAnswers, new Date());
         ResultsGame5ByStudent.push(result);
 
         var numberOfRounds = Object.keys(level5_silabas).length;
