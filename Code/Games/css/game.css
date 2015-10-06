@@ -101,12 +101,6 @@ span {
   width: 30px;
 }
 
-.btn-check{
-  background-image: url("../images/circle_black.png");
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 .btn-check-55{
   background-size: 55px;
 }
