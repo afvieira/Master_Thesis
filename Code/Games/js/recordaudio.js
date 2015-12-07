@@ -83,7 +83,7 @@ function UploadAudio(blob, filename) {
         fd["gameNumber"] = "gameNmb"; //gameNumber.value;
         $.ajax({
             type: 'POST',
-            url: 'http://46.101.2.128/tese/upload.php',
+            url: 'http://localhost/Master_Thesis/Code/Games/upload.php',
             data: fd,
             dataType: 'text'
         }).done(function(data) {
