@@ -59,7 +59,7 @@ function doneEncoding(blob) {
     var filename = palavra + "_" + getDateYYYYMMDD_HHMMSS() + ".wav";
     var url = (window.URL || window.webkitURL).createObjectURL(blob);
 
-    UploadAudio(blob, filename);
+    //UploadAudio(blob, filename);
     downloadURI(url, filename);
 }
 
