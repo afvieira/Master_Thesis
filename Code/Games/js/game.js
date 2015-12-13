@@ -368,12 +368,13 @@ var solutions = {
     },
     2: {
         0: {
-            "abelha": true,
-            "harpa": false,
-            "anjo": false,
-            "alce": false,
-            "agulha": true,
-            "anel": true
+
+            "algema": false,
+            "arvore": true,
+            "afia": false,
+            "arco_iris": true,
+            "arco": true,
+            "aspirador": false
         },
         1: {
             "bola": false,
@@ -384,12 +385,12 @@ var solutions = {
             "olho": true
         },
         2: {
-            "algema": false,
-            "arvore": true,
-            "afia": false,
-            "arco_iris": true,
-            "arco": true,
-            "aspirador": false
+            "abelha": true,
+            "harpa": false,
+            "anjo": false,
+            "alce": false,
+            "agulha": true,
+            "anel": true
         }
     },
     3: {
@@ -870,19 +871,19 @@ var level2_nextBtn,
     level2_wrongAnswers;
 
 var level2_silabas = {
-    "a": audio["a"],
+    "ar": audio["ar"],
     "o": audio["o"],
-    "ar": audio["ar"]
+    "a": audio["a"]
 };
 
 var level2_imagesByRound = {
     1: {
-        "abelha": images["abelha"],
-        "harpa": images["harpa"],
-        "anjo": images["anjo"],
-        "alce": images["alce"],
-        "agulha": images["agulha"],
-        "anel": images["anel"]
+        "algema": images["algema"],
+        "arvore": images["arvore"],
+        "afia": images["afia"],
+        "arco_iris": images["arco_iris"],
+        "arco": images["arco"],
+        "aspirador": images["aspirador"]
     },
     2: {
         "bola": images["bola"],
@@ -893,12 +894,12 @@ var level2_imagesByRound = {
         "olho": images["olho"]
     },
     3: {
-        "algema": images["algema"],
-        "arvore": images["arvore"],
-        "afia": images["afia"],
-        "arco_iris": images["arco_iris"],
-        "arco": images["arco"],
-        "aspirador": images["aspirador"]
+        "abelha": images["abelha"],
+        "harpa": images["harpa"],
+        "anjo": images["anjo"],
+        "alce": images["alce"],
+        "agulha": images["agulha"],
+        "anel": images["anel"]
     }
 };
 
@@ -1815,7 +1816,7 @@ var level6_imagesByRound = {
     },
     2: {
         "camelo": images["camelo"],
-        "casa": images["casa"],
+        "cantar": images["cantar"],
         "cagado": images["cagado"],
         "camisa": images["camisa"]
     },

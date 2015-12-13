@@ -679,7 +679,8 @@ function changeBackgroundColor(color) {
 //Variaveis globais level1
 var level1_nextBtn,
     level1_objetoIndex = 0,
-    tentativasPorImagem;
+    tentativasPorImagem,
+    level1_SilabaClicked = undefined;
 
 var level1_images = {
     "livro": images["livro"],
@@ -690,6 +691,7 @@ var level1_images = {
 function level1_load() {
     level1_objetoIndex = 0;
     ResultsGame1ByStudent = [];
+    level1_SilabaClicked = undefined;
     clearCanvas(false);
     loadHelpBtn('blue', 1);
     level1_loadButtons();
@@ -738,7 +740,7 @@ function level1_loadButtons() {
         id: 'btn-next',
         class: 'button-next'
     });
-    //$(level1_nextBtn).prop('disabled', true);
+    $(level1_nextBtn).prop('disabled', true);
     $(level1_nextBtn).append('Próximo');
 
     //anexa o botao ao container e posiciona-o
@@ -750,8 +752,26 @@ function level1_loadButtons() {
 
 function level1_btnAnswer() {
     $('.btn').click(function() {
+        var silabasClicked = parseInt($(this).find('i').html());
+
+        if (level1_SilabaClicked && level1_SilabaClicked == silabasClicked) {
+            $(this).removeClass('btn-green');
+            $(this).addClass('btn-yellow');
+
+            level1_SilabaClicked = undefined;
+            $(level1_nextBtn).prop('disabled', true);
+
+            return;
+        };
+
+        $('.btn').removeClass('btn-green');
+        $('.btn').addClass('btn-yellow');
         $(this).removeClass('btn-yellow');
         $(this).addClass('btn-green');
+
+        level1_SilabaClicked = silabasClicked;
+
+        $(level1_nextBtn).prop('disabled', false);
 
         // var num = parseInt($(this).find('i').html());
         // var solution = solutions[1][Object.keys(level1_images)[level1_objetoIndex]];
@@ -793,14 +813,15 @@ function level1_resetButtons() {
     $('.btn').removeClass('btn-valid btn-valid-55');
     $('.btn').removeClass('btn-error btn-error-55');
     //add handler
-    level1_btnAnswer();
+    //level1_btnAnswer();
     $('.btn').css("cursor", 'pointer');
     $('.btn').prop('disabled', false);
 
     $('.btn').removeClass('btn-green');
     $('.btn').addClass('btn-yellow');
 
-    //$(level1_nextBtn).prop('disabled', true);
+    level1_SilabaClicked = undefined;
+    $(level1_nextBtn).prop('disabled', true);
 };
 
 function level1_correctAnswer() {        
@@ -852,7 +873,8 @@ var level2_nextBtn,
     level2_roundNumber = 1,
     level2_numCorrectAnswers = 0,
     level2_maxCorrectAnswers = 3,
-    level2_wrongAnswers;
+    level2_wrongAnswers,
+    level2_SilabasClicked = [];
 
 var level2_silabas = {
     "sa": audio["sa"],
@@ -891,6 +913,7 @@ function level2_load() {
     level2_roundNumber = 1;
     level2_numCorrectAnswers = 0;
     ResultsGame2ByStudent = [];
+    level2_SilabasClicked = [];
     clearCanvas(true);
     loadHelpBtn('green', 2);
     level2_loadSilaba(Object.keys(level2_silabas)[level2_roundNumber - 1]);
@@ -1006,10 +1029,30 @@ function level2_loadNextRound() {
 
 function level2_btnAnswer() {
     $('.btn').click(function() {
+        debugger
         var valor = $(this).attr("value");
+
+        if ($.inArray(valor, level2_SilabasClicked) != -1) {
+            $(this).removeClass('btn-green');
+            $(this).addClass('btn-blue');
+
+            level2_SilabasClicked.splice($.inArray(valor, level2_SilabasClicked), 1);
+            $(level2_nextBtn).prop('disabled', true);
+            return;
+        };
+
+        if (level2_SilabasClicked.length == 3) {
+            return;
+        };
 
         $(this).removeClass('btn-blue');
         $(this).addClass('btn-green');
+
+        level2_SilabasClicked.push(valor);
+
+        if (level2_SilabasClicked.length == 3) {
+            $(level2_nextBtn).prop('disabled', false);
+        };
 
         // var solution = solutions[2][level2_roundNumber - 1][valor];
 
@@ -1040,7 +1083,8 @@ function level2_resetButtons() {
     $('.btn').removeClass('btn-green');
     $('.btn').addClass('btn-blue');
 
-    //$(level2_nextBtn).prop('disabled', true);
+    $(level2_nextBtn).prop('disabled', true);
+    level2_SilabasClicked = [];
 };
 
 function level2_correctAnswer() {
@@ -1072,7 +1116,7 @@ function level2_loadNextButton() {
         id: 'btn-next',
         class: 'button-next'
     });
-    //$(level2_nextBtn).prop('disabled', true);
+    $(level2_nextBtn).prop('disabled', true);
     $(level2_nextBtn).append('Próximo');
 
     //anexa o botao ao container e posiciona-o
@@ -1090,7 +1134,8 @@ var level3_nextBtn,
     level3_roundNumber = 1,
     level3_numCorrectAnswers = 0,
     level3_maxCorrectAnswers = 3,
-    level3_wrongAnswers;
+    level3_wrongAnswers,
+    level3_SilabasClicked = [];
 
 var level3_silabas = {
     "cha": audio["cha"],
@@ -1129,6 +1174,7 @@ function level3_load() {
     level3_roundNumber = 1;
     level3_numCorrectAnswers = 0;
     ResultsGame3ByStudent = [];
+    level3_SilabasClicked = [];
     clearCanvas(true);
     loadHelpBtn('blue', 3);
     level3_loadSilaba(Object.keys(level3_silabas)[level3_roundNumber - 1]);
@@ -1244,21 +1290,40 @@ function level3_loadNextRound() {
 
 function level3_btnAnswer() {
     $('.btn').click(function() {
+        var valor = $(this).attr("value");
+
+        if ($.inArray(valor, level3_SilabasClicked) != -1) {
+            $(this).removeClass('btn-green');
+            $(this).addClass('btn-yellow');
+
+            level3_SilabasClicked.splice($.inArray(valor, level3_SilabasClicked), 1);
+            $(level3_nextBtn).prop('disabled', true);
+            return;
+        };
+
+        if (level3_SilabasClicked.length == 3) {
+            return;
+        };
 
         $(this).removeClass('btn-yellow');
         $(this).addClass('btn-green');
 
-        // var valor = $(this).attr("value");
-        // var solution = solutions[3][level3_roundNumber - 1][valor];
+        level3_SilabasClicked.push(valor);
+
+        if (level3_SilabasClicked.length == 3) {
+            $(level3_nextBtn).prop('disabled', false);
+        };
+
+        // var solution = solutions[2][level2_roundNumber - 1][valor];
 
         // if (solution == true) {
         //     $(this).addClass('btn-valid btn-valid-25');
         //     playSoundAnswer(true);
-        //     level3_correctAnswer();
+        //     level2_correctAnswer();
         // } else {
         //     $(this).addClass('btn-error btn-error-25');
         //     playSoundAnswer(false);
-        //     level3_wrongAnswers += 1;
+        //     level2_wrongAnswers += 1;
         // };
         // $(this).addClass('btn-disabled');
         // $(this).unbind('click');
@@ -1278,7 +1343,8 @@ function level3_resetButtons() {
     $('.btn').removeClass('btn-green');
     $('.btn').addClass('btn-yellow');
 
-    //$(level3_nextBtn).prop('disabled', true);
+    $(level3_nextBtn).prop('disabled', true);
+    level3_SilabasClicked = [];
 };
 
 function level3_correctAnswer() {
@@ -1310,7 +1376,7 @@ function level3_loadNextButton() {
         id: 'btn-next',
         class: 'button-next'
     });
-    //$(level3_nextBtn).prop('disabled', true);
+    $(level3_nextBtn).prop('disabled', true);
     $(level3_nextBtn).append('Próximo');
 
     //anexa o botao ao container e posiciona-o
@@ -1405,15 +1471,15 @@ function level4_loadmicro(silaba, _left, _top) {
         var _silaba = silaba;
         toggleRecording(this, _silaba + _palavra);
 
-        // var id = $(this).prop('id');
-        // if ($.inArray(id, level4_microClicked) < 0) {
-        //     level4_microClicked.push(id);
+        var id = $(this).prop('id');
+        if ($.inArray(id, level4_microClicked) < 0) {
+            level4_microClicked.push(id);
 
-        //     var numSilabas = Object.keys(level4_imagesByRound[level4_roundNumber]).length;
-        //     if (level4_microClicked.length == numSilabas) {
-        //         $(level4_nextBtn).prop('disabled', false);
-        //     };
-        // };
+            var numSilabas = Object.keys(level4_imagesByRound[level4_roundNumber]).length;
+            if (level4_microClicked.length == numSilabas) {
+                $(level4_nextBtn).prop('disabled', false);
+            };
+        };
     });
 };
 
@@ -1467,7 +1533,7 @@ function level4_loadEvents() {
                 $(level4_nextBtn).text('Fim');
             };
             level4_loadNextRound();
-            //$(level4_nextBtn).prop('disabled', true);
+            $(level4_nextBtn).prop('disabled', true);
         };
     });
 };
@@ -1488,7 +1554,7 @@ function level4_loadNextButton() {
         id: 'btn-next',
         class: 'button-next'
     });
-    //$(level4_nextBtn).prop('disabled', true);
+    $(level4_nextBtn).prop('disabled', true);
     $(level4_nextBtn).append('Próximo');
 
     //anexa o botao ao container e posiciona-o
@@ -1552,15 +1618,15 @@ function level5_loadmicro(palavra, _left, _top) {
     $(micro).on("click", function() {
         toggleRecording(this, palavra);
 
-        // var id = $(this).prop('id');
-        // if ($.inArray(id, level5_microClicked) < 0) {
-        //     level5_microClicked.push(id);
+        var id = $(this).prop('id');
+        if ($.inArray(id, level5_microClicked) < 0) {
+            level5_microClicked.push(id);
 
-        //     var numSilabas = Object.keys(level5_imagesByRound[level5_roundNumber]).length;
-        //     if (level5_microClicked.length == numSilabas) {
-        //         $(level5_nextBtn).prop('disabled', false);
-        //     };
-        // };
+            var numSilabas = Object.keys(level5_imagesByRound[level5_roundNumber]).length;
+            if (level5_microClicked.length == numSilabas) {
+                $(level5_nextBtn).prop('disabled', false);
+            };
+        };
     });
 };
 
@@ -1612,7 +1678,7 @@ function level5_loadEvents() {
                 $(level5_nextBtn).text('Fim');
             };
             level5_loadNextRound();
-            //$(level5_nextBtn).prop('disabled', true);
+            $(level5_nextBtn).prop('disabled', true);
         };
     });
 };
@@ -1632,7 +1698,7 @@ function level5_loadNextButton() {
         id: 'btn-next',
         class: 'button-next'
     });
-    //$(level5_nextBtn).prop('disabled', true);
+    $(level5_nextBtn).prop('disabled', true);
     $(level5_nextBtn).append('Próximo');
 
     //anexa o botao ao container e posiciona-o
