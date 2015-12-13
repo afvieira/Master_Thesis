@@ -13,7 +13,7 @@ var canvasHeight,
     roxoEscuro = 'rgba(151, 158, 190, 1)',
     alturaTop = 200,
     topBar,
-    micro = "images/mic128.png",
+    imgMicro = "images/mic128.png",
     nextLevel = 1;
 
 var sequenciaCores = ["verde", "roxo", "azul"];
@@ -710,6 +710,8 @@ var level1_images = {
 };
 
 function level1_load() {
+    level1_objetoIndex = 0;
+    ResultsGame1ByStudent = [];
     clearCanvas(false);
     loadHelpBtn('blue', 1);
     level1_loadButtons();
@@ -901,6 +903,9 @@ var level2_imagesByRound = {
 };
 
 function level2_load() {
+    level2_roundNumber = 1;
+    level2_numCorrectAnswers = 0;
+    ResultsGame2ByStudent = [];
     clearCanvas(true);
     loadHelpBtn('green', 2);
     level2_loadSilaba(Object.keys(level2_silabas)[level2_roundNumber - 1]);
@@ -1127,6 +1132,9 @@ var level3_imagesByRound = {
 };
 
 function level3_load() {
+    level3_roundNumber = 1;
+    level3_numCorrectAnswers = 0;
+    ResultsGame3ByStudent = [];
     clearCanvas(true);
     loadHelpBtn('yellow', 3);
     level3_loadSilaba(Object.keys(level3_silabas)[level3_roundNumber - 1]);
@@ -1365,6 +1373,9 @@ var level4_imagesByRound = {
 };
 
 function level4_load() {
+    level4_roundNumber = 1;
+    level4_numCorrectAnswers = 0;
+    ResultsGame4ByStudent = [];
     clearCanvas(true);
     loadHelpBtn('blue', 4);
     level4_loadSilaba(Object.keys(level4_silabas)[level4_roundNumber - 1]);
@@ -1591,6 +1602,9 @@ var level5_imagesByRound = {
 };
 
 function level5_load() {
+    level5_roundNumber = 1;
+    level5_numCorrectAnswers = 0;
+    ResultsGame5ByStudent = [];
     clearCanvas(true);
     loadHelpBtn('green', 5);
     level5_loadSilaba(Object.keys(level5_silabas)[level5_roundNumber - 1]);
@@ -1814,6 +1828,9 @@ var level6_imagesByRound = {
 };
 
 function level6_load() {
+    level6_roundNumber = 1;
+    level6_imgClicked = [];
+    ResultsGame6ByStudent = [];
     clearCanvas(false);
     loadHelpBtn('yellow', 6);
     level6_loadImagesAndSounds(level6_roundNumber);
@@ -1877,14 +1894,19 @@ function level6_loadAnswerButton(figureName, left, top) {
     $(span)[0].style.top = top;
 
     $(span).on("click", function() {
-        $(this).removeClass('btn-yellow');
-        $(this).addClass('btn-green');
-        level6_verificaResposta(figureName);
+        level6_verificaResposta($(this), figureName);
     })
 };
 
-function level6_verificaResposta(figureName) {
+function level6_verificaResposta(button, figureName) {
+    button.removeClass('btn-yellow');
+    button.addClass('btn-green');
+
     if (level6_imgClicked.length > 0 && level6_imgClicked[0] == figureName) {
+        button.removeClass('btn-green');
+        button.addClass('btn-yellow');
+
+        level6_imgClicked = [];
         return;
     };
 
@@ -1996,6 +2018,9 @@ var level7_imagesByRound = {
 };
 
 function level7_load() {
+    level7_roundNumber = 1;
+    level7_imgClicked = [];
+    ResultsGame7ByStudent = [];
     clearCanvas(false);
     loadHelpBtn('blue', 7);
     level7_loadImagesAndSounds(level7_roundNumber);
@@ -2059,13 +2084,22 @@ function level7_loadAnswerButton(figureName, left, top) {
     $(span)[0].style.top = top;
 
     $(span).on("click", function() {
-        $(this).removeClass('btn-yellow');
-        $(this).addClass('btn-green');
-        level7_verificaResposta(figureName);
+        level7_verificaResposta($(this), figureName);
     })
 };
 
-function level7_verificaResposta(figureName) {
+function level7_verificaResposta(button, figureName) {
+    button.removeClass('btn-yellow');
+    button.addClass('btn-green');
+
+    if (level7_imgClicked.length > 0 && level7_imgClicked[0] == figureName) {
+        button.removeClass('btn-green');
+        button.addClass('btn-yellow');
+
+        level7_imgClicked = [];
+        return;
+    };
+
     level7_imgClicked.push(figureName);
 
     if (level7_imgClicked.length > 1) {
@@ -2177,6 +2211,8 @@ var level8_imagesByRound = {
 };
 
 function level8_load() {
+    level8_roundNumber = 1;
+    level8_microClicked = [];
     clearCanvas(true);
     loadHelpBtn('green', 8);
     level8_loadPalavra(Object.keys(level8_palavras)[level8_roundNumber - 1]);
@@ -2212,7 +2248,7 @@ function level8_loadmicro(silaba, _left, _top) {
     $(micro).attr({
         id: 'rec-' + silaba,
         class: 'record',
-        src: 'images/mic128.png',
+        src: imgMicro,
         value: silaba
     });
 
@@ -2353,6 +2389,8 @@ var level9_imagesByRound = {
 };
 
 function level9_load() {
+    level9_roundNumber = 1;
+    level9_microClicked = [];
     clearCanvas(true);
     loadHelpBtn('yellow', 9);
     level9_loadPalavra(Object.keys(level9_palavras)[level9_roundNumber - 1]);
@@ -2388,7 +2426,7 @@ function level9_loadmicro(silaba, _left, _top) {
     $(micro).attr({
         id: 'rec-' + silaba,
         class: 'record',
-        src: 'images/mic128.png',
+        src: imgMicro,
         value: silaba
     });
 
@@ -2529,6 +2567,8 @@ var level10_imagesByRound = {
 };
 
 function level10_load() {
+    level10_roundNumber = 1;
+    level10_microClicked = [];
     clearCanvas(true);
     loadHelpBtn('blue', 10);
     level10_loadPalavra(Object.keys(level10_palavras)[level10_roundNumber - 1]);
@@ -2564,7 +2604,7 @@ function level10_loadmicro(silaba, _left, _top) {
     $(micro).attr({
         id: 'rec-' + silaba,
         class: 'record',
-        src: 'images/mic128.png',
+        src: imgMicro,
         value: silaba
     });
 
@@ -2696,6 +2736,8 @@ var level11_imagesByRound = {
 };
 
 function level11_load() {
+    level11_roundNumber = 1;
+    level11_microClicked = [];
     clearCanvas(false);
     loadHelpBtn('green', 11);
     level11_loadBuzzerBtnAndSounds(level11_roundNumber);
@@ -2711,7 +2753,7 @@ function level11_loadmicro(palavra, _left, _top) {
     $(micro).attr({
         id: 'rec-' + palavra,
         class: 'record',
-        src: 'images/mic128.png',
+        src: imgMicro,
         value: palavra
     });
 
@@ -2838,6 +2880,8 @@ var level12_imagesByRound = {
 };
 
 function level12_load() {
+    level12_roundNumber = 1;
+    level12_microClicked = [];
     clearCanvas(false);
     loadHelpBtn('yellow', 12);
     level12_loadBuzzerBtnAndSounds(level12_roundNumber);
@@ -2853,7 +2897,7 @@ function level12_loadmicro(palavra, _left, _top) {
     $(micro).attr({
         id: 'rec-' + palavra,
         class: 'record',
-        src: 'images/mic128.png',
+        src: imgMicro,
         value: palavra
     });
 
@@ -2980,6 +3024,8 @@ var level13_imagesByRound = {
 };
 
 function level13_load() {
+    level13_roundNumber = 1;
+    level13_microClicked = [];
     clearCanvas(false);
     loadHelpBtn('blue', 13);
     level13_loadBuzzerBtnAndSounds(level13_roundNumber);
@@ -2995,7 +3041,7 @@ function level13_loadmicro(palavra, _left, _top) {
     $(micro).attr({
         id: 'rec-' + palavra,
         class: 'record',
-        src: 'images/mic128.png',
+        src: imgMicro,
         value: palavra
     });
 
