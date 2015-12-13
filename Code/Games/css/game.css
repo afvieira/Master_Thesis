@@ -101,12 +101,6 @@ span {
   width: 30px;
 }
 
-.btn-check{
-  background-image: url("../images/circle_black.png");
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 .btn-check-55{
   background-size: 55px;
 }
@@ -247,7 +241,7 @@ span {
     0 35px #c54c57,
     -9px 48px 5px 0px hsla(0, 0%, 0%, .1);
   content: '';
-  transition: all 50ms;
+  transition: all 80ms;
 }
 
 .buzzerBtn:active:before{

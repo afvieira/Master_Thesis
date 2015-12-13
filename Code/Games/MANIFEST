@@ -1,0 +1,14 @@
+CACHE MANIFEST
+# 2015-10-18:v1
+
+# Explicitly cached 'master entries'.
+CACHE:
+index.html
+js/*
+css/*
+images/*
+
+# Resources that require the user to be online.
+NETWORK:
+
+FALLBACK:

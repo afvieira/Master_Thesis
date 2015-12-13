@@ -13,7 +13,7 @@ var canvasHeight,
     roxoEscuro = 'rgba(151, 158, 190, 1)',
     alturaTop = 200,
     topBar,
-    micro = "images/mic128.png",
+    imgMicro = "images/mic128.png",
     nextLevel = 1;
 
 var sequenciaCores = ["verde", "roxo", "azul"];
@@ -181,164 +181,164 @@ var audio = {
 };
 
 var images = {
-    "a": "images/a.png",
-    "abelha": "images/abelha.png",
-    "abracar": "images/abracar.png",
-    "acucar": "images/acucar.png",
-    "adamastor": "images/adamastor.png",
-    "afia": "images/afia.png",
-    "agulha": "images/agulha.png",
-    "al": "images/al.png",
-    "alce": "images/alce.png",
-    "algema": "images/algema.png",
-    "anel": "images/anel.png",
-    "anjo": "images/anjo.png",
-    "apito": "images/apito.png",
-    "ar": "images/ar.png",
-    "arara": "images/arara.png",
-    "arco": "images/arco.png",
-    "arco_iris": "images/arco_iris.png",
-    "arvore": "images/arvore.png",
-    "aspirador": "images/aspirador.png",
-    "avental": "images/avental.png",
-    "avestruz": "images/avestruz.png",
-    "bacalhau": "images/bacalhau.png",
-    "balanca": "images/balanca.png",
-    "bar": "images/bar.png",
-    "barrar": "images/barrar.png",
-    "beijo": "images/beijo.png",
-    "bengala": "images/bengala.png",
-    "boia": "images/boia.png",
-    "bola": "images/bola.png",
-    "bri": "images/bri.png",
-    "brinquedo": "images/brinquedo.png",
-    "bro": "images/bro.png",
-    "bu": "images/bu.png",
-    "cacada": "images/cacada.png",
-    "cacar": "images/cacar.png",
-    "caco": "images/caco.png",
-    "cagado": "images/cagado.png",
-    "camisa": "images/camisa.png",
-    "camelo": "images/camelo.png",
-    "cantar": "images/cantar.png",
-    "car": "images/car.png",
-    "carnaval": "images/carnaval.png",
-    "carro": "images/carro.png",
-    "cas": "images/cas.png",
-    "casa": "images/casa.png",
-    "casaco": "images/casaco.png",
-    "castor": "images/castor.png",
-    "centeio": "images/centeio.png",
-    "cereja": "images/cereja.png",
-    "cesto": "images/cesto.png",
-    "chegar": "images/chegar.png",
-    "chum": "images/chum.png",
-    "cinto": "images/cinto.png",
-    "cir": "images/cir.png",
-    "circo": "images/circo.png",
-    "circular": "images/circular.png",
-    "circulo": "images/circulo.png",
-    "comboio": "images/comboio.png",
-    "computador": "images/computador.png",
-    "con": "images/con.png",
-    "convidar": "images/convidar.png",
-    "copo": "images/copo.png",
-    "corrigir": "images/corrigir.png",
-    "do": "images/do.png",
-    "entro": "images/entro.png",
-    "erva": "images/erva.png",
-    "esqui": "images/esqui.png",
-    "faca": "images/faca.png",
-    "falar": "images/falar.png",
-    "fechar": "images/fechar.png",
-    "fila": "images/fila.png",
-    "fingir": "images/fingir.png",
-    "frio": "images/frio.png",
-    "fugir": "images/fugir.png",
-    "gaivota": "images/gaivota.png",
-    "gelado": "images/gelado.png",
-    "gir": "images/gir.png",
-    "grua": "images/grua.png",
-    "guitarra": "images/guitarra.png",
-    "harpa": "images/harpa.png",
-    "ir": "images/ir.png",
-    "ja": "images/ja.png",
-    "jarra": "images/jarra.png",
-    "la": "images/la.png",
-    "lado": "images/lado.png",
-    "lapis": "images/lapis.png",
-    "laranja": "images/laranja.png",
-    "lo": "images/lo.png",
-    "ma": "images/ma.png",
-    "maca": "images/maca.png",
-    "macaco": "images/macaco.png",
-    "mao": "images/mao.png",
-    "marmelo": "images/marmelo.png",
-    "martelo": "images/martelo.png",
-    "mascara": "images/mascara.png",
-    "mel": "images/mel.png",
-    "melado": "images/melado.png",
-    "melga": "images/melga.png",
-    "melro": "images/melro.png",
-    "mesas": "images/mesas.png",
-    "mesmo": "images/mesmo.png",
-    "mochila": "images/mochila.png",
-    "nadar": "images/nadar.png",
-    "o": "images/o.png",
-    "o_u_jogo4": "images/o_u_jogo4.png",
-    "oculos": "images/oculos.png",
-    "olho": "images/olho.png",
-    "ombro": "images/ombro.png",
-    "osso": "images/osso.png",
-    "ovo": "images/ovo.png",
-    "painel": "images/painel.png",
-    "palavra": "images/palavra.png",
-    "papagaio": "images/papagaio.png",
-    "pao": "images/pao.png",
-    "parede": "images/parede.png",
-    "partir": "images/partir.png",
-    "pas": "images/pas.png",
-    "passa": "images/passa.png",
-    "passaro": "images/passaro.png",
-    "passaros": "images/passaros.png",
-    "pastelaria": "images/pastelaria.png",
-    "pastilha": "images/pastilha.png",
-    "pastor": "images/pastor.png",
-    "pentear": "images/pentear.png",
-    "perfumar": "images/perfumar.png",
-    "pessego": "images/pessego.png",
-    "piano": "images/piano.png",
-    "piar": "images/piar.png",
-    "pincel": "images/pincel.png",
-    "pinha": "images/pinha.png",
-    "pistola": "images/pistola.png",
-    "pul": "images/pul.png",
-    "recreio": "images/recreio.png",
-    "ro": "images/ro.png",
-    "rra": "images/rra.png",
-    "rras": "images/rras.png",
-    "saia": "images/saia.png",
-    "sair": "images/sair.png",
-    "sal": "images/sal.png",
-    "salgado": "images/salgado.png",
-    "sapato": "images/sapato.png",
-    "sapo": "images/sapo.png",
-    "secar": "images/secar.png",
-    "si": "images/si.png",
-    "silaba": "images/silaba.png",
-    "sobrepor": "images/sobrepor.png",
-    "suspiro": "images/suspiro.png",
-    "tan": "images/tan.png",
-    "tor": "images/tor.png",
-    "tos": "images/tos.png",
-    "trator": "images/trator.png",
-    "trocar": "images/trocar.png",
-    "tubarao": "images/tubarao.png",
-    "ul": "images/ul.png",
-    "uva": "images/uva.png",
-    "ve": "images/ve.png",
-    "vestido": "images/vestido.png",
-    "voar": "images/voar.png"
+    "a": "images/a.jpg",
+    "abelha": "images/abelha.jpg",
+    "abracar": "images/abracar.jpg",
+    "acucar": "images/acucar.jpg",
+    "adamastor": "images/adamastor.jpg",
+    "afia": "images/afia.jpg",
+    "agulha": "images/agulha.jpg",
+    "al": "images/al.jpg",
+    "alce": "images/alce.jpg",
+    "algema": "images/algema.jpg",
+    "anel": "images/anel.jpg",
+    "anjo": "images/anjo.jpg",
+    "apito": "images/apito.jpg",
+    "ar": "images/ar.jpg",
+    "arara": "images/arara.jpg",
+    "arco": "images/arco.jpg",
+    "arco_iris": "images/arco_iris.jpg",
+    "arvore": "images/arvore.jpg",
+    "aspirador": "images/aspirador.jpg",
+    "avental": "images/avental.jpg",
+    "avestruz": "images/avestruz.jpg",
+    "bacalhau": "images/bacalhau.jpg",
+    "balanca": "images/balanca.jpg",
+    "bar": "images/bar.jpg",
+    "barrar": "images/barrar.jpg",
+    "beijo": "images/beijo.jpg",
+    "bengala": "images/bengala.jpg",
+    "boia": "images/boia.jpg",
+    "bola": "images/bola.jpg",
+    "bri": "images/bri.jpg",
+    "brinquedo": "images/brinquedo.jpg",
+    "bro": "images/bro.jpg",
+    "bu": "images/bu.jpg",
+    "cacada": "images/cacada.jpg",
+    "cacar": "images/cacar.jpg",
+    "caco": "images/caco.jpg",
+    "cagado": "images/cagado.jpg",
+    "camisa": "images/camisa.jpg",
+    "camelo": "images/camelo.jpg",
+    "cantar": "images/cantar.jpg",
+    "car": "images/car.jpg",
+    "carnaval": "images/carnaval.jpg",
+    "carro": "images/carro.jpg",
+    "cas": "images/cas.jpg",
+    "casa": "images/casa.jpg",
+    "casaco": "images/casaco.jpg",
+    "castor": "images/castor.jpg",
+    "centeio": "images/centeio.jpg",
+    "cereja": "images/cereja.jpg",
+    "cesto": "images/cesto.jpg",
+    "chegar": "images/chegar.jpg",
+    "chum": "images/chum.jpg",
+    "cinto": "images/cinto.jpg",
+    "cir": "images/cir.jpg",
+    "circo": "images/circo.jpg",
+    "circular": "images/circular.jpg",
+    "circulo": "images/circulo.jpg",
+    "comboio": "images/comboio.jpg",
+    "computador": "images/computador.jpg",
+    "con": "images/con.jpg",
+    "convidar": "images/convidar.jpg",
+    "copo": "images/copo.jpg",
+    "corrigir": "images/corrigir.jpg",
+    "do": "images/do.jpg",
+    "entro": "images/entro.jpg",
+    "erva": "images/erva.jpg",
+    "esqui": "images/esqui.jpg",
+    "faca": "images/faca.jpg",
+    "falar": "images/falar.jpg",
+    "fechar": "images/fechar.jpg",
+    "fila": "images/fila.jpg",
+    "fingir": "images/fingir.jpg",
+    "frio": "images/frio.jpg",
+    "fugir": "images/fugir.jpg",
+    "gaivota": "images/gaivota.jpg",
+    "gelado": "images/gelado.jpg",
+    "gir": "images/gir.jpg",
+    "grua": "images/grua.jpg",
+    "guitarra": "images/guitarra.jpg",
+    "harpa": "images/harpa.jpg",
+    "ir": "images/ir.jpg",
+    "ja": "images/ja.jpg",
+    "jarra": "images/jarra.jpg",
+    "la": "images/la.jpg",
+    "lado": "images/lado.jpg",
+    "lapis": "images/lapis.jpg",
+    "laranja": "images/laranja.jpg",
+    "lo": "images/lo.jpg",
+    "ma": "images/ma.jpg",
+    "maca": "images/maca.jpg",
+    "macaco": "images/macaco.jpg",
+    "mao": "images/mao.jpg",
+    "marmelo": "images/marmelo.jpg",
+    "martelo": "images/martelo.jpg",
+    "mascara": "images/mascara.jpg",
+    "mel": "images/mel.jpg",
+    "melado": "images/melado.jpg",
+    "melga": "images/melga.jpg",
+    "melro": "images/melro.jpg",
+    "mesas": "images/mesas.jpg",
+    "mesmo": "images/mesmo.jpg",
+    "mochila": "images/mochila.jpg",
+    "nadar": "images/nadar.jpg",
+    "o": "images/o.jpg",
+    "o_u_jogo4": "images/o_u_jogo4.jpg",
+    "oculos": "images/oculos.jpg",
+    "olho": "images/olho.jpg",
+    "ombro": "images/ombro.jpg",
+    "osso": "images/osso.jpg",
+    "ovo": "images/ovo.jpg",
+    "painel": "images/painel.jpg",
+    "palavra": "images/palavra.jpg",
+    "papagaio": "images/papagaio.jpg",
+    "pao": "images/pao.jpg",
+    "parede": "images/parede.jpg",
+    "partir": "images/partir.jpg",
+    "pas": "images/pas.jpg",
+    "passa": "images/passa.jpg",
+    "passaro": "images/passaro.jpg",
+    "passaros": "images/passaros.jpg",
+    "pastelaria": "images/pastelaria.jpg",
+    "pastilha": "images/pastilha.jpg",
+    "pastor": "images/pastor.jpg",
+    "pentear": "images/pentear.jpg",
+    "perfumar": "images/perfumar.jpg",
+    "pessego": "images/pessego.jpg",
+    "piano": "images/piano.jpg",
+    "piar": "images/piar.jpg",
+    "pincel": "images/pincel.jpg",
+    "pinha": "images/pinha.jpg",
+    "pistola": "images/pistola.jpg",
+    "pul": "images/pul.jpg",
+    "recreio": "images/recreio.jpg",
+    "ro": "images/ro.jpg",
+    "rra": "images/rra.jpg",
+    "rras": "images/rras.jpg",
+    "saia": "images/saia.jpg",
+    "sair": "images/sair.jpg",
+    "sal": "images/sal.jpg",
+    "salgado": "images/salgado.jpg",
+    "sapato": "images/sapato.jpg",
+    "sapo": "images/sapo.jpg",
+    "secar": "images/secar.jpg",
+    "si": "images/si.jpg",
+    "silaba": "images/silaba.jpg",
+    "sobrepor": "images/sobrepor.jpg",
+    "suspiro": "images/suspiro.jpg",
+    "tan": "images/tan.jpg",
+    "tor": "images/tor.jpg",
+    "tos": "images/tos.jpg",
+    "trator": "images/trator.jpg",
+    "trocar": "images/trocar.jpg",
+    "tubarao": "images/tubarao.jpg",
+    "ul": "images/ul.jpg",
+    "uva": "images/uva.jpg",
+    "ve": "images/ve.jpg",
+    "vestido": "images/vestido.jpg",
+    "voar": "images/voar.jpg"
 };
 
 var audioHelp = {
@@ -556,7 +556,6 @@ function load() {
     canvas.setHeight(canvasHeight);
     canvas.setWidth(canvasWidth);
     clearCanvasAndBtns();
-    // canvas.setBackgroundColor(roxoClaro, canvas.renderAll.bind(canvas));
 };
 
 function createBigButton(text) {
@@ -711,6 +710,8 @@ var level1_images = {
 };
 
 function level1_load() {
+    level1_objetoIndex = 0;
+    ResultsGame1ByStudent = [];
     clearCanvas(false);
     loadHelpBtn('blue', 1);
     level1_loadButtons();
@@ -849,7 +850,7 @@ function level1_loadImage(objeto) {
             hasBorders: false,
             lockMovementX: true,
             lockMovementY: true
-        }).scale(0.7));
+        }).scale(0.6));
 
         img.on('mousedown', function() {
             var audioElement = document.createElement('audio');
@@ -902,6 +903,9 @@ var level2_imagesByRound = {
 };
 
 function level2_load() {
+    level2_roundNumber = 1;
+    level2_numCorrectAnswers = 0;
+    ResultsGame2ByStudent = [];
     clearCanvas(true);
     loadHelpBtn('green', 2);
     level2_loadSilaba(Object.keys(level2_silabas)[level2_roundNumber - 1]);
@@ -962,7 +966,7 @@ function level2_loadImage(objeto, _left, _top) {
             hasBorders: false,
             lockMovementX: true,
             lockMovementY: true
-        }).scale(0.32));
+        }).scale(0.30));
 
         img.on('mousedown', function() {
             var audioElement = document.createElement('audio');
@@ -1128,6 +1132,9 @@ var level3_imagesByRound = {
 };
 
 function level3_load() {
+    level3_roundNumber = 1;
+    level3_numCorrectAnswers = 0;
+    ResultsGame3ByStudent = [];
     clearCanvas(true);
     loadHelpBtn('yellow', 3);
     level3_loadSilaba(Object.keys(level3_silabas)[level3_roundNumber - 1]);
@@ -1366,6 +1373,9 @@ var level4_imagesByRound = {
 };
 
 function level4_load() {
+    level4_roundNumber = 1;
+    level4_numCorrectAnswers = 0;
+    ResultsGame4ByStudent = [];
     clearCanvas(true);
     loadHelpBtn('blue', 4);
     level4_loadSilaba(Object.keys(level4_silabas)[level4_roundNumber - 1]);
@@ -1426,7 +1436,7 @@ function level4_loadImage(objeto, _left, _top) {
             hasBorders: false,
             lockMovementX: true,
             lockMovementY: true
-        }).scale(0.25));
+        }).scale(0.30));
 
         img.on('mousedown', function() {
             var audioElement = document.createElement('audio');
@@ -1592,6 +1602,9 @@ var level5_imagesByRound = {
 };
 
 function level5_load() {
+    level5_roundNumber = 1;
+    level5_numCorrectAnswers = 0;
+    ResultsGame5ByStudent = [];
     clearCanvas(true);
     loadHelpBtn('green', 5);
     level5_loadSilaba(Object.keys(level5_silabas)[level5_roundNumber - 1]);
@@ -1815,6 +1828,9 @@ var level6_imagesByRound = {
 };
 
 function level6_load() {
+    level6_roundNumber = 1;
+    level6_imgClicked = [];
+    ResultsGame6ByStudent = [];
     clearCanvas(false);
     loadHelpBtn('yellow', 6);
     level6_loadImagesAndSounds(level6_roundNumber);
@@ -1828,15 +1844,15 @@ function level6_loadImagesAndSounds(round) {
     $(".btn").remove();
 
     var img = level6_imagesByRound[round];
-    level6_loadImage(Object.keys(img)[0], canvasWidth * 0.30 - 30, canvasHeight * 0.30);
-    level6_loadImage(Object.keys(img)[1], canvasWidth * 0.60 - 30, canvasHeight * 0.30);
-    level6_loadImage(Object.keys(img)[2], canvasWidth * 0.30 - 30, canvasHeight * 0.70);
-    level6_loadImage(Object.keys(img)[3], canvasWidth * 0.60 - 30, canvasHeight * 0.70);
+    level6_loadImage(Object.keys(img)[0], canvasWidth * 0.30 - 15, canvasHeight * 0.25);
+    level6_loadImage(Object.keys(img)[1], canvasWidth * 0.60 + 15, canvasHeight * 0.25);
+    level6_loadImage(Object.keys(img)[2], canvasWidth * 0.30 - 15, canvasHeight * 0.80);
+    level6_loadImage(Object.keys(img)[3], canvasWidth * 0.60 + 15, canvasHeight * 0.80);
 
-    level6_loadAnswerButton(Object.keys(img)[0], canvasWidth * 0.30, canvasHeight * 0.42);
-    level6_loadAnswerButton(Object.keys(img)[1], canvasWidth * 0.60, canvasHeight * 0.42);
-    level6_loadAnswerButton(Object.keys(img)[2], canvasWidth * 0.30, canvasHeight * 0.82);
-    level6_loadAnswerButton(Object.keys(img)[3], canvasWidth * 0.60, canvasHeight * 0.82);
+    level6_loadAnswerButton(Object.keys(img)[0], canvasWidth * 0.37, canvasHeight * 0.37);
+    level6_loadAnswerButton(Object.keys(img)[1], canvasWidth * 0.53, canvasHeight * 0.37);
+    level6_loadAnswerButton(Object.keys(img)[2], canvasWidth * 0.37, canvasHeight * 0.60);
+    level6_loadAnswerButton(Object.keys(img)[3], canvasWidth * 0.53, canvasHeight * 0.60);
 };
 
 function level6_loadImage(objeto, _left, _top) {
@@ -1878,14 +1894,19 @@ function level6_loadAnswerButton(figureName, left, top) {
     $(span)[0].style.top = top;
 
     $(span).on("click", function() {
-        $(this).removeClass('btn-yellow');
-        $(this).addClass('btn-green');
-        level6_verificaResposta(figureName);
+        level6_verificaResposta($(this), figureName);
     })
 };
 
-function level6_verificaResposta(figureName) {
+function level6_verificaResposta(button, figureName) {
+    button.removeClass('btn-yellow');
+    button.addClass('btn-green');
+
     if (level6_imgClicked.length > 0 && level6_imgClicked[0] == figureName) {
+        button.removeClass('btn-green');
+        button.addClass('btn-yellow');
+
+        level6_imgClicked = [];
         return;
     };
 
@@ -1997,6 +2018,9 @@ var level7_imagesByRound = {
 };
 
 function level7_load() {
+    level7_roundNumber = 1;
+    level7_imgClicked = [];
+    ResultsGame7ByStudent = [];
     clearCanvas(false);
     loadHelpBtn('blue', 7);
     level7_loadImagesAndSounds(level7_roundNumber);
@@ -2010,15 +2034,15 @@ function level7_loadImagesAndSounds(round) {
     $(".btn").remove();
 
     var img = level7_imagesByRound[round];
-    level7_loadImage(Object.keys(img)[0], canvasWidth * 0.30 - 30, canvasHeight * 0.30);
-    level7_loadImage(Object.keys(img)[1], canvasWidth * 0.60 - 30, canvasHeight * 0.30);
-    level7_loadImage(Object.keys(img)[2], canvasWidth * 0.30 - 30, canvasHeight * 0.70);
-    level7_loadImage(Object.keys(img)[3], canvasWidth * 0.60 - 30, canvasHeight * 0.70);
+    level7_loadImage(Object.keys(img)[0], canvasWidth * 0.30 - 15, canvasHeight * 0.25);
+    level7_loadImage(Object.keys(img)[1], canvasWidth * 0.60 + 15, canvasHeight * 0.25);
+    level7_loadImage(Object.keys(img)[2], canvasWidth * 0.30 - 15, canvasHeight * 0.80);
+    level7_loadImage(Object.keys(img)[3], canvasWidth * 0.60 + 15, canvasHeight * 0.80);
 
-    level7_loadAnswerButton(Object.keys(img)[0], canvasWidth * 0.30, canvasHeight * 0.42);
-    level7_loadAnswerButton(Object.keys(img)[1], canvasWidth * 0.60, canvasHeight * 0.42);
-    level7_loadAnswerButton(Object.keys(img)[2], canvasWidth * 0.30, canvasHeight * 0.82);
-    level7_loadAnswerButton(Object.keys(img)[3], canvasWidth * 0.60, canvasHeight * 0.82);
+    level7_loadAnswerButton(Object.keys(img)[0], canvasWidth * 0.37, canvasHeight * 0.37);
+    level7_loadAnswerButton(Object.keys(img)[1], canvasWidth * 0.53, canvasHeight * 0.37);
+    level7_loadAnswerButton(Object.keys(img)[2], canvasWidth * 0.37, canvasHeight * 0.60);
+    level7_loadAnswerButton(Object.keys(img)[3], canvasWidth * 0.53, canvasHeight * 0.60);
 };
 
 function level7_loadImage(objeto, _left, _top) {
@@ -2060,13 +2084,22 @@ function level7_loadAnswerButton(figureName, left, top) {
     $(span)[0].style.top = top;
 
     $(span).on("click", function() {
-        $(this).removeClass('btn-yellow');
-        $(this).addClass('btn-green');
-        level7_verificaResposta(figureName);
+        level7_verificaResposta($(this), figureName);
     })
 };
 
-function level7_verificaResposta(figureName) {
+function level7_verificaResposta(button, figureName) {
+    button.removeClass('btn-yellow');
+    button.addClass('btn-green');
+
+    if (level7_imgClicked.length > 0 && level7_imgClicked[0] == figureName) {
+        button.removeClass('btn-green');
+        button.addClass('btn-yellow');
+
+        level7_imgClicked = [];
+        return;
+    };
+
     level7_imgClicked.push(figureName);
 
     if (level7_imgClicked.length > 1) {
@@ -2178,6 +2211,8 @@ var level8_imagesByRound = {
 };
 
 function level8_load() {
+    level8_roundNumber = 1;
+    level8_microClicked = [];
     clearCanvas(true);
     loadHelpBtn('green', 8);
     level8_loadPalavra(Object.keys(level8_palavras)[level8_roundNumber - 1]);
@@ -2213,7 +2248,7 @@ function level8_loadmicro(silaba, _left, _top) {
     $(micro).attr({
         id: 'rec-' + silaba,
         class: 'record',
-        src: 'images/mic128.png',
+        src: imgMicro,
         value: silaba
     });
 
@@ -2354,6 +2389,8 @@ var level9_imagesByRound = {
 };
 
 function level9_load() {
+    level9_roundNumber = 1;
+    level9_microClicked = [];
     clearCanvas(true);
     loadHelpBtn('yellow', 9);
     level9_loadPalavra(Object.keys(level9_palavras)[level9_roundNumber - 1]);
@@ -2389,7 +2426,7 @@ function level9_loadmicro(silaba, _left, _top) {
     $(micro).attr({
         id: 'rec-' + silaba,
         class: 'record',
-        src: 'images/mic128.png',
+        src: imgMicro,
         value: silaba
     });
 
@@ -2530,6 +2567,8 @@ var level10_imagesByRound = {
 };
 
 function level10_load() {
+    level10_roundNumber = 1;
+    level10_microClicked = [];
     clearCanvas(true);
     loadHelpBtn('blue', 10);
     level10_loadPalavra(Object.keys(level10_palavras)[level10_roundNumber - 1]);
@@ -2565,7 +2604,7 @@ function level10_loadmicro(silaba, _left, _top) {
     $(micro).attr({
         id: 'rec-' + silaba,
         class: 'record',
-        src: 'images/mic128.png',
+        src: imgMicro,
         value: silaba
     });
 
@@ -2697,6 +2736,8 @@ var level11_imagesByRound = {
 };
 
 function level11_load() {
+    level11_roundNumber = 1;
+    level11_microClicked = [];
     clearCanvas(false);
     loadHelpBtn('green', 11);
     level11_loadBuzzerBtnAndSounds(level11_roundNumber);
@@ -2712,7 +2753,7 @@ function level11_loadmicro(palavra, _left, _top) {
     $(micro).attr({
         id: 'rec-' + palavra,
         class: 'record',
-        src: 'images/mic128.png',
+        src: imgMicro,
         value: palavra
     });
 
@@ -2839,6 +2880,8 @@ var level12_imagesByRound = {
 };
 
 function level12_load() {
+    level12_roundNumber = 1;
+    level12_microClicked = [];
     clearCanvas(false);
     loadHelpBtn('yellow', 12);
     level12_loadBuzzerBtnAndSounds(level12_roundNumber);
@@ -2854,7 +2897,7 @@ function level12_loadmicro(palavra, _left, _top) {
     $(micro).attr({
         id: 'rec-' + palavra,
         class: 'record',
-        src: 'images/mic128.png',
+        src: imgMicro,
         value: palavra
     });
 
@@ -2981,6 +3024,8 @@ var level13_imagesByRound = {
 };
 
 function level13_load() {
+    level13_roundNumber = 1;
+    level13_microClicked = [];
     clearCanvas(false);
     loadHelpBtn('blue', 13);
     level13_loadBuzzerBtnAndSounds(level13_roundNumber);
@@ -2996,7 +3041,7 @@ function level13_loadmicro(palavra, _left, _top) {
     $(micro).attr({
         id: 'rec-' + palavra,
         class: 'record',
-        src: 'images/mic128.png',
+        src: imgMicro,
         value: palavra
     });
 
