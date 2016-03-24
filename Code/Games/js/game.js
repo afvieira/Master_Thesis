@@ -788,6 +788,10 @@ function level1_btnAnswer() {
             $(this).addClass('btn-error btn-error-55');
             playSoundAnswer(false);
             tentativasPorImagem += 1;
+            setTimeout(function() {
+                $('.btn').removeClass('btn-error btn-error-55');
+            }, 1000);
+
         };
     });
 };
