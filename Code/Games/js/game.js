@@ -1033,14 +1033,17 @@ function level2_btnAnswer() {
             $(this).addClass('btn-valid btn-valid-25');
             playSoundAnswer(true);
             level2_correctAnswer();
+            $(this).addClass('btn-disabled');
+            $(this).unbind('click');
+            $(this).css("cursor", 'default');
         } else {
             $(this).addClass('btn-error btn-error-25');
             playSoundAnswer(false);
             level2_wrongAnswers += 1;
+            setTimeout(function() {
+                $('.btn').removeClass('btn-error btn-error-25');
+            }, 1000);
         };
-        $(this).addClass('btn-disabled');
-        $(this).unbind('click');
-        $(this).css("cursor", 'default');
     });
 };
 
@@ -1272,14 +1275,17 @@ function level3_btnAnswer() {
             $(this).addClass('btn-valid btn-valid-25');
             playSoundAnswer(true);
             level3_correctAnswer();
+            $(this).addClass('btn-disabled');
+            $(this).unbind('click');
+            $(this).css("cursor", 'default');
         } else {
             $(this).addClass('btn-error btn-error-25');
             playSoundAnswer(false);
             level3_wrongAnswers += 1;
+            setTimeout(function() {
+                $('.btn').removeClass('btn-error btn-error-25');
+            }, 1000);
         };
-        $(this).addClass('btn-disabled');
-        $(this).unbind('click');
-        $(this).css("cursor", 'default');
     });
 };
 
@@ -1503,14 +1509,17 @@ function level4_btnAnswer() {
             $(this).addClass('btn-valid btn-valid-25');
             playSoundAnswer(true);
             level4_correctAnswer();
+            $(this).addClass('btn-disabled');
+            $(this).unbind('click');
+            $(this).css("cursor", 'default');
         } else {
             $(this).addClass('btn-error btn-error-25');
             playSoundAnswer(false);
             level4_wrongAnswers += 1;
+            setTimeout(function() {
+                $('.btn').removeClass('btn-error btn-error-25');
+            }, 1000);
         };
-        $(this).addClass('btn-disabled');
-        $(this).unbind('click');
-        $(this).css("cursor", 'default');
     });
 };
 
@@ -1742,14 +1751,17 @@ function level5_btnAnswer() {
             $(this).addClass('btn-valid btn-valid-25');
             playSoundAnswer(true);
             level5_correctAnswer();
+            $(this).addClass('btn-disabled');
+            $(this).unbind('click');
+            $(this).css("cursor", 'default');
         } else {
-            $(this).addClass('btn-error btn-error-25');
+            $(this).addClass('btn-error btn-error-55');
             playSoundAnswer(false);
             level5_wrongAnswers += 1;
+            setTimeout(function() {
+                $('.btn').removeClass('btn-error btn-error-25');
+            }, 1000);
         };
-        $(this).addClass('btn-disabled');
-        $(this).unbind('click');
-        $(this).css("cursor", 'default');
     });
 };
 
