@@ -5,29 +5,26 @@
     myScope.$broadcast("postJogoResultados", dados);
 }
 
-$(document).ready(function () {
+$(document).ready(function() {
     // SubmitJogo("dados do jogo");
-    $(".btMiew").click(function () {
+    $(".btMiew").click(function() {
         //  alert("Handler for .click() called.");
-        var perguntas = [
-            {
-                pergunta: "Pergunta 01",
-                id: 1,
-                respostaCorreta: true,
-                respostas: ["3ª tentativa"]
-            },
-            {
-                pergunta: "Pergunta 02",
-                id: 2,
-                respostaCorreta: true,
-                respostas: ["sim", "talvez", "ok"]
-            },
-            {
-                pergunta: "Pergunta 03",
-                id: 3,
-                respostaCorreta: false,
-                respostas: ["resposta", "errada"]
-            }];
+        var perguntas = [{
+            pergunta: "Pergunta 01",
+            id: 1,
+            respostaCorreta: true,
+            respostas: ["3ª tentativa"]
+        }, {
+            pergunta: "Pergunta 02",
+            id: 2,
+            respostaCorreta: true,
+            respostas: ["sim", "talvez", "ok"]
+        }, {
+            pergunta: "Pergunta 03",
+            id: 3,
+            respostaCorreta: false,
+            respostas: ["resposta", "errada"]
+        }];
         SubmitJogo(perguntas);
     });
 });

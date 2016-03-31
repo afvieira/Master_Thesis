@@ -5,12 +5,12 @@ fabric.Object.prototype.transparentCorners = false;
 var canvasHeight,
     canvasWidth,
     canvas,
-    verdeClaro = 'rgba(142, 163, 122, 1)',
-    verdeEscuro = 'rgba(170, 190, 151, 1)',
-    azulClaro = 'rgba(190, 163, 122, 1)',
-    azulEscuro = 'rgba(240, 190, 150, 1)',
-    roxoClaro = 'rgba(122, 130, 163, 1)',
-    roxoEscuro = 'rgba(151, 158, 190, 1)',
+    verdeClaro = 'rgba(76, 176, 124, 1)',
+    verdeEscuro = 'rgba(76, 176, 124, 1)',
+    azulClaro = 'rgba(76, 176, 124, 1)',
+    azulEscuro = 'rgba(76, 176, 124, 1)',
+    roxoClaro = 'rgba(76, 176, 124, 1)',
+    roxoEscuro = 'rgba(76, 176, 124, 1)',
     alturaTop = 200,
     topBar,
     micro = "images/mic128.png",
@@ -1732,36 +1732,50 @@ function goToNextLevel() {
     nextLevel += 1;
 };
 
-function linkToLevel() {
+function btnLinkToLevel() {
     $('.lv').click(function() {
         clearCanvasAndBtns();
         var num = parseInt($(this).html());
-        switch (num) {
-            case 1:
-                nextLevel = 2;
-                level1_load();
-                break;
-            case 2:
-                nextLevel = 3;
-                level2_load();
-                break;
-            case 3:
-                nextLevel = 4;
-                level3_load();
-                break;
-            case 4:
-                nextLevel = 5;
-                level4_load();
-                break;
-            case 5:
-                nextLevel = 6;
-                level5_load();
-                break;
-            default:
-                alert('Erro level->' + num);
-        };
+        linkToLevel(num);
     });
 };
+
+function linkToLevel(levelNum) {
+    clearCanvasAndBtns();
+    switch (levelNum) {
+        case 1:
+            nextLevel = 2;
+            level1_load();
+            break;
+        case 2:
+            nextLevel = 3;
+            level2_load();
+            break;
+        case 3:
+            nextLevel = 4;
+            level3_load();
+            break;
+        case 4:
+            nextLevel = 5;
+            level4_load();
+            break;
+        case 5:
+            nextLevel = 6;
+            level5_load();
+            break;
+        default:
+            alert('Erro level->' + levelNum);
+    };
+};
+
+function hashLink() {
+    var hashTag = window.location.hash
+
+    if (hashTag) {
+        var levelNumber = hashTag.split("#")[1];
+        linkToLevel(Number.parseInt(levelNumber));
+    }
+}
 
 /* Application Controller
 ------------------------------------------------ */
@@ -1773,7 +1787,8 @@ var App = function() {
         init: function() {
             load();
             createBigButton('Início');
-            linkToLevel();
+            hashLink();
+            btnLinkToLevel();
         }
     };
 }();
