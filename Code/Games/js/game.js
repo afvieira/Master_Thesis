@@ -502,6 +502,36 @@ var solutions = {
 };
 
 //====== RESULTS =====================================
+
+// var perguntas = [{
+//   pergunta: "Pergunta 01",
+//   id: 1,
+//   respostaCorreta: true,
+//   respostas: ["3ª tentativa"]
+// }, {
+//   pergunta: "Pergunta 02",
+//   id: 2,
+//   respostaCorreta: true,
+//   respostas: ["sim", "talvez", "ok"]
+// }, {
+//   pergunta: "Pergunta 03",
+//   id: 3,
+//   respostaCorreta: false,
+//   respostas: ["resposta", "errada"]
+// }];
+// SubmitJogo(perguntas);
+
+//pergunta: "Pergunta 01",
+//id: 1,
+//respostaCorreta: true,
+//respostas: ["3ª tentativa"]
+function Result(id, pergunta, respostaCorreta, respostas) {
+  this.id = id;
+  this.pergunta = pergunta;
+  this.respostaCorreta = respostaCorreta;
+  this.respostas = respostas;
+}
+
 function ResultGameNSilabas(aluno, imagem, tentativas, data) {
   this.aluno = aluno;
   this.imagem = imagem;
@@ -524,6 +554,8 @@ function ResultGameCorrectPar(aluno, game, tentativas, data) {
   this.data = data;
 };
 
+Results = [];
+
 ResultsGame1ByStudent = [];
 ResultsGame2ByStudent = [];
 ResultsGame3ByStudent = [];
@@ -532,7 +564,17 @@ ResultsGame5ByStudent = [];
 ResultsGame6ByStudent = [];
 ResultsGame7ByStudent = [];
 
-function sendResultsGame1() {
+function SubmitJogo(dados) {
+  var myEl = parent.angular.element(parent.document.querySelector('#uiViewMain'));
+  var myScope = parent.angular.element(myEl).scope();
+  //  parent.myScopio = myScope;
+  myScope.$broadcast("postJogoResultados", dados);
+}
+
+function sendResults() {
+  SubmitJogo(Results);
+  Results = [];
+
   // $.ajax({
   //     type: 'POST',
   //     url: 'http://rest.learncode.academy/api/johnbob/friends',
@@ -802,7 +844,15 @@ function level1_btnAnswer() {
       level1_correctAnswer();
 
       var image = Object.keys(level1_images)[level1_objetoIndex];
-      var result = new ResultGameNSilabas('aluno', image, tentativasPorImagem, new Date());
+
+      var result = new Result(1,
+        'Jogo 1: Segmentação silábica - Série ' + (level1_objetoIndex + 1) + ': ' + image,
+        true,
+        'Tentativas: ' + tentativasPorImagem);
+
+      Results.push(result);
+
+      //var result = new ResultGameNSilabas('aluno', image, tentativasPorImagem, new Date());
       ResultsGame1ByStudent.push(result);
     } else {
       $(this).addClass('btn-error btn-error-55');
@@ -823,12 +873,12 @@ function level1_loadEvents() {
   $('#btn-next').click(function(btn) {
     if (level1_objetoIndex == sizeOfImages - 1) {
       clearCanvasAndBtns();
-      sendResultsGame1();
       createBigButton('Jogo 2');
     } else {
       level1_resetButtons();
       level1_loadNextImage();
     };
+    sendResults();
   });
 };
 
@@ -1439,11 +1489,13 @@ function level4_loadSilaba(silaba) {
       audioElement.play();
     });
 
-    if (silaba == 'o_u_jogo4') {
-      silaba = "o";
-    }
+    var word = silaba;
 
-    loadSilabaOnTop(silaba);
+    if (silaba == 'o_u_jogo4') {
+      word = 'o';
+    };
+
+    loadSilabaOnTop(word);
 
   });
 };
