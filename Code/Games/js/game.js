@@ -532,13 +532,6 @@ function Result(id, pergunta, respostaCorreta, respostas) {
   this.respostas = respostas;
 }
 
-function ResultGameNSilabas(aluno, imagem, tentativas, data) {
-  this.aluno = aluno;
-  this.imagem = imagem;
-  this.tentativas = tentativas;
-  this.data = data;
-};
-
 function ResultGameCorrectSilaba(aluno, game, silaba, wrongAnswers, data) {
   this.aluno = aluno;
   this.game = game;
@@ -556,7 +549,6 @@ function ResultGameCorrectPar(aluno, game, tentativas, data) {
 
 Results = [];
 
-ResultsGame1ByStudent = [];
 ResultsGame2ByStudent = [];
 ResultsGame3ByStudent = [];
 ResultsGame4ByStudent = [];
@@ -574,15 +566,6 @@ function SubmitJogo(dados) {
 function sendResults() {
   SubmitJogo(Results);
   Results = [];
-
-  // $.ajax({
-  //     type: 'POST',
-  //     url: 'http://rest.learncode.academy/api/johnbob/friends',
-  //     data: ResultsGame1ByStudent,
-  //     success: function(data) {
-  //         console.log("SUCESSO", data);
-  //     }
-  // });
 };
 
 //====== RESULTS =====================================
@@ -774,7 +757,6 @@ var level1_images = {
 
 function level1_load() {
   level1_objetoIndex = 0;
-  ResultsGame1ByStudent = [];
   clearCanvas(false);
   loadHelpBtn('blue', 1);
   level1_loadButtons();
@@ -851,9 +833,6 @@ function level1_btnAnswer() {
         'Tentativas: ' + tentativasPorImagem);
 
       Results.push(result);
-
-      //var result = new ResultGameNSilabas('aluno', image, tentativasPorImagem, new Date());
-      ResultsGame1ByStudent.push(result);
     } else {
       $(this).addClass('btn-error btn-error-55');
       playSoundAnswer(false);
@@ -950,6 +929,12 @@ var level2_silabas = {
   "a": audio["a"]
 };
 
+var level2_silabasAnswerByRound = {
+  1: "<ar>, [aɾ]",
+  2: "<o>, [o]",
+  3: "<a>, [ɐ]"
+}
+
 var level2_imagesByRound = {
   1: {
     "algema": images["algema"],
@@ -980,7 +965,6 @@ var level2_imagesByRound = {
 function level2_load() {
   level2_roundNumber = 1;
   level2_numCorrectAnswers = 0;
-  ResultsGame2ByStudent = [];
   clearCanvas(true);
   loadHelpBtn('green', 2);
   level2_loadSilaba(Object.keys(level2_silabas)[level2_roundNumber - 1]);
@@ -1085,6 +1069,7 @@ function level2_loadEvents() {
       level2_loadNextRound();
       level2_resetButtons();
     };
+    sendResults();
   });
 };
 
@@ -1141,9 +1126,14 @@ function level2_correctAnswer() {
     $(level2_nextBtn).prop('disabled', false);
     level2_numCorrectAnswers = 0;
 
-    var silaba = Object.keys(level2_silabas)[level2_roundNumber - 1];
-    var result = new ResultGameCorrectSilaba('aluno', 2, silaba, level2_wrongAnswers, new Date());
-    ResultsGame2ByStudent.push(result);
+    var silaba = level2_silabasAnswerByRound[level2_roundNumber];
+
+    var result = new Result(1,
+      'Jogo 2: Série ' + level2_roundNumber + ' : Sílaba ' + silaba,
+      true,
+      'Respostas erradas: ' + level2_wrongAnswers);
+
+    Results.push(result);
 
     var numberOfRounds = Object.keys(level2_silabas).length;
     if (level2_roundNumber == numberOfRounds) {
@@ -1183,6 +1173,12 @@ var level3_silabas = {
   "pas": audio["pas"],
   "cir": audio["cir"]
 };
+
+var level3_silabasAnswerByRound = {
+  1: "<mel>, [mɛɫ]",
+  2: "<pas>, [pɐʃ]",
+  3: "<cir>, [siɾ]"
+}
 
 var level3_imagesByRound = {
   1: {
@@ -1320,6 +1316,7 @@ function level3_loadEvents() {
       level3_loadNextRound();
       level3_resetButtons();
     };
+    sendResults();
   });
 };
 
@@ -1387,10 +1384,14 @@ function level3_correctAnswer() {
     $(level3_nextBtn).prop('disabled', false);
     level3_numCorrectAnswers = 0;
 
-    var silaba = Object.keys(level3_silabas)[level3_roundNumber - 1];
-    var result = new ResultGameCorrectSilaba('aluno', 3, silaba, level3_wrongAnswers, new Date());
-    ResultsGame3ByStudent.push(result);
+    var silaba = level3_silabasAnswerByRound[level3_roundNumber];
 
+    var result = new Result(1,
+      'Jogo 3: Série ' + level3_roundNumber + ' : Sílaba ' + silaba,
+      true,
+      'Respostas erradas: ' + level3_wrongAnswers);
+
+    Results.push(result);
     var numberOfRounds = Object.keys(level3_silabas).length;
     if (level3_roundNumber == numberOfRounds) {
       $(level3_nextBtn).text('Fim');
@@ -1430,6 +1431,12 @@ var level4_silabas = {
   "a": audio["a"],
   "ar": audio["ar"]
 };
+
+var level4_silabasAnswerByRound = {
+  1: "<o>, [u]",
+  2: "<a>, [ɐ]",
+  3: "<ar>, [aɾ]"
+}
 
 var level4_imagesByRound = {
   1: {
@@ -1573,6 +1580,7 @@ function level4_loadEvents() {
       level4_loadNextRound();
       level4_resetButtons();
     };
+    sendResults();
   });
 };
 
@@ -1629,10 +1637,14 @@ function level4_correctAnswer() {
     $(level4_nextBtn).prop('disabled', false);
     level4_numCorrectAnswers = 0;
 
-    var silaba = Object.keys(level4_silabas)[level4_roundNumber - 1];
-    var result = new ResultGameCorrectSilaba('aluno', 4, silaba, level4_wrongAnswers, new Date());
-    ResultsGame4ByStudent.push(result);
+    var silaba = level4_silabasAnswerByRound[level4_roundNumber];
 
+    var result = new Result(1,
+      'Jogo 4: Série ' + level4_roundNumber + ' : Sílaba ' + silaba,
+      true,
+      'Respostas erradas: ' + level4_wrongAnswers);
+
+    Results.push(result);
     var numberOfRounds = Object.keys(level4_silabas).length;
     if (level4_roundNumber == numberOfRounds) {
       $(level4_nextBtn).text('Fim');
@@ -1671,6 +1683,12 @@ var level5_silabas = {
   "tor": audio["tor"],
   "car": audio["car"]
 };
+
+var level5_silabasAnswerByRound = {
+  1: "<gir>, [ʒiɾ]",
+  2: "<tor>, [toɾ]",
+  3: "<car>, [kaɾ]"
+}
 
 var level5_imagesByRound = {
   1: {
@@ -1808,6 +1826,7 @@ function level5_loadEvents() {
       level5_loadNextRound();
       level5_resetButtons();
     };
+    sendResults();
   });
 };
 
@@ -1875,10 +1894,14 @@ function level5_correctAnswer() {
     $(level5_nextBtn).prop('disabled', false);
     level5_numCorrectAnswers = 0;
 
-    var silaba = Object.keys(level5_silabas)[level5_roundNumber - 1];
-    var result = new ResultGameCorrectSilaba('aluno', 5, silaba, level5_wrongAnswers, new Date());
-    ResultsGame5ByStudent.push(result);
+    var silaba = level5_silabasAnswerByRound[level5_roundNumber];
 
+    var result = new Result(1,
+      'Jogo 5: Série ' + level5_roundNumber + ' : Sílaba ' + silaba,
+      true,
+      'Respostas erradas: ' + level5_wrongAnswers);
+
+    Results.push(result);
     var numberOfRounds = Object.keys(level5_silabas).length;
     if (level5_roundNumber == numberOfRounds) {
       $(level5_nextBtn).text('Fim');
@@ -2050,6 +2073,7 @@ function level6_loadEvents() {
       level6_loadNextRound();
       level6_resetButtons();
     };
+    sendResults();
   });
 };
 
@@ -2240,6 +2264,7 @@ function level7_loadEvents() {
       level7_loadNextRound();
       level7_resetButtons();
     };
+    sendResults();
   });
 };
 
@@ -2441,6 +2466,7 @@ function level8_loadEvents() {
       level8_loadNextRound();
       $(level8_nextBtn).prop('disabled', true);
     };
+    sendResults();
   });
 };
 
@@ -2622,6 +2648,7 @@ function level9_loadEvents() {
       level9_loadNextRound();
       $(level9_nextBtn).prop('disabled', true);
     };
+    sendResults();
   });
 };
 
@@ -2803,6 +2830,7 @@ function level10_loadEvents() {
       level10_loadNextRound();
       $(level10_nextBtn).prop('disabled', true);
     };
+    sendResults();
   });
 };
 
@@ -2948,6 +2976,7 @@ function level11_loadEvents() {
       level11_loadNextRound();
       $(level11_nextBtn).prop('disabled', true);
     };
+    sendResults();
   });
 };
 
@@ -3092,6 +3121,7 @@ function level12_loadEvents() {
       level12_loadNextRound();
       $(level12_nextBtn).prop('disabled', true);
     };
+    sendResults();
   });
 };
 
@@ -3236,6 +3266,7 @@ function level13_loadEvents() {
       level13_loadNextRound();
       $(level13_nextBtn).prop('disabled', true);
     };
+    sendResults();
   });
 };
 
