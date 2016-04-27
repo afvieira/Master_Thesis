@@ -1931,7 +1931,14 @@ function level5_loadNextButton() {
 //Variaveis globais level6
 var level6_nextBtn,
   level6_roundNumber = 1,
-  level6_imgClicked = [];
+  level6_imgClicked = [],
+  level6_tentativasPorNivel;
+
+var level6_silabasAnswerByRound = {
+  1: "<ma>, [mɐ]",
+  2: "<ca>, [kɐ]",
+  3: "<pi> [pi]"
+}
 
 var level6_imagesByRound = {
   1: {
@@ -1956,6 +1963,7 @@ var level6_imagesByRound = {
 
 function level6_load() {
   level6_roundNumber = 1;
+  level6_tentativasPorNivel = 1;
   level6_imgClicked = [];
   ResultsGame6ByStudent = [];
   clearCanvas(false);
@@ -2050,6 +2058,7 @@ function level6_verificaResposta(button, figureName) {
       level6_correctAnswer();
     } else {
       playSoundAnswer(false);
+      level6_tentativasPorNivel +=1 ;
       $('#btn-' + level6_imgClicked[0]).addClass('btn-error btn-error-25');
       $('#btn-' + level6_imgClicked[1]).addClass('btn-error btn-error-25');
       setTimeout(function() {
@@ -2083,6 +2092,7 @@ function level6_resetButtons() {
 
 function level6_loadNextRound() {
   level6_roundNumber += 1;
+  level6_tentativasPorNivel = 1;
   level6_loadImagesAndSounds(level6_roundNumber);
   changeBackgroundColor(sequenciaCores[level6_roundNumber - 1]);
 };
@@ -2093,6 +2103,13 @@ function level6_correctAnswer() {
   $('.btn').unbind('click');
   $('.btn').css("cursor", 'default');
   $(level6_nextBtn).prop('disabled', false);
+
+  var result = new Result(1,
+    'Jogo 6: Série ' + level6_roundNumber + ': Sílaba ' + level6_silabasAnswerByRound[level6_roundNumber],
+    true,
+    'Tentativas: ' + level6_tentativasPorNivel);
+
+  Results.push(result);
 
   var numberOfRounds = Object.keys(level6_imagesByRound).length;
   if (level6_roundNumber == numberOfRounds) {
@@ -2122,7 +2139,14 @@ function level6_loadNextButton() {
 //Variaveis globais level7
 var level7_nextBtn,
   level7_roundNumber = 1,
-  level7_imgClicked = [];
+  level7_imgClicked = [],
+  level7_tentativasPorNivel;
+
+var level7_silabasAnswerByRound = {
+  1: "<rra>, [ʀɐ]",
+  2: "<ja>, [ʒɐ]",
+  3: "<do>, [du]"
+}
 
 var level7_imagesByRound = {
   1: {
@@ -2147,6 +2171,7 @@ var level7_imagesByRound = {
 
 function level7_load() {
   level7_roundNumber = 1;
+  level7_tentativasPorNivel = 1;
   level7_imgClicked = [];
   ResultsGame7ByStudent = [];
   clearCanvas(false);
@@ -2241,6 +2266,7 @@ function level7_verificaResposta(button, figureName) {
       level7_correctAnswer();
     } else {
       playSoundAnswer(false);
+      level7_tentativasPorNivel +=1 ;
       $('#btn-' + level7_imgClicked[0]).addClass('btn-error btn-error-25');
       $('#btn-' + level7_imgClicked[1]).addClass('btn-error btn-error-25');
       setTimeout(function() {
@@ -2274,6 +2300,7 @@ function level7_resetButtons() {
 
 function level7_loadNextRound() {
   level7_roundNumber += 1;
+  level7_tentativasPorNivel = 1;
   level7_loadImagesAndSounds(level7_roundNumber);
   changeBackgroundColor(sequenciaCores[level7_roundNumber - 1]);
 };
@@ -2284,6 +2311,13 @@ function level7_correctAnswer() {
   $('.btn').unbind('click');
   $('.btn').css("cursor", 'default');
   $(level7_nextBtn).prop('disabled', false);
+
+  var result = new Result(1,
+    'Jogo 7: Série ' + level7_roundNumber + ': Sílaba ' + level7_silabasAnswerByRound[level7_roundNumber],
+    true,
+    'Tentativas: ' + level7_tentativasPorNivel);
+
+  Results.push(result);
 
   var numberOfRounds = Object.keys(level7_imagesByRound).length;
   if (level7_roundNumber == numberOfRounds) {
