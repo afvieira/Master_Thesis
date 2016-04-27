@@ -1128,7 +1128,7 @@ function level2_correctAnswer() {
 
     var silaba = level2_silabasAnswerByRound[level2_roundNumber];
 
-    var result = new Result(1,
+    var result = new Result(2,
       'Jogo 2: Série ' + level2_roundNumber + ' : Sílaba ' + silaba,
       true,
       'Respostas erradas: ' + level2_wrongAnswers);
@@ -1386,7 +1386,7 @@ function level3_correctAnswer() {
 
     var silaba = level3_silabasAnswerByRound[level3_roundNumber];
 
-    var result = new Result(1,
+    var result = new Result(3,
       'Jogo 3: Série ' + level3_roundNumber + ' : Sílaba ' + silaba,
       true,
       'Respostas erradas: ' + level3_wrongAnswers);
@@ -1639,7 +1639,7 @@ function level4_correctAnswer() {
 
     var silaba = level4_silabasAnswerByRound[level4_roundNumber];
 
-    var result = new Result(1,
+    var result = new Result(4,
       'Jogo 4: Série ' + level4_roundNumber + ' : Sílaba ' + silaba,
       true,
       'Respostas erradas: ' + level4_wrongAnswers);
@@ -1896,7 +1896,7 @@ function level5_correctAnswer() {
 
     var silaba = level5_silabasAnswerByRound[level5_roundNumber];
 
-    var result = new Result(1,
+    var result = new Result(5,
       'Jogo 5: Série ' + level5_roundNumber + ' : Sílaba ' + silaba,
       true,
       'Respostas erradas: ' + level5_wrongAnswers);
@@ -2104,7 +2104,7 @@ function level6_correctAnswer() {
   $('.btn').css("cursor", 'default');
   $(level6_nextBtn).prop('disabled', false);
 
-  var result = new Result(1,
+  var result = new Result(6,
     'Jogo 6: Série ' + level6_roundNumber + ': Sílaba ' + level6_silabasAnswerByRound[level6_roundNumber],
     true,
     'Tentativas: ' + level6_tentativasPorNivel);
@@ -2312,7 +2312,7 @@ function level7_correctAnswer() {
   $('.btn').css("cursor", 'default');
   $(level7_nextBtn).prop('disabled', false);
 
-  var result = new Result(1,
+  var result = new Result(7,
     'Jogo 7: Série ' + level7_roundNumber + ': Sílaba ' + level7_silabasAnswerByRound[level7_roundNumber],
     true,
     'Tentativas: ' + level7_tentativasPorNivel);
