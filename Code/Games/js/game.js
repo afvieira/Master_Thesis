@@ -606,9 +606,11 @@ function createBigButton(text) {
   $(span)[0].style.top = canvasHeight / 2 - 100;
 
   $("#btn-start").click(function() {
-    if (nextLevel <= 13) {
+    if (nextLevel == 1) {
       $("#btn-start").remove();
       goToNextLevel();
+    } else {
+      sendResults();
     };
   });
 };
@@ -852,12 +854,11 @@ function level1_loadEvents() {
   $('#btn-next').click(function(btn) {
     if (level1_objetoIndex == sizeOfImages - 1) {
       clearCanvasAndBtns();
-      createBigButton('Jogo 2');
+      createBigButton('Fim');
     } else {
       level1_resetButtons();
       level1_loadNextImage();
     };
-    sendResults();
   });
 };
 
@@ -1064,12 +1065,11 @@ function level2_loadEvents() {
   $('#btn-next').click(function(btn) {
     if (level2_roundNumber == numberOfRounds) {
       clearCanvasAndBtns();
-      createBigButton('Jogo 3');
+      createBigButton('Fim');
     } else {
       level2_loadNextRound();
       level2_resetButtons();
     };
-    sendResults();
   });
 };
 
@@ -1311,12 +1311,11 @@ function level3_loadEvents() {
   $('#btn-next').click(function(btn) {
     if (level3_roundNumber == numberOfRounds) {
       clearCanvasAndBtns();
-      createBigButton('Jogo 4');
+      createBigButton('Fim');
     } else {
       level3_loadNextRound();
       level3_resetButtons();
     };
-    sendResults();
   });
 };
 
@@ -1575,12 +1574,11 @@ function level4_loadEvents() {
   $('#btn-next').click(function(btn) {
     if (level4_roundNumber == numberOfRounds) {
       clearCanvasAndBtns();
-      createBigButton('Jogo 5');
+      createBigButton('Fim');
     } else {
       level4_loadNextRound();
       level4_resetButtons();
     };
-    sendResults();
   });
 };
 
@@ -1821,12 +1819,11 @@ function level5_loadEvents() {
   $('#btn-next').click(function(btn) {
     if (level5_roundNumber == numberOfRounds) {
       clearCanvasAndBtns();
-      createBigButton('Jogo 6');
+      createBigButton('Fim');
     } else {
       level5_loadNextRound();
       level5_resetButtons();
     };
-    sendResults();
   });
 };
 
@@ -2058,7 +2055,7 @@ function level6_verificaResposta(button, figureName) {
       level6_correctAnswer();
     } else {
       playSoundAnswer(false);
-      level6_tentativasPorNivel +=1 ;
+      level6_tentativasPorNivel += 1;
       $('#btn-' + level6_imgClicked[0]).addClass('btn-error btn-error-25');
       $('#btn-' + level6_imgClicked[1]).addClass('btn-error btn-error-25');
       setTimeout(function() {
@@ -2077,12 +2074,11 @@ function level6_loadEvents() {
   $('#btn-next').click(function(btn) {
     if (level6_roundNumber == numberOfRounds) {
       clearCanvasAndBtns();
-      createBigButton('Jogo 7');
+      createBigButton('Fim');
     } else {
       level6_loadNextRound();
       level6_resetButtons();
     };
-    sendResults();
   });
 };
 
@@ -2266,7 +2262,7 @@ function level7_verificaResposta(button, figureName) {
       level7_correctAnswer();
     } else {
       playSoundAnswer(false);
-      level7_tentativasPorNivel +=1 ;
+      level7_tentativasPorNivel += 1;
       $('#btn-' + level7_imgClicked[0]).addClass('btn-error btn-error-25');
       $('#btn-' + level7_imgClicked[1]).addClass('btn-error btn-error-25');
       setTimeout(function() {
@@ -2285,12 +2281,11 @@ function level7_loadEvents() {
   $('#btn-next').click(function(btn) {
     if (level7_roundNumber == numberOfRounds) {
       clearCanvasAndBtns();
-      createBigButton('Jogo 8');
+      createBigButton('Fim');
     } else {
       level7_loadNextRound();
       level7_resetButtons();
     };
-    sendResults();
   });
 };
 
@@ -2492,7 +2487,7 @@ function level8_loadEvents() {
   $('#btn-next').click(function(btn) {
     if (level8_roundNumber == numberOfRounds) {
       clearCanvasAndBtns();
-      createBigButton('Jogo 9');
+      createBigButton('Fim');
     } else {
       if (level8_roundNumber == numberOfRounds - 1) {
         $(level8_nextBtn).text('Fim');
@@ -2500,7 +2495,6 @@ function level8_loadEvents() {
       level8_loadNextRound();
       $(level8_nextBtn).prop('disabled', true);
     };
-    sendResults();
   });
 };
 
@@ -2674,7 +2668,7 @@ function level9_loadEvents() {
   $('#btn-next').click(function(btn) {
     if (level9_roundNumber == numberOfRounds) {
       clearCanvasAndBtns();
-      createBigButton('Jogo 10');
+      createBigButton('Fim');
     } else {
       if (level9_roundNumber == numberOfRounds - 1) {
         $(level9_nextBtn).text('Fim');
@@ -2682,7 +2676,6 @@ function level9_loadEvents() {
       level9_loadNextRound();
       $(level9_nextBtn).prop('disabled', true);
     };
-    sendResults();
   });
 };
 
@@ -2856,7 +2849,7 @@ function level10_loadEvents() {
   $('#btn-next').click(function(btn) {
     if (level10_roundNumber == numberOfRounds) {
       clearCanvasAndBtns();
-      createBigButton('Jogo 11');
+      createBigButton('Fim');
     } else {
       if (level10_roundNumber == numberOfRounds - 1) {
         $(level10_nextBtn).text('Fim');
@@ -2864,7 +2857,6 @@ function level10_loadEvents() {
       level10_loadNextRound();
       $(level10_nextBtn).prop('disabled', true);
     };
-    sendResults();
   });
 };
 
@@ -3002,7 +2994,7 @@ function level11_loadEvents() {
   $('#btn-next').click(function(btn) {
     if (level11_roundNumber == numberOfRounds) {
       clearCanvasAndBtns();
-      createBigButton('Jogo 12');
+      createBigButton('Fim');
     } else {
       if (level11_roundNumber == numberOfRounds - 1) {
         $(level11_nextBtn).text('Fim');
@@ -3010,7 +3002,6 @@ function level11_loadEvents() {
       level11_loadNextRound();
       $(level11_nextBtn).prop('disabled', true);
     };
-    sendResults();
   });
 };
 
@@ -3147,7 +3138,7 @@ function level12_loadEvents() {
   $('#btn-next').click(function(btn) {
     if (level12_roundNumber == numberOfRounds) {
       clearCanvasAndBtns();
-      createBigButton('Jogo 13');
+      createBigButton('Fim');
     } else {
       if (level12_roundNumber == numberOfRounds - 1) {
         $(level12_nextBtn).text('Fim');
@@ -3155,7 +3146,6 @@ function level12_loadEvents() {
       level12_loadNextRound();
       $(level12_nextBtn).prop('disabled', true);
     };
-    sendResults();
   });
 };
 
@@ -3300,7 +3290,6 @@ function level13_loadEvents() {
       level13_loadNextRound();
       $(level13_nextBtn).prop('disabled', true);
     };
-    sendResults();
   });
 };
 
