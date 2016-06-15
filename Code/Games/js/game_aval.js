@@ -564,6 +564,8 @@ function createBigButton(text) {
         if (nextLevel <= 5) {
             $("#btn-start").remove();
             goToNextLevel();
+        } else {
+            window.history.go(-1);
         };
     });
 };
